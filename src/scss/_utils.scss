@@ -1,3 +1,47 @@
 body{
   background: #fff;
 }
+
+.breadcrumbs{
+  align-self: flex-start;
+  border: 2px solid rgba(#fff,0.5);
+  border-radius: 20px;
+  padding: 2px 20px 6px;
+  display: inline-block;
+  ul{
+    margin: 0;
+    padding: 0;
+    li{
+      list-style: none;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 14px;
+      position: relative;
+      padding-right: 26px;
+      color: #fff;
+      &:after{
+        content: "";
+        display: block;
+        position: absolute;
+        background: url('../img/breadcrumb.svg') 0 0 no-repeat;
+        background-size: cover;
+        width: 7px;
+        height: 13px;
+        right: 6px;
+        top: 2px;
+      }
+      a{
+        font-size: 14px;
+        line-height: 14px;
+        color: #fff;
+        border-bottom-color: rgba(#fff,0.4);
+      }
+      &:last-child{
+        padding-right: 0;
+        &:after{
+          display: none;
+        }
+      }
+    }
+  }
+}

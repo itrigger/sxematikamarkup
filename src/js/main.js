@@ -100,6 +100,7 @@ $(document).ready(function () {
   const USD = stock_rub;
   const EUR = 1/stock_eur*stock_rub;
   const STOCK_DATE = stock_date.toString();
+  const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт"];
 
   const CONST_HOST = 'http://shematika'; // храним ХОСТ
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a'; // ключи аутентификации
@@ -107,7 +108,7 @@ $(document).ready(function () {
   const $dropdown = $(".el-type-1"); // начальные ссылки на селекты
   const $dropdownChild = $(".el-name-1");
 
-
+  //Заполняем данные блока Биржевые котировки (данные получены с помощью php и сохраняются в кэше WP)
   if($(".stocks--items").length > 0){
     $(".stocks_usd").text(Math.round((USD + Number.EPSILON) * 100) / 100 +" RUB");
     $(".stocks_eur").text(Math.round((EUR + Number.EPSILON) * 100) / 100 +" RUB");
@@ -121,22 +122,27 @@ $(document).ready(function () {
   /* Add fancybox to product img */
   if($(".catalog--products").length > 0) {
     $(".catalog--products-ul .product img").on('click', function () {
-
       $.fancybox.open({
         src  : $(this).attr('src'),
         type : 'image'
       });
     });
 
+    //Высчитываем цену товара, данные для цены выводим с помощью php и ACF
     $(".catalog--products-ul .product").each(function () {
       let item_gold = $(this).find(".item--gold").text();
       let item_silver = $(this).find(".item--silver").text();
       let item_platinum = $(this).find(".item--platinum").text();
       let item_palladium = $(this).find(".item--palladium").text();
+      let item_typecount = $(this).find(".item--typeofcount").text();
       let item_price;
-        // Основная формула (0,4 кэф)
-        item_price = (item_gold * GOLD + item_silver * SILVER + item_palladium * PALLADIUM + item_platinum * PLATINUM) * 0.4 * USD;
-        $(this).find(".price").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
+        // Основная формула для каждого города и металла есть поправочный кэф
+        // Золото -40%, Серебро -30%, Платина -25%, Палладиум -30% (Москва, Питер)
+        // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
+        item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_palladium * PALLADIUM * 0.75 + item_platinum * PLATINUM * 0.7) * USD;
+        //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_palladium * PALLADIUM * 0.7 + item_platinum * PLATINUM * 0.65) * USD;
+        $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
+        $(this).find(".itemcount").text(TYPES[item_typecount-1]);
     })
   }
   /**/
