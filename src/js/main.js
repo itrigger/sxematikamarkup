@@ -100,7 +100,7 @@ $(document).ready(function () {
   const USD = stock_rub;
   const EUR = 1/stock_eur*stock_rub;
   const STOCK_DATE = stock_date.toString();
-  const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт"];
+  const TYPES = ["кг", "шт", "г", "кольцо", "секцию", "2 секции", "контакт"];
 
   const CONST_HOST = 'http://shematika'; // храним ХОСТ
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a'; // ключи аутентификации
@@ -121,7 +121,7 @@ $(document).ready(function () {
 
   /* Add fancybox to product img */
   if($(".catalog--products").length > 0) {
-    $(".catalog--products-ul .product img").on('click', function () {
+    $(".catalog--products-ul .product img.attachment-woocommerce_thumbnail").on('click', function () {
       $.fancybox.open({
         src  : $(this).attr('src'),
         type : 'image'
@@ -135,13 +135,18 @@ $(document).ready(function () {
       let item_platinum = $(this).find(".item--platinum").text();
       let item_palladium = $(this).find(".item--palladium").text();
       let item_typecount = $(this).find(".item--typeofcount").text();
+      let item_fixprice = $(this).find(".item--fixprice").text();
       let item_price;
         // Основная формула для каждого города и металла есть поправочный кэф
+      if(item_fixprice>0) {
+        $(this).find(".price .price_value").text(item_fixprice);
+      } else {
         // Золото -40%, Серебро -30%, Платина -25%, Палладиум -30% (Москва, Питер)
         // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
         item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_palladium * PALLADIUM * 0.75 + item_platinum * PLATINUM * 0.7) * USD;
         //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_palladium * PALLADIUM * 0.7 + item_platinum * PLATINUM * 0.65) * USD;
         $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
+      }
         $(this).find(".itemcount").text(TYPES[item_typecount-1]);
     })
   }
@@ -281,7 +286,8 @@ if ($("body").hasClass("home")) {
             'data-s': arr[4],
             'data-pt': arr[5],
             'data-pd': arr[6],
-            'data-counttype': arr[7], // 1 это килограммы, 2 это штуки
+            'data-counttype': arr[7],
+            'data-fixprice': arr[8],
           }).prop('selected', true));
       }
 
@@ -318,7 +324,8 @@ if ($("body").hasClass("home")) {
                         'data-s': productsAPI[key].meta_data[2].value,
                         'data-pt': productsAPI[key].meta_data[4].value,
                         'data-pd': productsAPI[key].meta_data[6].value,
-                        'data-counttype': productsAPI[key].meta_data[8].value, // 1 это килограммы, 2 это штуки
+                        'data-counttype': productsAPI[key].meta_data[8].value,
+                        'data-fixprice': productsAPI[key].meta_data[10].value,
                       }).prop('selected', true));
 
 
@@ -331,8 +338,9 @@ if ($("body").hasClass("home")) {
                     let lsMeta2 = productsAPI[key].meta_data[2].value; //Silver
                     let lsMeta4 = productsAPI[key].meta_data[4].value; //Platinum
                     let lsMeta6 = productsAPI[key].meta_data[6].value; //Palladium
-                    let lsMeta8 = productsAPI[key].meta_data[8].value; //Мера измерения (кг или шт)
-                    temp[i] = [lsId, lsCatId, lsName, lsMeta0, lsMeta2, lsMeta4, lsMeta6, lsMeta8];
+                    let lsMeta8 = productsAPI[key].meta_data[8].value; //Мера измерения (кг,  шт и т.д.)
+                    let lsMeta10 = productsAPI[key].meta_data[10].value; //Мера измерения (кг,  шт и т.д.)
+                    temp[i] = [lsId, lsCatId, lsName, lsMeta0, lsMeta2, lsMeta4, lsMeta6, lsMeta8, lsMeta10];
                   }
                   i++;
                 }
@@ -531,7 +539,8 @@ if ($("body").hasClass("home")) {
               'data-s': arr[4],
               'data-pt': arr[5],
               'data-pd': arr[6],
-              'data-counttype': arr[7], // 1 это килограммы, 2 это штуки
+              'data-counttype': arr[7],
+              'data-fixprice': arr[8],
             }));
         }
         $row.find('.el-type').val(catId);
@@ -596,6 +605,7 @@ if ($("body").hasClass("home")) {
               'data-pt': item[key].meta_data[4].value,
               'data-pd': item[key].meta_data[6].value,
               'data-counttype': item[key].meta_data[8].value, // 1 это килограммы, 2 это штуки
+              'data-fixprice': item[key].meta_data[10].value,
             }));
         }
       }
@@ -661,25 +671,26 @@ if ($("body").hasClass("home")) {
     let item_platinum = $('option:selected', $childDD).data('pt');
     let item_palladium = $('option:selected', $childDD).data('pd');
     let ItemTypeOf = $('option:selected', $childDD).data('counttype');
+    let FixPrice = $('option:selected', $childDD).data('fixprice');
     let $childTypeOf = $row.find('.typeOfCount'); // получаем ссылку на дочерний селект
     let weight;
 
-    if (ItemTypeOf === 1) {
-      $childTypeOf.text('кг.');
-    } else {
-      $childTypeOf.text('шт.');
-    }
-
+    $childTypeOf.text(TYPES[ItemTypeOf-1]);
 
     if ($inputText.val()) {
-      weight = $inputText.val()
+      let tempVal = $inputText.val()
+      weight = tempVal.replace(/,/g, '.');
     } else {
       notify("Не указано количество!", "error");
       $inputText.addClass('input-error');
     }
-
-    // Основная формула (0,4 кэф)
-    item_price = (item_gold * GOLD + item_silver * SILVER + item_palladium * PALLADIUM + item_platinum * PLATINUM) * 0.4 * USD * weight;
+    // Золото -40%, Серебро -30%, Платина -25%, Палладиум -30% (Москва, Питер)
+    // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
+    if(FixPrice > 0){
+      item_price = FixPrice * weight;
+    } else {
+      item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_palladium * PALLADIUM * 0.75 + item_platinum * PLATINUM * 0.7) * USD * weight;
+    }
 
     if (item_price > 0) {
       $row.find('.row-total span').text(Math.round((item_price + Number.EPSILON) * 100) / 100);
