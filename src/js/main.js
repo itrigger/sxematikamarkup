@@ -230,6 +230,7 @@ if ($("body").hasClass("home")) {
             $dropdown.append($("<option />").val(this.id).text(this.name));
           });
           $dropdown.prop('disabled', false);
+          fillChildSelect(1);
           isLoading(0);
         });
 
@@ -239,6 +240,8 @@ if ($("body").hasClass("home")) {
           lsArr = JSON.parse(localStorage.getItem('order'));
           getFromLs(lsArr).then(r => console.log('Data loaded from local storage!'));
         }
+        // ToDo: заполнить второй селект
+
       }
     )
     .catch(function (err) {
@@ -327,7 +330,6 @@ if ($("body").hasClass("home")) {
                         'data-counttype': productsAPI[key].meta_data[8].value,
                         'data-fixprice': productsAPI[key].meta_data[10].value,
                       }).prop('selected', true));
-
 
                     //заполняем локальное хранилище
 
