@@ -2,12 +2,13 @@ window.$ = require('jquery');
 window.jQuery = $;
 require("@fancyapps/fancybox");
 import Swiper from 'swiper/bundle';
-import domtoimage from 'dom-to-image';
-
+// const domToPdf = require('dom-to-pdf'); delete this
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+//import html2pdf from "html2pdf.js";
 
 
 $(document).ready(function () {
-
 
   const mySwiper = new Swiper('#main-page--slider .swiper-container', {
     // Optional parameters
@@ -22,6 +23,35 @@ $(document).ready(function () {
       clickable: true,
       renderBullet: function (index, className) {
         return '<span class="' + className + '"></span>';
+      },
+    }
+  });
+
+  const mySwiper3 = new Swiper('.cont2', {
+    // Optional parameters
+    direction: 'horizontal',
+    slidesPerView: 3,
+    spaceBetween: 30,
+    loop: false,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      renderBullet: function (index, className) {
+        return '<span class="' + className + '"></span>';
+      },
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 20,
+      },
+      660: {
+        slidesPerView: 2,
+        spaceBetween: 40,
+      },
+      1180: {
+        slidesPerView: 3,
+        spaceBetween: 50,
       },
     }
   });
@@ -100,7 +130,7 @@ $(document).ready(function () {
   const USD = stock_rub;
   const EUR = 1/stock_eur*stock_rub;
   const STOCK_DATE = stock_date.toString();
-  const TYPES = ["кг", "шт", "г", "кольцо", "секцию", "2 секции", "контакт"];
+  const TYPES = ["кг", "шт", "г", "кольцо", "секцию", "2 секции", "контакт", "гр"];
 
   const CONST_HOST = 'http://shematika'; // храним ХОСТ
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a'; // ключи аутентификации
@@ -148,6 +178,31 @@ $(document).ready(function () {
         $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
       }
         $(this).find(".itemcount").text(TYPES[item_typecount-1]);
+    })
+  }
+  /**/
+  if($(".print--ul").length > 0) {
+    $(".print--ul").each(function () {
+      $(this).find("tr").each(function () {
+        let item_gold = $(this).find(".item--gold").text();
+        let item_silver = $(this).find(".item--silver").text();
+        let item_platinum = $(this).find(".item--platinum").text();
+        let item_palladium = $(this).find(".item--palladium").text();
+        let item_typecount = $(this).find(".item--typeofcount").text();
+        let item_fixprice = $(this).find(".item--fixprice").text();
+        let item_price;
+        // Основная формула для каждого города и металла есть поправочный кэф
+        if (item_fixprice > 0) {
+          $(this).find(".price .price_value").text(item_fixprice);
+        } else {
+          // Золото -40%, Серебро -30%, Платина -25%, Палладиум -30% (Москва, Питер)
+          // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
+          item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_palladium * PALLADIUM * 0.75 + item_platinum * PLATINUM * 0.7) * USD;
+          //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_palladium * PALLADIUM * 0.7 + item_platinum * PLATINUM * 0.65) * USD;
+          $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
+        }
+        $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
+      })
     })
   }
   /**/
@@ -800,7 +855,8 @@ if ($("body").hasClass("home")) {
             $("#z1").val($("#z1").val() + "_" +arr[1]);
             $("#z2").val($("#z2").val() + "_" +arr[2]);
             $("#z3").val($("#z3").val() + "_" +arr[3]);
-            $("#z4").val($("#z4").val() + "_" +arr[5]);
+            $("#z4").val($("#z4").val() + "_" +arr[4]);
+            $("#z5").val($("#z5").val() + "_" +arr[5]);
           }
         }
       }
@@ -830,18 +886,134 @@ jQuery(document).ready(function(){
 */
 
 /********/
-
+/*https://www.npmjs.com/package/dom-to-pdf*/
 $(document).ready(function () {
+
+
+
+
   $("#btn-Convert-Html2Image").on('click', function () {
-    let element = document.querySelector("#table");
-    domtoimage.toJpeg(element, {quality: 0.95})
-      .then(function (dataUrl) {
-        let link = document.createElement('a');
-        link.download = 'my-image-name.jpeg';
-        link.href = dataUrl;
-        link.click();
-      });
+    let element = document.getElementById("tabletext");
+
+    html2canvas(element, {
+      onclone: function () {
+        element.style.display = 'block';
+      },
+      width: 1140,
+      height: 8382,
+      scrollX: 0,
+      scrollY: 0,
+      scale: 1
+    }).then(
+      canvas => {
+        // The following code is to create a pdf file for the taken screenshot
+        let pdf = new jsPDF('p', 'px', [canvas.width, canvas.height]);
+        let imgData = canvas.toDataURL("image/png", 0.98);
+        pdf.addImage(imgData, 0, 0, (canvas.width), (canvas.height));
+        pdf.save('converteddoc.pdf');
+    });
+
+ /*   let doc = new jsPDF();
+    doc.addFont("/wp-content/themes/sxematika/assets/fonts/PTSans.ttf", "PTSans", "normal");
+
+    doc.setFont("PTSans"); // set font
+    doc.setFontSize(10);
+    doc.html(element, {
+      callback: function (doc) {
+        doc.save('test.pdf');
+      },
+      html2canvas:  { scale: 1 },
+      x: 10,
+      y: 10
+    });*/
   });
+
+
+
+
+
+
+
+
+
+
+
+ /* $("#btn-Convert-Html2Image").on('click', function () {
+
+    let element = document.getElementById("tabletext");
+    $(this).prop('disabled', true);
+    $(".alert--wrapper").html("<div class='alert process'><span>Подготовка прайс листа...</span></div>")
+
+    let today;
+    var opt = {
+      margin:       5,
+      filename:     'newprice.pdf',
+      image:        { type: 'jpeg', quality: 2 },
+      pagebreak:    {mode: 'css'},
+      html2canvas:  { scale: 1 },
+      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+    //$(this).prop('disabled', false);
+   // $(".alert--wrapper").html("");
+
+
+
+
+ /!* function makePDF() {
+    console.log("sd 1");
+      var quotes = document.getElementById('tabletext');
+
+    html2canvas(quotes, {
+      onclone: function(canvas) {
+        //! MAKE YOUR PDF
+        var pdf = new jsPDF('p', 'pt', 'a4');
+
+        for (var i = 0; i <= quotes.clientHeight/980; i++) {
+          //! This is all just html2canvas stuff
+          var srcImg  = canvas;
+          var sX      = 0;
+          var sY      = 980*i; // start 980 pixels down for every new page
+          var sWidth  = 900;
+          var sHeight = 980;
+          var dX      = 0;
+          var dY      = 0;
+          var dWidth  = 900;
+          var dHeight = 980;
+
+          window.onePageCanvas = document.createElement("canvas");
+          onePageCanvas.setAttribute('width', 900);
+          onePageCanvas.setAttribute('height', 980);
+          var ctx = onePageCanvas.getContext('2d');
+          // details on this usage of this function:
+          // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images#Slicing
+          ctx.drawImage(srcImg,sX,sY,sWidth,sHeight,dX,dY,dWidth,dHeight);
+
+          // document.body.appendChild(canvas);
+          var canvasDataURL = onePageCanvas.toDataURL("image/png", 1.0);
+
+          var width         = onePageCanvas.width;
+          var height        = onePageCanvas.clientHeight;
+
+          //! If we're on anything other than the first page,
+          // add another page
+          if (i > 0) {
+            pdf.addPage(612, 791); //8.5" x 11" in pts (in*72)
+          }
+          //! now we declare that we're working on that page
+          pdf.setPage(i+1);
+          //! now we add content to that page!
+          pdf.addImage(canvasDataURL, 'PNG', 20, 40, (width*.62), (height*.62));
+
+        }
+        //! after the for loop is finished running, we save the pdf.
+        pdf.save('Test.pdf');
+      }
+    });
+  }
+    makePDF();*!/
+
+  });*/
 });
 
 /* ToDO
@@ -850,5 +1022,6 @@ $(document).ready(function () {
     4. Отправка данных на почту
     5. Формирование таблицы с прайсом и сохранение в пдф
     6. BUG! На движке при первой загрузке не заполняется дочерний селект
+    7. Как чистить локалсторадж, если есть обновы?
 */
 

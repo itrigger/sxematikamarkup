@@ -219,18 +219,10 @@
         }
       }
     }
-    &>div{
-      background: rgba(#40cdad,1);
-      border-radius: 10px 10px 0 0;
-      padding: 30px 0 0;
-    }
     .custom-size--left{
       width: 441px;
       .pic{
-        margin-top: 37px;
-        img{
-          margin-left: -30px;
-        }
+        margin-top: 58px;
       }
     }
     .custom-size--middle{
@@ -238,19 +230,48 @@
       .pic{
         margin-top: 25px;
         text-align: center;
+        line-height: 0;
       }
     }
     .custom-size--right{
       width: 441px;
       .pic{
-        margin-top: 37px;
-        img{
-          margin-left: -30px;
-        }
+        margin-top: 40px;
       }
     }
   }
+  .cont2{
+    padding-bottom: 50px;
+    .swiper-pagination{
+      top: auto;
+    }
+  }
+  .cont2 .swiper-slide>div{
+    background: rgba(#40cdad, 1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 30px 0 0;
+    text-align: center;
+    max-width: 360px;
+    margin: 0 auto;
+  }
 }
+.block-hts .hts-3-blocks .custom-size--left,
+.block-hts .hts-3-blocks .custom-size--middle,
+.block-hts .hts-3-blocks .custom-size--right
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 380px;
+}
+.block-hts .hts-3-blocks  img {
+  max-width: 100%;
+}
+.block-hts .hts-3-blocks .swiper-pagination {
+  bottom: 20px !important;
+}
+
 
 
 .block-process{
@@ -549,7 +570,98 @@ input[type=submit]{
 }
 
 
-#map{
-  height: 420px;
-  width: 100%;
+
+.main-page-map{
+  padding-top: 35px;
+  .in{
+    z-index: 3;
+  }
+  h1{
+    text-align: center;
+    font-weight: normal;
+    font-family: $freg;
+  }
+
+}
+
+.main-page-map--selector{
+  position: relative;
+  z-index: 1;
+  .selector-title{
+    font-size: 50px;
+    background: url('/img/ico-dd-dark.svg') right 34px no-repeat;
+    background-size: 14px 10px;
+    padding-right: 29px;
+    font-family: $fmed;
+    span{
+      color: #000;
+    }
+  }
+  .selector-dd{
+    top: 25px;
+  }
+}
+.map{
+  position: relative;
+}
+
+.main-page-map .map_bubble{
+  width: 290px;
+  color: #444c56;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(#000,0.2);
+  margin: 20px auto 0;
+  position: absolute;
+  right: 10%;
+  z-index: 12;
+  border-radius: 10px;
+  .desc{
+    padding: 15px 15px 25px;
+  }
+  a{
+    color: #444c56;
+    text-decoration: none;
+  }
+  .title{
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .tel{
+    font-family: $fmed;
+    font-size: 15px;
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      background: url("../img/ico-tel.svg") 0 0 no-repeat;
+      width: 17px;
+      height: 17px;
+      background-size: contain;
+      left: 0;
+      top: 5px;
+    }
+  }
+  .email{
+    font-family: $fmed;
+    font-size: 15px;
+    position: relative;
+    padding-left: 30px;
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      background: url("../img/ico-mail.svg") 0 0 no-repeat;
+      width: 18px;
+      height: 14px;
+      background-size: contain;
+      left: 0;
+      top: 5px;
+    }
+    a{
+      border-bottom: 2px solid #0bbc93;
+    }
+  }
 }

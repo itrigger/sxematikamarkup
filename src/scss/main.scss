@@ -513,42 +513,6 @@ h1{
   font-weight: normal;
 }
 
-.main-page-map{
-  padding-top: 35px;
-  .in{
-    z-index: 3;
-  }
-  h1{
-    text-align: center;
-    font-weight: normal;
-    font-family: $freg;
-  }
-
-}
-
-.main-page-map--selector{
-  position: relative;
-  z-index: 1;
-  .selector-title{
-    font-size: 50px;
-    background: url('/img/ico-dd-dark.svg') right 34px no-repeat;
-    background-size: 14px 10px;
-    padding-right: 29px;
-    font-family: $fmed;
-    span{
-      color: #000;
-    }
-  }
-  .selector-dd{
-    top: 25px;
-  }
-}
-.map{
-  iframe{
-    position: relative;
-    z-index: 1;
-  }
-}
 
 .dotted-border-left{
   position: relative;
@@ -635,11 +599,15 @@ h1{
   border-radius: 10px;
   justify-content: space-between;
   align-items: center;
+  display: flex;
   &.error{
     background-color: #f44336;
   }
   &.success{
     background-color: #40871d;
+  }
+  &.process{
+    background-color: #5f5f5f;
   }
 }
 .alert .closebtn {
@@ -653,13 +621,22 @@ h1{
   transition: 0.3s;
 }
 
+
+h3, h4, h5, h6{
+  font-family: $fmed;
+  font-weight: normal;
+}
+
 @import "_header";
 @import "_slider";
 @import "_calculator";
 @import "_mainpage";
 @import "_catalog";
+@import "_content";
 @import "_utils";
 @import "_footer";
+@import "_pdf";
+@import "_media";
 
 
 

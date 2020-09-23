@@ -59,37 +59,6 @@ body{
 }
 
 
-.blogs-item{
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 40px;
-  .blogs-item__img{
-    margin-right: 40px;
-    a{
-      width: 245px;
-      display: block;
-      border-bottom: none;
-    }
-    img{
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-  }
-  .blogs-item__heading{
-    font-family: $fmed;
-    font-size: 32px;
-    line-height: 42px;
-    a{
-      border-bottom-width: 2px;
-    }
-  }
-  .blogs-item__desc{
-    display: flex;
-    flex-direction: column;
-  }
-}
 
 
 
@@ -195,4 +164,8 @@ body{
     font-size: 17px;
     font-family: $freg;
   }
+}
+
+.hidden_inputs{
+  display: none;
 }

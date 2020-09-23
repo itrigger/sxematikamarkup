@@ -1,0 +1,176 @@
+.page-template-blog .pld-like-dislike-wrap{
+  display: none;
+}
+.h1_a{
+  font-size: 17px;
+}
+
+h2.entry-title{
+  font-weight: normal;
+  font-size: 38px;
+  font-family: $fmed;
+  margin-top: 0;
+}
+.featured-media-inner{
+  text-align: center;
+  img{
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
+.content{
+  h6{
+    font-size: 22px;
+    line-height: 30px;
+    font-family: $fmed;
+    font-weight: normal;
+  }
+  img.size-full{
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
+
+
+.blogs-item{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+  .blogs-item__img{
+    margin-right: 40px;
+    a{
+      width: 245px;
+      display: block;
+      border-bottom: none;
+    }
+    img{
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  }
+  .blogs-item__heading{
+    font-family: $fmed;
+    font-size: 32px;
+    line-height: 42px;
+    a{
+      border-bottom-width: 2px;
+    }
+  }
+  .blogs-item__desc{
+    display: flex;
+    flex-direction: column;
+  }
+  .blogs_item__text{
+    h6{
+      margin-top: 17px;
+      font-size: 17px;
+      line-height: 22px;
+      margin-bottom: 25px;
+      font-weight: normal;
+      font-family: $freg;
+    }
+  }
+  .read-more-button-wrap{
+    display: none;
+  }
+}
+
+#map{
+  height: 540px;
+  width: 100%;
+  margin-bottom: -65px;
+}
+.page-template-contacts .map_bubble{
+  position: absolute;
+  left: 0;
+  top: 40px;
+  max-width: 500px;
+  background: #fff;
+  z-index: 99;
+  border-radius: 10px;
+  padding: 20px;
+  .heading{
+    font-size: 29px;
+    b{
+      font-weight: normal;
+      font-family: $fmed;
+    }
+  }
+  .selector{
+    display: block;
+    margin: 20px 0;
+  }
+  .selector-title{
+    background: #f2f4f5;
+    border-radius: 4px;
+    padding: 18px;
+    text-align: center;
+    span{
+      font-size: 17px;
+      border-bottom: 2px dotted #0bbc93;
+    }
+  }
+
+  .title{
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  .tel{
+    font-family: $fmed;
+    font-size: 15px;
+    padding-left: 30px;
+    position: relative;
+    margin-bottom: 10px;
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      background: url("../img/ico-tel.svg") 0 0 no-repeat;
+      width: 17px;
+      height: 17px;
+      background-size: contain;
+      left: 0;
+      top: 5px;
+    }
+    a{
+      border-bottom: none;
+    }
+  }
+  .email{
+    font-family: $fmed;
+    font-size: 15px;
+    position: relative;
+    padding-left: 30px;
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      background: url("../img/ico-mail.svg") 0 0 no-repeat;
+      width: 18px;
+      height: 14px;
+      background-size: contain;
+      left: 0;
+      top: 5px;
+    }
+    a{
+      border-bottom: 2px solid #0bbc93;
+    }
+  }
+  .address_wrapper{
+    display: flex;
+    flex-direction: row;
+    .pic{
+      margin-right: 20px;
+      img{
+        border-radius: 5px;
+        overflow: hidden;
+      }
+    }
+    .address{
+      padding-top: 5px;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+
+#table{
+ width: 1140px !important;
+  padding: 0 40px 20px;
+  height: 8382px;
+/*  margin: 30px auto;
+  background: #fff;*/
+
+  th{
+    text-align: left;
+    padding: 25px 0 15px;
+    font-family: $fmed;
+    font-weight: normal;
+  }
+  table{
+    width: 100%;
+    border-collapse: collapse;
+    td{
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+    }
+    .td--typeof{
+      min-width: 150px;
+    }
+    .td--price{
+      min-width: 200px;
+      text-align: right
+    }
+  }
+}
+#table td{
+  background: #fff;
+}
+
+.alert--wrapper{
+  .alert{
+    margin-bottom: 30px;
+  }
+}
