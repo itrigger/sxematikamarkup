@@ -53,13 +53,13 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border: 1px solid rgba(#dde1e8, 1);
+  border: none;
   width: 100%;
   padding: 14px 20px 12px;
   border-radius: 7px;
   position: relative;
   transition: 0.2s all;
-
+  background: #f9d564;
   &:after {
     position: absolute;
     content: '';
@@ -140,33 +140,33 @@
 }
 
 .pic-condensator {
-  width: 344px;
-  height: 400px;
-  background: url('/img/cats/cats-03.svg') 0 0 no-repeat;
+  width: 345px;
+  height: 429px;
+  background: url('/img/cats/mpcat-26.png') 0 0 no-repeat;
 }
 
 .pic-tranzistor {
-  width: 199px;
-  height: 224px;
-  background: url('/img/cats/cats-04.svg') 0 0 no-repeat;
+  width: 173px;
+  height: 165px;
+  background: url('/img/cats/mpcat-27.png') 0 0 no-repeat;
 }
 
 .pic-rezistor {
-  width: 178px;
-  height: 203px;
-  background: url('/img/cats/cats-05.svg') 0 0 no-repeat;
+  width: 309px;
+  height: 165px;
+  background: url('/img/cats/mpcat-32.png') 0 0 no-repeat;
 }
 
 .pic-microshema {
-  width: 239px;
-  height: 224px;
-  background: url('/img/cats/cats-06.svg') 0 0 no-repeat;
+  width: 288px;
+  height: 179px;
+  background: url('/img/cats/mpcat-28.png') 0 0 no-repeat;
 }
 
-.pic-katushka {
-  width: 193px;
-  height: 193px;
-  background: url('/img/cats/cats-07.svg') 0 0 no-repeat;
+.pic-potenziometr {
+  width: 174px;
+  height: 164px;
+  background: url('/img/cats/mpcat-31.png') 0 0 no-repeat;
 }
 
 .pic-diod {
@@ -175,10 +175,16 @@
   background: url('/img/cats/cats-08.svg') 0 0 no-repeat;
 }
 
-.pic-tranzistor2 {
-  width: 154px;
-  height: 187px;
-  background: url('/img/cats/cats-09.svg') 0 0 no-repeat;
+.pic-pereklyuchateli {
+  width: 201px;
+  height: 179px;
+  background: url('/img/cats/mpcat-29.png') 0 0 no-repeat;
+}
+
+.pic-lampy {
+  width: 188px;
+  height: 179px;
+  background: url('/img/cats/mpcat-30.png') 0 0 no-repeat;
 }
 
 

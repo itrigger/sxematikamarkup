@@ -441,8 +441,21 @@ body *{
 }
 
 .gray-radio-bg{
-  background: #5d687a;
+  background: url(../img/graybg.jpg) repeat;
   border-radius: 10px;
+  position: relative;
+  &:before{
+    display: block;
+    content: '';
+    background: url(../img/details-bg-fill-12.png) repeat;
+    opacity: 0.2;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
 }
 
 .yellow-rounded{

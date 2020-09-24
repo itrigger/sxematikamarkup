@@ -169,7 +169,11 @@ $(document).ready(function () {
       let item_price;
         // Основная формула для каждого города и металла есть поправочный кэф
       if(item_fixprice>0) {
-        $(this).find(".price .price_value").text(item_fixprice);
+        if(item_fixprice == "999999"){
+          $(this).find(".price").text("договорная");
+        } else {
+          $(this).find(".price .price_value").text(item_fixprice);
+        }
       } else {
         // Золото -40%, Серебро -30%, Платина -25%, Палладиум -30% (Москва, Питер)
         // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
@@ -193,7 +197,11 @@ $(document).ready(function () {
         let item_price;
         // Основная формула для каждого города и металла есть поправочный кэф
         if (item_fixprice > 0) {
-          $(this).find(".price .price_value").text(item_fixprice);
+          if(item_fixprice == "999999"){
+            $(this).find(".price").text("договорная");
+          } else {
+            $(this).find(".price .price_value").text(item_fixprice);
+          }
         } else {
           // Золото -40%, Серебро -30%, Платина -25%, Палладиум -30% (Москва, Питер)
           // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
@@ -336,17 +344,19 @@ if ($("body").hasClass("home")) {
       $childDD.empty(); // очищаем селект
 
       for (const [i, arr] of lsArr.entries()) {
-        $childDD.append($("<option />")
-          .val(arr[0])
-          .text(arr[2])
-          .attr({
-            'data-g': arr[3],
-            'data-s': arr[4],
-            'data-pt': arr[5],
-            'data-pd': arr[6],
-            'data-counttype': arr[7],
-            'data-fixprice': arr[8],
-          }).prop('selected', true));
+        if (arr[8] !== '999999'){
+          $childDD.append($("<option />")
+            .val(arr[0])
+            .text(arr[2])
+            .attr({
+              'data-g': arr[3],
+              'data-s': arr[4],
+              'data-pt': arr[5],
+              'data-pd': arr[6],
+              'data-counttype': arr[7],
+              'data-fixprice': arr[8],
+            }).prop('selected', true));
+      }
       }
 
       $childDD.prop('disabled', false);
@@ -374,30 +384,32 @@ if ($("body").hasClass("home")) {
                 for (let key in productsAPI) {
                   // заполняем селект данными
                   if (productsAPI.hasOwnProperty(key)) {
-                    $childDD.append($("<option />")
-                      .val(productsAPI[key].id)
-                      .text(productsAPI[key].name)
-                      .attr({
-                        'data-g': productsAPI[key].meta_data[0].value,
-                        'data-s': productsAPI[key].meta_data[2].value,
-                        'data-pt': productsAPI[key].meta_data[4].value,
-                        'data-pd': productsAPI[key].meta_data[6].value,
-                        'data-counttype': productsAPI[key].meta_data[8].value,
-                        'data-fixprice': productsAPI[key].meta_data[10].value,
-                      }).prop('selected', true));
+                    if(productsAPI[key].meta_data[10].value !== '999999') {
+                      $childDD.append($("<option />")
+                        .val(productsAPI[key].id)
+                        .text(productsAPI[key].name)
+                        .attr({
+                          'data-g': productsAPI[key].meta_data[0].value,
+                          'data-s': productsAPI[key].meta_data[2].value,
+                          'data-pt': productsAPI[key].meta_data[4].value,
+                          'data-pd': productsAPI[key].meta_data[6].value,
+                          'data-counttype': productsAPI[key].meta_data[8].value,
+                          'data-fixprice': productsAPI[key].meta_data[10].value,
+                        }).prop('selected', true));
 
-                    //заполняем локальное хранилище
+                      //заполняем локальное хранилище
 
-                    let lsId = productsAPI[key].id; //ID самой радиодетали
-                    let lsCatId = productsAPI[key].categories[0].id; //Id категории
-                    let lsName = productsAPI[key].name; //Имя детали
-                    let lsMeta0 = productsAPI[key].meta_data[0].value; //Gold
-                    let lsMeta2 = productsAPI[key].meta_data[2].value; //Silver
-                    let lsMeta4 = productsAPI[key].meta_data[4].value; //Platinum
-                    let lsMeta6 = productsAPI[key].meta_data[6].value; //Palladium
-                    let lsMeta8 = productsAPI[key].meta_data[8].value; //Мера измерения (кг,  шт и т.д.)
-                    let lsMeta10 = productsAPI[key].meta_data[10].value; //Мера измерения (кг,  шт и т.д.)
-                    temp[i] = [lsId, lsCatId, lsName, lsMeta0, lsMeta2, lsMeta4, lsMeta6, lsMeta8, lsMeta10];
+                      let lsId = productsAPI[key].id; //ID самой радиодетали
+                      let lsCatId = productsAPI[key].categories[0].id; //Id категории
+                      let lsName = productsAPI[key].name; //Имя детали
+                      let lsMeta0 = productsAPI[key].meta_data[0].value; //Gold
+                      let lsMeta2 = productsAPI[key].meta_data[2].value; //Silver
+                      let lsMeta4 = productsAPI[key].meta_data[4].value; //Platinum
+                      let lsMeta6 = productsAPI[key].meta_data[6].value; //Palladium
+                      let lsMeta8 = productsAPI[key].meta_data[8].value; //Мера измерения (кг,  шт и т.д.)
+                      let lsMeta10 = productsAPI[key].meta_data[10].value; //Мера измерения (кг,  шт и т.д.)
+                      temp[i] = [lsId, lsCatId, lsName, lsMeta0, lsMeta2, lsMeta4, lsMeta6, lsMeta8, lsMeta10];
+                    }
                   }
                   i++;
                 }
@@ -588,17 +600,19 @@ if ($("body").hasClass("home")) {
         lsArr = JSON.parse(localStorage.getItem('category' + catId));
         $row.find('.el-name').empty();
         for (const [i, arr] of lsArr.entries()) {
-          $row.find('.el-name').append($("<option />")
-            .val(arr[0])
-            .text(arr[2])
-            .attr({
-              'data-g': arr[3],
-              'data-s': arr[4],
-              'data-pt': arr[5],
-              'data-pd': arr[6],
-              'data-counttype': arr[7],
-              'data-fixprice': arr[8],
-            }));
+          if(arr[8] !== '999999') {
+            $row.find('.el-name').append($("<option />")
+              .val(arr[0])
+              .text(arr[2])
+              .attr({
+                'data-g': arr[3],
+                'data-s': arr[4],
+                'data-pt': arr[5],
+                'data-pd': arr[6],
+                'data-counttype': arr[7],
+                'data-fixprice': arr[8],
+              }));
+          }
         }
         $row.find('.el-type').val(catId);
         $row.find('.el-name').val(id).prop('disabled', false).prop('selected', true);
@@ -653,6 +667,7 @@ if ($("body").hasClass("home")) {
       for (let key in item) {
         // заполняем селект данными
         if (item.hasOwnProperty(key)) {
+        if(item[key].meta_data[10].value !== '999999'){
           $childDD.append($("<option />")
             .val(item[key].id)
             .text(item[key].name)
@@ -664,6 +679,7 @@ if ($("body").hasClass("home")) {
               'data-counttype': item[key].meta_data[8].value, // 1 это килограммы, 2 это штуки
               'data-fixprice': item[key].meta_data[10].value,
             }));
+          }
         }
       }
       $childDD.prop('disabled', false);
