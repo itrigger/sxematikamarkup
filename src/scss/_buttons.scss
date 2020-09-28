@@ -95,4 +95,54 @@
     }
   }
 }
+.btn-ico.wt {
+  display: inline-block;
+  width: 47px;
+  height: 38px;
+  border-radius: 3px 0 0 3px;
+  background: url(../img/ico-wt-white.svg) center center no-repeat #40cdad;
+}
+.btn-ico.vb {
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  display: inline-block;
+  width: 47px;
+  height: 38px;
+  border-radius: 0 3px 3px 0;
+  background: url(../img/ico-vb-white.svg) center center no-repeat #40cdad;
+}
 
+.btn.btn-wt-color {
+  width: 25px;
+  height: 25px;
+  border: none;
+  position: relative;
+}
+  .btn.btn-wt-color::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 0;
+    top: 0;
+    background: url(../img/ico-wt2.svg) 0 0 no-repeat;
+    background-size: contain;
+  }
+.btn.btn-vb-color {
+  width: 24px;
+  height: 27px;
+  border: none;
+  position: relative;
+  top: 2px;
+}
+  .btn.btn-vb-color::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 27px;
+    left: 0;
+    top: 0;
+    background: url(../img/ico-vb2.svg) 0 0 no-repeat;
+    background-size: contain;
+  }

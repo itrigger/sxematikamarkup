@@ -74,6 +74,14 @@ $(document).ready(function () {
   });
 
 
+  const mySwiper4 = new Swiper('.stocks--items .swiper-container', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: false,
+    slidesPerView: 'auto',
+    cssWidthAndHeight: true,
+  });
+
 
   /*ВЫПАДАЮЩИЙ СПИСОК МЕНЮ ДЛЯ СМЕНЫ ТЕЛЕФОНА В ШАПКЕ*/
   let flag = 0;
@@ -111,6 +119,16 @@ $(document).ready(function () {
       hideList()
     });*/
 
+  $('.btn-burger').on('click', function () {
+    if ($(this).hasClass('active')) {
+      $(this).removeClass('active');
+      $('#mobile_menu').removeClass('active');
+    } else {
+      $(this).addClass('active');
+      $('#mobile_menu').addClass('active');
+    }
+  });
+
   $('html').click(function () {
     hideList()
   });
@@ -128,7 +146,7 @@ $(document).ready(function () {
   const PLATINUM = stock_platinum / 31.1;
   const PALLADIUM = stock_palladium / 31.1;
   const USD = stock_rub;
-  const EUR = 1/stock_eur*stock_rub;
+  const EUR = 1 / stock_eur * stock_rub;
   const STOCK_DATE = stock_date.toString();
   const TYPES = ["кг", "шт", "г", "кольцо", "секцию", "2 секции", "контакт", "гр"];
 
@@ -139,22 +157,22 @@ $(document).ready(function () {
   const $dropdownChild = $(".el-name-1");
 
   //Заполняем данные блока Биржевые котировки (данные получены с помощью php и сохраняются в кэше WP)
-  if($(".stocks--items").length > 0){
-    $(".stocks_usd").text(Math.round((USD + Number.EPSILON) * 100) / 100 +" RUB");
-    $(".stocks_eur").text(Math.round((EUR + Number.EPSILON) * 100) / 100 +" RUB");
-    $(".stocks_gold").text(Math.round((GOLD*USD + Number.EPSILON) * 100) / 100 +" RUB");
-    $(".stocks_silver").text(Math.round((SILVER*USD + Number.EPSILON) * 100) / 100 +" RUB");
-    $(".stocks_platinum").text(Math.round((PLATINUM*USD + Number.EPSILON) * 100) / 100 +" RUB");
-    $(".stocks_palladium").text(Math.round((PALLADIUM*USD + Number.EPSILON) * 100) / 100 +" RUB");
-    $(".stocks .date").text(STOCK_DATE.slice(0,2)+"."+STOCK_DATE.slice(2,4)+"."+STOCK_DATE.slice(4,8));
+  if ($(".stocks--items").length > 0) {
+    $(".stocks_usd").text(Math.round((USD + Number.EPSILON) * 100) / 100 + " RUB");
+    $(".stocks_eur").text(Math.round((EUR + Number.EPSILON) * 100) / 100 + " RUB");
+    $(".stocks_gold").text(Math.round((GOLD * USD + Number.EPSILON) * 100) / 100 + " RUB");
+    $(".stocks_silver").text(Math.round((SILVER * USD + Number.EPSILON) * 100) / 100 + " RUB");
+    $(".stocks_platinum").text(Math.round((PLATINUM * USD + Number.EPSILON) * 100) / 100 + " RUB");
+    $(".stocks_palladium").text(Math.round((PALLADIUM * USD + Number.EPSILON) * 100) / 100 + " RUB");
+    $(".stocks .date").text(STOCK_DATE.slice(0, 2) + "." + STOCK_DATE.slice(2, 4) + "." + STOCK_DATE.slice(4, 8));
   }
 
   /* Add fancybox to product img */
-  if($(".catalog--products").length > 0) {
+  if ($(".catalog--products").length > 0) {
     $(".catalog--products-ul .product img.attachment-woocommerce_thumbnail").on('click', function () {
       $.fancybox.open({
-        src  : $(this).attr('src'),
-        type : 'image'
+        src: $(this).attr('src'),
+        type: 'image'
       });
     });
 
@@ -167,9 +185,9 @@ $(document).ready(function () {
       let item_typecount = $(this).find(".item--typeofcount").text();
       let item_fixprice = $(this).find(".item--fixprice").text();
       let item_price;
-        // Основная формула для каждого города и металла есть поправочный кэф
-      if(item_fixprice>0) {
-        if(item_fixprice == "999999"){
+      // Основная формула для каждого города и металла есть поправочный кэф
+      if (item_fixprice > 0) {
+        if (item_fixprice == "999999") {
           $(this).find(".price").text("договорная");
         } else {
           $(this).find(".price .price_value").text(item_fixprice);
@@ -181,11 +199,11 @@ $(document).ready(function () {
         //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_palladium * PALLADIUM * 0.7 + item_platinum * PLATINUM * 0.65) * USD;
         $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
       }
-        $(this).find(".itemcount").text(TYPES[item_typecount-1]);
+      $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
     })
   }
   /**/
-  if($(".print--ul").length > 0) {
+  if ($(".print--ul").length > 0) {
     $(".print--ul").each(function () {
       $(this).find("tr").each(function () {
         let item_gold = $(this).find(".item--gold").text();
@@ -197,7 +215,7 @@ $(document).ready(function () {
         let item_price;
         // Основная формула для каждого города и металла есть поправочный кэф
         if (item_fixprice > 0) {
-          if(item_fixprice == "999999"){
+          if (item_fixprice == "999999") {
             $(this).find(".price").text("договорная");
           } else {
             $(this).find(".price .price_value").text(item_fixprice);
@@ -272,48 +290,48 @@ $(document).ready(function () {
     }
   }
 
-if ($("body").hasClass("home")) {
-  // первоначальный запрос при загрузке страницы, чтобы заполнить первый селект данными
-  fetch(`${CONST_HOST}/wp-json/wc/v3/products/categories?consumer_key=${CONST_CK}&consumer_secret=${CONST_CS}&exclude=15`)
-    .then(
-      function (response) {
-        isLoading(1);
-        if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
-          notify("Возникла ошибка при получении данных! Попробуйте перезагрузить страницу или зайти позже.", "error");
-          return;
-        }
+  if ($("body").hasClass("home")) {
+    // первоначальный запрос при загрузке страницы, чтобы заполнить первый селект данными
+    fetch(`${CONST_HOST}/wp-json/wc/v3/products/categories?consumer_key=${CONST_CK}&consumer_secret=${CONST_CS}&exclude=15`)
+      .then(
+        function (response) {
+          isLoading(1);
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +
+              response.status);
+            notify("Возникла ошибка при получении данных! Попробуйте перезагрузить страницу или зайти позже.", "error");
+            return;
+          }
 
-        // Examine the text in the response
-        response.json().then(function (data) {
-          categoriesAPI = data;
-          $dropdown.empty();
-          $.each(categoriesAPI, function () {
-            $dropdown.append($("<option />").val(this.id).text(this.name));
+          // Examine the text in the response
+          response.json().then(function (data) {
+            categoriesAPI = data;
+            $dropdown.empty();
+            $.each(categoriesAPI, function () {
+              $dropdown.append($("<option />").val(this.id).text(this.name));
+            });
+            $dropdown.prop('disabled', false);
+            fillChildSelect(1);
+            isLoading(0);
           });
-          $dropdown.prop('disabled', false);
-          fillChildSelect(1);
-          isLoading(0);
-        });
 
-        /*Fill fields from localstorage*/
-        let lsArr = [];
-        if (localStorage.getItem('order') !== null) {
-          lsArr = JSON.parse(localStorage.getItem('order'));
-          getFromLs(lsArr).then(r => console.log('Data loaded from local storage!'));
+          /*Fill fields from localstorage*/
+          let lsArr = [];
+          if (localStorage.getItem('order') !== null) {
+            lsArr = JSON.parse(localStorage.getItem('order'));
+            getFromLs(lsArr).then(r => console.log('Data loaded from local storage!'));
+          }
+          // ToDo: заполнить второй селект
+
         }
-        // ToDo: заполнить второй селект
-
-      }
-    )
-    .catch(function (err) {
-      console.log('Fetch Error :-S', err);
-      notify("Возникла ошибка при получении данных! Попробуйте перезагрузить страницу или зайти позже.", "error");
-    });
-} else {
-  isLoading(0);
-}
+      )
+      .catch(function (err) {
+        console.log('Fetch Error :-S', err);
+        notify("Возникла ошибка при получении данных! Попробуйте перезагрузить страницу или зайти позже.", "error");
+      });
+  } else {
+    isLoading(0);
+  }
 
   /*ToDO
       вызвать функцию определение цены для первого элемента во втором селекте
@@ -322,7 +340,7 @@ if ($("body").hasClass("home")) {
   const fillChildSelect = function (id, catId = 0) {
     isLoading(1); //Отображаем лоадер
     let thiscatID = 0;
-    let $row = $('.els-row-'+id);
+    let $row = $('.els-row-' + id);
 
     if (catId > 0) {
       thiscatID = catId;
@@ -344,7 +362,7 @@ if ($("body").hasClass("home")) {
       $childDD.empty(); // очищаем селект
 
       for (const [i, arr] of lsArr.entries()) {
-        if (arr[8] !== '999999'){
+        if (arr[8] !== '999999') {
           $childDD.append($("<option />")
             .val(arr[0])
             .text(arr[2])
@@ -356,7 +374,7 @@ if ($("body").hasClass("home")) {
               'data-counttype': arr[7],
               'data-fixprice': arr[8],
             }).prop('selected', true));
-      }
+        }
       }
 
       $childDD.prop('disabled', false);
@@ -384,7 +402,7 @@ if ($("body").hasClass("home")) {
                 for (let key in productsAPI) {
                   // заполняем селект данными
                   if (productsAPI.hasOwnProperty(key)) {
-                    if(productsAPI[key].meta_data[10].value !== '999999') {
+                    if (productsAPI[key].meta_data[10].value !== '999999') {
                       $childDD.append($("<option />")
                         .val(productsAPI[key].id)
                         .text(productsAPI[key].name)
@@ -409,9 +427,10 @@ if ($("body").hasClass("home")) {
                       let lsMeta8 = productsAPI[key].meta_data[8].value; //Мера измерения (кг,  шт и т.д.)
                       let lsMeta10 = productsAPI[key].meta_data[10].value; //Мера измерения (кг,  шт и т.д.)
                       temp[i] = [lsId, lsCatId, lsName, lsMeta0, lsMeta2, lsMeta4, lsMeta6, lsMeta8, lsMeta10];
+                      i++;
                     }
                   }
-                  i++;
+
                 }
 
                 if (localStorage.getItem('category' + thiscatID) === null) {
@@ -542,7 +561,7 @@ if ($("body").hasClass("home")) {
   //Удаление строки из локального хранилища
   const removeFromLS = function (rowID) {
     let items = JSON.parse(localStorage.getItem('order'));
-    const filteredItems = items.slice(0, rowID-1).concat(items.slice(rowID, items.length))
+    const filteredItems = items.slice(0, rowID - 1).concat(items.slice(rowID, items.length))
     localStorage.setItem('order', JSON.stringify(filteredItems));
   }
 
@@ -553,7 +572,7 @@ if ($("body").hasClass("home")) {
     $(".els-body").addClass("disabled");
     for (const [i, arr] of lsArr.entries()) {
       //вызываем асинхронную функцию создания строки
-      $(".loading_text").text("Загружено "+(i+1)+" из " + lsArr.length);
+      $(".loading_text").text("Загружено " + (i + 1) + " из " + lsArr.length);
       await buildRow(arr[0], i + 1, arr[3]);
     }
     //пересчитываем итоговую цену
@@ -600,7 +619,7 @@ if ($("body").hasClass("home")) {
         lsArr = JSON.parse(localStorage.getItem('category' + catId));
         $row.find('.el-name').empty();
         for (const [i, arr] of lsArr.entries()) {
-          if(arr[8] !== '999999') {
+          if (arr[8] !== '999999') {
             $row.find('.el-name').append($("<option />")
               .val(arr[0])
               .text(arr[2])
@@ -667,18 +686,18 @@ if ($("body").hasClass("home")) {
       for (let key in item) {
         // заполняем селект данными
         if (item.hasOwnProperty(key)) {
-        if(item[key].meta_data[10].value !== '999999'){
-          $childDD.append($("<option />")
-            .val(item[key].id)
-            .text(item[key].name)
-            .attr({
-              'data-g': item[key].meta_data[0].value,
-              'data-s': item[key].meta_data[2].value,
-              'data-pt': item[key].meta_data[4].value,
-              'data-pd': item[key].meta_data[6].value,
-              'data-counttype': item[key].meta_data[8].value, // 1 это килограммы, 2 это штуки
-              'data-fixprice': item[key].meta_data[10].value,
-            }));
+          if (item[key].meta_data[10].value !== '999999') {
+            $childDD.append($("<option />")
+              .val(item[key].id)
+              .text(item[key].name)
+              .attr({
+                'data-g': item[key].meta_data[0].value,
+                'data-s': item[key].meta_data[2].value,
+                'data-pt': item[key].meta_data[4].value,
+                'data-pd': item[key].meta_data[6].value,
+                'data-counttype': item[key].meta_data[8].value, // 1 это килограммы, 2 это штуки
+                'data-fixprice': item[key].meta_data[10].value,
+              }));
           }
         }
       }
@@ -705,9 +724,6 @@ if ($("body").hasClass("home")) {
       '            <option disabled hidden selected value="">Наименование</option>\n' +
       '          </select>\n' +
       '        </div>\n' +
-      '        <div class="el-wrap radio-group">\n' +
-      '          <div class="itemprice"></div>\n' +
-      '        </div>\n' +
       '        <div class="el-wrap labeled-input">\n' +
       '          <label>Количество\n' +
       '            <input  type="text" value="1" class="inputCount"/> <span class="typeOfCount">кг.</span>\n' +
@@ -719,7 +735,7 @@ if ($("body").hasClass("home")) {
       '        </div>\n' +
       '      </div>');
     // заполнение родительского селекта уже полученными данными о категориях
-    let currentDD = $(".els-row-"+rowId).find(".el-type");
+    let currentDD = $(".els-row-" + rowId).find(".el-type");
     isLoading(1);
     $.each(categoriesAPI, function () {
       currentDD.append($("<option />").val(this.id).text(this.name));
@@ -748,7 +764,7 @@ if ($("body").hasClass("home")) {
     let $childTypeOf = $row.find('.typeOfCount'); // получаем ссылку на дочерний селект
     let weight;
 
-    $childTypeOf.text(TYPES[ItemTypeOf-1]);
+    $childTypeOf.text(TYPES[ItemTypeOf - 1]);
 
     if ($inputText.val()) {
       let tempVal = $inputText.val()
@@ -759,7 +775,7 @@ if ($("body").hasClass("home")) {
     }
     // Золото -40%, Серебро -30%, Платина -25%, Палладиум -30% (Москва, Питер)
     // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-    if(FixPrice > 0){
+    if (FixPrice > 0) {
       item_price = FixPrice * weight;
     } else {
       item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_palladium * PALLADIUM * 0.75 + item_platinum * PLATINUM * 0.7) * USD * weight;
@@ -802,9 +818,6 @@ if ($("body").hasClass("home")) {
           '            <option disabled hidden selected value="">Наименование</option>\n' +
           '          </select>\n' +
           '        </div>\n' +
-          '        <div class="el-wrap radio-group">\n' +
-          '          <div class="itemprice"></div>\n' +
-          '        </div>\n' +
           '        <div class="el-wrap labeled-input">\n' +
           '          <label>Количество\n' +
           '            <input  type="text" value="1" class="inputCount"/> <span class="typeOfCount">кг.</span>\n' +
@@ -843,8 +856,8 @@ if ($("body").hasClass("home")) {
     //Переписывание классов els-row-N, чтобы шли по порядку
     $('.els-body .els-row').each(function (index) {
       $(this).removeClass();
-      $(this).addClass("els-row els-row-"+(index+1));
-      $(this).attr('data-id',index+1);
+      $(this).addClass("els-row els-row-" + (index + 1));
+      $(this).attr('data-id', index + 1);
     })
 
     removeFromLS(rowId);
@@ -859,20 +872,20 @@ if ($("body").hasClass("home")) {
 
 
   //Заполняем скрытые поля в форме ContactForm7 данными из локального хранилища
-  $('.send-btn-wrapper a').on('click', function(e){
+  $('.send-btn-wrapper a').on('click', function (e) {
     e.preventDefault();
     $.fancybox.open({
-      src  : '#popupform',
-      type : 'inline',
-      opts : {
-        afterShow : function( instance, current ) {
+      src: '#popupform',
+      type: 'inline',
+      opts: {
+        afterShow: function (instance, current) {
           let lsArr = JSON.parse(localStorage.getItem('order'));
           for (const [i, arr] of lsArr.entries()) {
-            $("#z1").val($("#z1").val() + "_" +arr[1]);
-            $("#z2").val($("#z2").val() + "_" +arr[2]);
-            $("#z3").val($("#z3").val() + "_" +arr[3]);
-            $("#z4").val($("#z4").val() + "_" +arr[4]);
-            $("#z5").val($("#z5").val() + "_" +arr[5]);
+            $("#z1").val($("#z1").val() + "_" + arr[1]);
+            $("#z2").val($("#z2").val() + "_" + arr[2]);
+            $("#z3").val($("#z3").val() + "_" + arr[3]);
+            $("#z4").val($("#z4").val() + "_" + arr[4]);
+            $("#z5").val($("#z5").val() + "_" + arr[5]);
           }
         }
       }
@@ -880,7 +893,6 @@ if ($("body").hasClass("home")) {
     /*
 */
   });
-
 
 
 });
@@ -906,17 +918,18 @@ jQuery(document).ready(function(){
 $(document).ready(function () {
 
 
-
-
   $("#btn-Convert-Html2Image").on('click', function () {
     let element = document.getElementById("tabletext");
-
+    $(this).prop('disabled', true);
+    $(".alert--wrapper").html("<div class='alert process'><span>Подготовка прайс листа...</span></div>")
+    let today = new Date();
+    let date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
     html2canvas(element, {
       onclone: function () {
         element.style.display = 'block';
       },
       width: 1140,
-      height: 8382,
+      height: 8487,
       scrollX: 0,
       scrollY: 0,
       scale: 1
@@ -926,110 +939,103 @@ $(document).ready(function () {
         let pdf = new jsPDF('p', 'px', [canvas.width, canvas.height]);
         let imgData = canvas.toDataURL("image/png", 0.98);
         pdf.addImage(imgData, 0, 0, (canvas.width), (canvas.height));
-        pdf.save('converteddoc.pdf');
-    });
+        pdf.save('price' + date + '.pdf');
+        $(this).prop('disabled', false);
+        $(".alert--wrapper").html("");
+      });
 
- /*   let doc = new jsPDF();
-    doc.addFont("/wp-content/themes/sxematika/assets/fonts/PTSans.ttf", "PTSans", "normal");
+    /*   let doc = new jsPDF();
+       doc.addFont("/wp-content/themes/sxematika/assets/fonts/PTSans.ttf", "PTSans", "normal");
 
-    doc.setFont("PTSans"); // set font
-    doc.setFontSize(10);
-    doc.html(element, {
-      callback: function (doc) {
-        doc.save('test.pdf');
-      },
-      html2canvas:  { scale: 1 },
-      x: 10,
-      y: 10
-    });*/
+       doc.setFont("PTSans"); // set font
+       doc.setFontSize(10);
+       doc.html(element, {
+         callback: function (doc) {
+           doc.save('test.pdf');
+         },
+         html2canvas:  { scale: 1 },
+         x: 10,
+         y: 10
+       });*/
   });
 
 
+  /* $("#btn-Convert-Html2Image").on('click', function () {
+
+     let element = document.getElementById("tabletext");
+     $(this).prop('disabled', true);
+     $(".alert--wrapper").html("<div class='alert process'><span>Подготовка прайс листа...</span></div>")
+
+     let today;
+     var opt = {
+       margin:       5,
+       filename:     'newprice.pdf',
+       image:        { type: 'jpeg', quality: 2 },
+       pagebreak:    {mode: 'css'},
+       html2canvas:  { scale: 1 },
+       jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+     };
+     html2pdf().set(opt).from(element).save();
+     //$(this).prop('disabled', false);
+    // $(".alert--wrapper").html("");
 
 
 
 
+  /!* function makePDF() {
+     console.log("sd 1");
+       var quotes = document.getElementById('tabletext');
 
+     html2canvas(quotes, {
+       onclone: function(canvas) {
+         //! MAKE YOUR PDF
+         var pdf = new jsPDF('p', 'pt', 'a4');
 
+         for (var i = 0; i <= quotes.clientHeight/980; i++) {
+           //! This is all just html2canvas stuff
+           var srcImg  = canvas;
+           var sX      = 0;
+           var sY      = 980*i; // start 980 pixels down for every new page
+           var sWidth  = 900;
+           var sHeight = 980;
+           var dX      = 0;
+           var dY      = 0;
+           var dWidth  = 900;
+           var dHeight = 980;
 
+           window.onePageCanvas = document.createElement("canvas");
+           onePageCanvas.setAttribute('width', 900);
+           onePageCanvas.setAttribute('height', 980);
+           var ctx = onePageCanvas.getContext('2d');
+           // details on this usage of this function:
+           // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images#Slicing
+           ctx.drawImage(srcImg,sX,sY,sWidth,sHeight,dX,dY,dWidth,dHeight);
 
+           // document.body.appendChild(canvas);
+           var canvasDataURL = onePageCanvas.toDataURL("image/png", 1.0);
 
- /* $("#btn-Convert-Html2Image").on('click', function () {
+           var width         = onePageCanvas.width;
+           var height        = onePageCanvas.clientHeight;
 
-    let element = document.getElementById("tabletext");
-    $(this).prop('disabled', true);
-    $(".alert--wrapper").html("<div class='alert process'><span>Подготовка прайс листа...</span></div>")
+           //! If we're on anything other than the first page,
+           // add another page
+           if (i > 0) {
+             pdf.addPage(612, 791); //8.5" x 11" in pts (in*72)
+           }
+           //! now we declare that we're working on that page
+           pdf.setPage(i+1);
+           //! now we add content to that page!
+           pdf.addImage(canvasDataURL, 'PNG', 20, 40, (width*.62), (height*.62));
 
-    let today;
-    var opt = {
-      margin:       5,
-      filename:     'newprice.pdf',
-      image:        { type: 'jpeg', quality: 2 },
-      pagebreak:    {mode: 'css'},
-      html2canvas:  { scale: 1 },
-      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    };
-    html2pdf().set(opt).from(element).save();
-    //$(this).prop('disabled', false);
-   // $(".alert--wrapper").html("");
+         }
+         //! after the for loop is finished running, we save the pdf.
+         pdf.save('Test.pdf');
+       }
+     });
+   }
+     makePDF();*!/
 
-
-
-
- /!* function makePDF() {
-    console.log("sd 1");
-      var quotes = document.getElementById('tabletext');
-
-    html2canvas(quotes, {
-      onclone: function(canvas) {
-        //! MAKE YOUR PDF
-        var pdf = new jsPDF('p', 'pt', 'a4');
-
-        for (var i = 0; i <= quotes.clientHeight/980; i++) {
-          //! This is all just html2canvas stuff
-          var srcImg  = canvas;
-          var sX      = 0;
-          var sY      = 980*i; // start 980 pixels down for every new page
-          var sWidth  = 900;
-          var sHeight = 980;
-          var dX      = 0;
-          var dY      = 0;
-          var dWidth  = 900;
-          var dHeight = 980;
-
-          window.onePageCanvas = document.createElement("canvas");
-          onePageCanvas.setAttribute('width', 900);
-          onePageCanvas.setAttribute('height', 980);
-          var ctx = onePageCanvas.getContext('2d');
-          // details on this usage of this function:
-          // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images#Slicing
-          ctx.drawImage(srcImg,sX,sY,sWidth,sHeight,dX,dY,dWidth,dHeight);
-
-          // document.body.appendChild(canvas);
-          var canvasDataURL = onePageCanvas.toDataURL("image/png", 1.0);
-
-          var width         = onePageCanvas.width;
-          var height        = onePageCanvas.clientHeight;
-
-          //! If we're on anything other than the first page,
-          // add another page
-          if (i > 0) {
-            pdf.addPage(612, 791); //8.5" x 11" in pts (in*72)
-          }
-          //! now we declare that we're working on that page
-          pdf.setPage(i+1);
-          //! now we add content to that page!
-          pdf.addImage(canvasDataURL, 'PNG', 20, 40, (width*.62), (height*.62));
-
-        }
-        //! after the for loop is finished running, we save the pdf.
-        pdf.save('Test.pdf');
-      }
-    });
-  }
-    makePDF();*!/
-
-  });*/
+   });*/
 });
 
 /* ToDO

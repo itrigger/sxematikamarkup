@@ -369,7 +369,7 @@ body *{
   box-sizing: border-box;
 }
 .content{
-  a{
+  p a{
     color: #000;
     text-decoration: none;
     border-bottom: 1px solid #0bbc93;
@@ -444,6 +444,7 @@ body *{
   background: url(../img/graybg.jpg) repeat;
   border-radius: 10px;
   position: relative;
+  z-index: 1;
   &:before{
     display: block;
     content: '';
@@ -529,6 +530,8 @@ h1{
 
 .dotted-border-left{
   position: relative;
+  display: flex;
+  align-items: center;
   &:before{
     content: '';
     display: block;
@@ -538,6 +541,9 @@ h1{
     border-left: 1px dotted #c3c5c6;
     left: -35px;
   }
+}
+.bottom_big {
+  margin-left: 20px;
 }
 
 .ico-clock{

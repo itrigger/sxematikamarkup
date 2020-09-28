@@ -31,7 +31,16 @@ h2.entry-title{
     overflow: hidden;
   }
 }
+.divide-2-1_left a, .h1_a{
+  color: #000;
+  border-bottom: 1px solid #0bbc93;
+  text-decoration: none;
+}
 
+.featured-media-inner img{
+  max-width: 100%;
+  height: auto;
+}
 
 .blogs-item{
   display: flex;
@@ -56,7 +65,9 @@ h2.entry-title{
     font-size: 32px;
     line-height: 42px;
     a{
-      border-bottom-width: 2px;
+      color: #000;
+      border-bottom: 2px solid #0bbc93;
+      text-decoration: none;
     }
   }
   .blogs-item__desc{
@@ -98,6 +109,11 @@ h2.entry-title{
       font-weight: normal;
       font-family: $fmed;
     }
+  }
+  a{
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px dotted #0bbc93;
   }
   .selector{
     display: block;
@@ -172,5 +188,87 @@ h2.entry-title{
     .address{
       padding-top: 5px;
     }
+  }
+}
+
+
+
+@media (max-width: 660px) {
+  .page-blog{
+    .breadcrumbs{
+      margin-top: 20px;
+    }
+  }
+  .blogs-item .blogs-item__heading{
+    font-size: 19px;
+    line-height: 22px;
+    margin-top: 10px;
+  }
+  .blogs-item .blogs-item__img{
+    margin-right: 20px;
+  }
+  .blogs-item .blogs-item__img a{
+    width: 200px;
+  }
+  h2.entry-title{
+    font-size: 22px;
+    line-height: 28px;
+  }
+  h1{
+    font-size: 27px;
+    text-align: center;
+  }
+  .h1_a{
+    font-size: 14px;
+  }
+  figure.wp-caption{
+    width: 100% !important;
+    margin: 0 auto;
+    img{
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .wp-caption-text{
+    font-size: 12px;
+  }
+  .content h6{
+    font-size: 17px;
+    line-height: 22px;
+    margin: 10px 0;
+  }
+  .page-template-contacts .map_bubble{
+    position: relative;
+    top: auto;
+    box-shadow: 0 1px 10px rgba(#000,0.2);
+  }
+  .page-template-contacts .map_bubble .heading{
+    font-size: 22px;
+    text-align: center;
+  }
+  .page-template-contacts .map_bubble .address_wrapper{
+    flex-direction: column;
+  }
+  .page-template-contacts .map_bubble .address_wrapper .pic{
+    margin-right: 0;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .blogs-item{
+    flex-direction: column;
+  }
+  .blogs-item .blogs-item__img{
+    margin-right: 0;
+  }
+  .blogs-item .blogs-item__heading{
+    font-size: 19px;
+    line-height: 22px;
+    margin-top: 10px;
+  }
+  .blogs-item .blogs-item__img a{
+    width: 100%;
   }
 }

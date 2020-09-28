@@ -76,26 +76,28 @@
 .stocks--items {
   margin-left: 30px;
 
-  ul {
+  .swiper-wrapper {
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 30px;
-
-    li {
-      list-style: none;
-      font-size: 15px;
-
-      span {
-        padding: 7px 10px;
-        background: #f2f4f5;
-        display: inline-block;
-        margin-left: 4px;
-        border-radius: 3px;
-      }
+  }
+  .stock--item {
+    list-style: none;
+    font-size: 15px;
+    white-space: nowrap;
+    span {
+      padding: 7px 10px;
+      background: #f2f4f5;
+      display: inline-block;
+      margin-left: 4px;
+      border-radius: 3px;
     }
+  }
+  .swiper-slide{
+    width: auto;
   }
 }
 
@@ -125,7 +127,9 @@
     font-family: $fmed;
     text-transform: uppercase;
     color: #fff;
-    border-bottom: 1px solid #fff;
+    span{
+      border-bottom: 1px solid #fff;
+    }
   }
 }
 
@@ -445,8 +449,7 @@
 }
 
 .category--header {
-  padding-top: 35px;
-  background: url("../img/tile_p1_1-21_226x228.jpg") repeat;
+  background: url("../img/tilebg-02.jpg") repeat;
   padding-bottom: 35px;
   clip-path: polygon(100% 0, 100% 85%, 50% 100%, 0 85%, 0 0);
 
@@ -456,6 +459,22 @@
     margin-top: 0;
   }
 }
+.term-kondensatory .category--header{background: url("../img/tilebg-03.jpg") repeat;}
+.term-diody .category--header{background: url("../img/tilebg-02.jpg") repeat;}
+.term-pereklyuchateli .category--header{background: url("../img/tilebg-04.jpg") repeat;}
+.term-potenciometry .category--header{background: url("../img/tilebg-08.jpg") repeat;}
+.term-protivogazy .category--header{background: url("../img/tilebg-06.jpg") repeat;}
+.term-mikroshemy .category--header{background: url("../img/tilebg-10.jpg") repeat;}
+.term-lampy .category--header{background: url("../img/tilebg-05.jpg") repeat;}
+.term-rele .category--header{background: url("../img/tilebg-07.jpg") repeat;}
+.term-tranzistory .category--header{background: url("../img/tilebg-09.jpg") repeat;}
+.term-rezistory .category--header{background: url("../img/tilebg-03.jpg") repeat;}
+.term-platy .category--header{background: url("../img/tilebg-04.jpg") repeat;}
+.term-serebro .category--header{background: url("../img/tilebg-08.jpg") repeat;}
+.term-radiolom .category--header{background: url("../img/tilebg-05.jpg") repeat;}
+.term-razyomy .category--header{background: url("../img/tilebg-07.jpg") repeat;}
+
+
 
 .catalog--products-ul {
   padding: 0;
@@ -502,4 +521,81 @@
       font-family: $fmed;
     }
   }
+}
+
+@media (max-width: 660px){
+  .categories{
+    margin-top: 30px;
+    gap: 20px 4%;
+  }
+  .categories a{
+    width: 48%;
+    height: 155px;
+    padding: 10px;
+    &:before{
+      width: 70%;
+      height: 70%;
+      background-position: left bottom;
+    }
+  }
+  .categories .heading{
+    font-size: 13px;
+    position: relative;
+  }
+  .stocks{
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .stocks .heading{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .stocks .heading .text{
+    font-size: 17px;
+  }
+  .stocks--items{
+    margin-left: 0;
+    .swiper-slide{
+      width: auto;
+    }
+  }
+
+  .catalog--tags{
+    display: none;
+  }
+  .catalog--header{
+    padding-top: 20px;
+    padding-bottom: 0;
+    h1{
+      margin: 0 0 20px;
+    }
+  }
+  .page-template-catalog .footer .line2, .woocommerce-page .footer .line2{
+    border-top: none;
+    margin-top: 10px;
+  }
+
+  .catalog--products-ul{
+    gap: 30px;
+    flex-direction: column;
+  }
+  .catalog--products-ul li{
+    width: 100%;
+  }
+  .catalog--products-ul .product .catalog--item--name{
+    flex-direction: column;
+  }
+  .catalog--products-ul .product .catalog--item--name span{
+    display: block;
+    margin-bottom: 7px;
+  }
+  .catalog--products-ul .product .price_w{
+    flex-direction: column;
+  }
+  .catalog--products-ul .product .title{
+    display: block;
+    margin-bottom: 7px;
+  }
+
 }

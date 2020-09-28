@@ -184,3 +184,144 @@
     cursor: pointer;
   }
 }
+
+@media (min-width: 661px) and (max-width: 1024px){
+  .els-row{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2%;
+    align-items: baseline;
+    justify-content: flex-start;
+  }
+  .el-wrap{
+    flex-basis: 49%;
+    &.labeled-input{
+      flex-basis: auto;
+    }
+  }
+  .calculator select{
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 0;
+    height: 40px;
+    font-size: 14px;
+  }
+  .calculator input[type=text]{
+    height: 40px;
+    width: 65px;
+  }
+  .calculator .labeled-input{
+    margin-left: 0;
+  }
+  .calculator .row-total{
+    height: 40px;
+    font-size: 20px;
+  }
+  .labeled-input.input-dark{
+    margin-top: 10px;
+  }
+  .els-footer{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2%;
+    align-items: baseline;
+    margin-bottom: 5px;
+  }
+  .el-add-row-btn{
+    flex-basis: auto;
+  }
+  .els-total-price{
+    flex-basis: auto;
+  }
+  .btn-plus{
+    width: 30px;
+    height: 30px;
+  }
+  .els-footer .els-total-price{
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .els-total-price-num{
+    font-size: 20px;
+  }
+  .els-total-price-num span{
+    font-size: 26px;
+  }
+  .send-btn-wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    flex-basis: 100%;
+    text-align: right;
+  }
+  .send-btn-wrapper .btn{
+    font-size: 16px;
+  }
+  .els-del{
+    top: 15px;
+  }
+}
+@media (max-width: 660px){
+  .els-row{
+    flex-direction: column;
+  }
+  .calculator{
+    padding: 22px;
+  }
+  .calculator select{
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 0;
+    height: 40px;
+    font-size: 14px;
+  }
+  .calculator input[type=text]{
+    height: 40px;
+    width: 65px;
+  }
+  .calculator .labeled-input{
+    margin-left: 0;
+    label{
+      font-size: 15px;
+    }
+  }
+  .els-del{
+    left: -19px;
+    top: 14px;
+  }
+  .calculator .row-total{
+    height: 40px;
+    font-size: 20px;
+  }
+  .labeled-input.input-dark{
+    margin-top: 10px;
+  }
+  .els-footer{
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+  .btn-plus{
+    width: 30px;
+    height: 30px;
+  }
+  .els-footer .els-total-price{
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  .els-total-price-num{
+    font-size: 20px;
+  }
+  .els-total-price-num span{
+    font-size: 26px;
+  }
+  .send-btn-wrapper{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+  }
+  .send-btn-wrapper .btn{
+    font-size: 16px;
+  }
+}/*<660*/
+
+

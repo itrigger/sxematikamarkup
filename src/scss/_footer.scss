@@ -1,45 +1,54 @@
-.home.footer{
+.home.footer {
   top: -64px;
   margin-bottom: -64px;
 }
-.footer{
+
+.footer {
   position: relative;
   z-index: 99;
   top: 0;
   margin-bottom: 0;
-  .line1{
-    padding-top: 80px;
+
+  .line1 {
+    padding-top: 70px;
     background: url('/img/foot-green-bg.svg') center top no-repeat;
     background-size: cover;
     min-height: 400px;
     position: relative;
     z-index: 2;
-    .pic{
-      width: 393px;
-      height: 328px;
+
+    .pic {
+      width: 296px;
+      height: 310px;
       background: url('/img/man.png') 0 0 no-repeat;
       position: relative;
-      top: -80px;
+      top: -60px;
     }
-    .left{
+
+    .left {
       color: #fff;
       padding-left: 63px;
       padding-top: 20px;
       max-width: 345px;
-      .name{
+
+      .name {
         font-family: $fmed;
-        font-size: 38px;
+        font-size: 37px;
       }
-      .title{
+
+      .title {
         font-size: 18px;
         margin-bottom: 10px;
       }
     }
-    .right{
+
+    .right {
       color: #FFFFFF;
       padding-top: 45px;
       position: relative;
-      &:before{
+      margin-left: 100px;
+
+      &:before {
         display: block;
         position: absolute;
         content: '';
@@ -50,57 +59,69 @@
         left: -107px;
         top: 60px;
       }
-      .name{
+
+      .name {
         font-family: $fmed;
         font-size: 38px;
       }
-      .desc{
+
+      .desc {
         font-size: 20px;
       }
     }
   }
-  .line2--wrapper{
+
+  .line2--wrapper {
     border-top: 1px solid #ccc;
   }
-  .line2{
+
+  .line2 {
     background: #f2f4f5;
     padding-bottom: 30px;
     padding-top: 160px;
   }
-  .footer--logo{
+
+  .footer--logo {
     background: url("/img/footlogo/1.svg") 0 0 no-repeat;
     width: 106px;
     height: 122px;
   }
-  .footer--logo_title{
+
+  .footer--logo_title {
     width: 139px;
     height: 14px;
     background: url("/img/footlogo-18.svg") 0 0 no-repeat;
     background-size: contain;
     margin-top: 20px;
   }
-  .copy{
+
+  .copy {
     margin-top: 20px;
     font-size: 12px;
     color: #5d687a;
   }
-  .footer--menu{
+
+  .footer--menu {
     margin-left: 110px;
     margin-top: 10px;
-    ul{
+
+    ul {
       margin: 0;
       padding: 0;
-      li{
+
+      li {
         list-style: none;
         margin-bottom: 7px;
-        a{
+
+        a {
           font-size: 15px;
           font-family: $fmed;
           color: #5d687a;
           text-decoration: none;
-          border-bottom: 1px solid rgba(#5d687a,0.4);
+          border-bottom: 1px solid rgba(#5d687a, 0.4);
           transition: all 0.3s;
-          &:hover{
+
+          &:hover {
             color: #424b56;
             border-color: #424b56;
             transition: all 0.3s;
@@ -111,52 +132,87 @@
   }
 
 }
-.footer--contact-block__wrapper{
+
+.btn-group--social {
+  font-size: 0;
+  line-height: 0;
+}
+
+.footer--contact-block__wrapper {
   position: relative;
   top: -276px;
   margin-bottom: -280px;
   padding-bottom: 80px;
   z-index: 22;
 }
-.footer--contact-block{
+
+.footer--contact-block {
   padding: 55px 125px;
   color: #FFFFFF;
   font-size: 18px;
-  .label{
+
+  .label {
     margin-bottom: 10px;
   }
-  .flex{
-    justify-content: space-between;
+
+  .flex {
+    justify-content: space-around;
+    position: relative;
   }
-  .phone{
+
+  .phone {
     font-size: 45px;
     font-family: $fmed;
-    a{
+
+    a {
       color: #fff;
       text-decoration: none;
       border-bottom: none;
     }
   }
-  .inline-form{
+
+  .inline-form {
     margin-top: 20px;
   }
 }
-.footer--selector-wrapper{
+
+.dotted-border-left a.big-wt {
+  width: 90px;
+  height: 114px;
+}
+
+.dotted-border-left a.big-vb {
+  width: 78px;
+  height: 112px;
+}
+
+.bottom_big a {
+  margin: 0 10px;
+}
+
+.dotted-border-left .label span {
+  display: block;
+}
+
+.footer--selector-wrapper {
   margin-left: 160px;
   font-size: 14px;
   color: #5d687a;
   margin-top: 10px;
 }
-.footer--selector{
-  .selector-title{
+
+.footer--selector {
+  .selector-title {
     font-family: $fmed;
   }
 }
-.footer--telephone{
+
+.footer--telephone {
   display: inline-block;
   margin-left: 15px;
   line-height: 1;
-  a{
+
+  a {
     border-bottom: none;
     text-decoration: none;
     color: #5d687a;
@@ -164,31 +220,38 @@
     font-size: 18px;
   }
 }
-.footer--btn-group-wrapper{
+
+.footer--btn-group-wrapper {
   margin-left: 160px;
   margin-top: 37px;
-  .btn-group{
-    .btn:first-child{
+
+  .btn-group {
+    .btn:first-child {
       margin-right: 10px;
     }
   }
 }
-.to-right{
+
+.to-right {
   margin-left: auto;
 }
-.to-bottom{
+
+.to-bottom {
   align-self: flex-end;
 }
-.maslogo-wrapper{
+
+.maslogo-wrapper {
   padding-right: 40px;
 }
-.developer{
+
+.developer {
   position: relative;
   font-size: 12px;
-  color: rgba(#5d687a,0.7);
+  color: rgba(#5d687a, 0.7);
   text-decoration: none;
-  border-bottom: 1px solid rgba(#5d687a,0.2);
-  &:before{
+  border-bottom: 1px solid rgba(#5d687a, 0.2);
+
+  &:before {
     display: block;
     content: '';
     position: absolute;
@@ -198,5 +261,259 @@
     width: 136px;
     height: 33px;
     background-size: contain;
+  }
+}
+
+
+@media (max-width: 1500px) and (min-width: 1280px) {
+  .footer--contact-block {
+    padding: 55px 0px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .footer .line1 {
+    padding-bottom: 135px;
+    min-height: auto;
+
+    .in {
+      padding: 0 30px;
+    }
+  }
+  .footer .line1 .left .name {
+    font-size: 27px;
+  }
+  .footer .line1 .left .title {
+    font-size: 17px;
+  }
+  .yellow-rounded {
+    font-size: 11px;
+    line-height: 11px;
+    height: 23px;
+    padding: 7px 10px;
+  }
+  .footer .line1 .left {
+    max-width: 70%;
+    padding-left: 0;
+  }
+  .footer .line1 .name.mobile {
+    color: #fff;
+    text-align: center;
+    font-size: 21px;
+    font-family: $fmed;
+    margin-bottom: 15px;
+  }
+  .footer .line1 .left .name {
+    margin-top: 10px;
+    margin-bottom: 7px;
+  }
+
+  .footer .btn-group--social {
+    margin-top: 20px;
+  }
+  .footer .line1 .pic,
+  .footer.krasnodar .line1 .pic {
+    background-size: contain;
+    top: 0;
+    position: absolute;
+    width: 160px;
+    right: 20px;
+    bottom: -20px;
+    height: auto;
+    padding-top: 20px;
+    background-position: center bottom;
+  }
+  .footer--contact-block__wrapper .in {
+    padding: 0;
+  }
+  .footer--contact-block .label {
+    font-size: 15px;
+    text-align: center;
+  }
+  .footer--contact-block .phone {
+    font-size: 28px;
+    text-align: center;
+    border-bottom: 1px solid rgba(#ccc, 0.35);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  .form input[type=text], .form input[type=email], .form input[type=tel] {
+    width: 100%;
+    font-size: 14px;
+    height: 42px;
+  }
+  .form .btn {
+    font-size: 16px;
+  }
+  .footer .line2 .flex {
+    flex-direction: column;
+  }
+  .footer .footer--logo {
+    width: 100%;
+    background-position: center 0;
+  }
+  .footer .footer--logo_title {
+    margin: 20px auto 0;
+  }
+  .footer .copy {
+    text-align: center;
+  }
+  .footer .footer--menu {
+    margin: 30px 30px 15px;
+    text-align: center;
+  }
+  .footer .footer--menu ul li {
+
+  }
+  .footer--selector-wrapper {
+    margin: 10px 40px 0;
+    text-align: center;
+  }
+  .footer--telephone {
+    margin-left: 0;
+    margin-top: 20px;
+    font-size: 22px;
+  }
+  .footer--btn-group-wrapper {
+    margin-left: 0;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+  }
+  .footer--contact-block__wrapper {
+    padding-bottom: 30px;
+
+    & + .flex {
+      padding-top: 30px;
+      border-top: 1px solid #ccc;
+    }
+  }
+  .maslogo-wrapper {
+    align-self: center;
+    padding-right: 0;
+    margin: 55px auto 0;
+  }
+  .developer:before {
+    left: 50%;
+    margin-left: -68px;
+  }
+  .dotted-border-left {
+    justify-content: center;
+  }
+  .dotted-border-left .label {
+    text-align: left;
+  }
+  .footer .line1 {
+    padding-bottom: 96px;
+  }
+
+  .footer .line1 .pic {
+    right: 0;
+    width: 190px;
+    bottom: 0;
+  }
+  .footer .line1 .left {
+    position: relative;
+    max-width: 90%;
+    min-height: 200px;
+    padding-left: 0;
+    padding-right: 200px;
+  }
+  .footer .line1 .in > .flex {
+    width: 80%;
+    margin: 0 auto;
+    justify-content: center;
+  }
+}
+
+
+@media (max-width: 660px) {
+  .dotted-border-left {
+    flex-direction: column;
+  }
+  .dotted-border-left .label {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .dotted-border-left .label span {
+    display: inline;
+  }
+  .bottom_big {
+    margin-left: 0;
+  }
+  .footer .line1 .in {
+    padding: 0 0 0 10px;
+  }
+  .footer .line1 .pic, .footer.krasnodar .line1 .pic {
+    right: -15px;
+    bottom: 0;
+  }
+  .footer .line1 {
+    padding-bottom: 96px;
+  }
+  .footer .line1 .in > .flex {
+    width: auto;
+  }
+  .footer .line1 .pic {
+    right: 0;
+  }
+  .footer .line1 .left {
+    position: relative;
+    max-width: 100%;
+    min-height: 200px;
+    padding-left: 0;
+    padding-right: 150px;
+  }
+  .yellow-rounded {
+    font-size: 8px;
+    line-height: 11px;
+    height: 21px;
+    padding: 5px 7px;
+  }
+  .footer .line1 .left .name {
+    font-size: 21px;
+  }
+  .footer .line1 .left .title {
+    font-size: 15px;
+  }
+
+}
+
+@media (min-width: 1025px) and (max-width: 1440px){
+  .footer .line1 .pic{
+    top: -30px;
+    width: 28%;
+    height: 264px;
+    background-size: contain;
+    background-position: left bottom;
+  }
+  .footer .line1 .left{
+    min-width: 315px;
+    max-width: none;
+  }
+  .footer .line1 .left .name{
+    font-size: 32px;
+    margin: 10px 0 7px 0;
+  }
+  .footer .line1 .right{
+    margin-left: 10px;
+  }
+  .footer .line1 .right .name{
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  .footer .line1 .right:before{
+    left: -67px;
+    top: 50px;
+    width: 63px;
+    height: 44px;
+  }
+  .footer .line1 .right .desc{
+    font-size: 18px;
+  }
+  .footer--btn-group-wrapper .btn-group .btn:first-child{
+    margin-right: 0;
   }
 }

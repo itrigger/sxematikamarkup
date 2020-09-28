@@ -1,9 +1,9 @@
-#header{
-  border-bottom:  1px solid rgba(#5d687a, 0.3);
+#header {
+  border-bottom: 1px solid rgba(#5d687a, 0.3);
   padding-bottom: 11px;
 }
 
-.logo{
+.logo {
   width: 254px;
   height: 26px;
   background: url('../img/logo2-19.svg') 0 0 no-repeat;
@@ -12,65 +12,229 @@
   margin-top: 28px;
 }
 
-#top-menu{
+#top-menu {
   margin-left: 75px;
   margin-top: 32px;
-  ul{
+
+  ul {
     margin: 0;
     padding: 0;
-    li{
+
+    li {
       list-style: none;
       display: inline-block;
       margin-right: 42px;
-      a{
+
+      a {
         text-transform: uppercase;
         color: #5d687a;
         text-decoration: none;
-        border-bottom:  1px solid rgba(#5d687a, 0.4);
+        border-bottom: 1px solid rgba(#5d687a, 0.4);
         font-size: 13px;
         font-family: $fmed;
-        &:hover{
+
+        &:hover {
           color: #000;
-          border-bottom:  2px solid rgba(#0bbc93, 1);
+          border-bottom: 2px solid rgba(#0bbc93, 1);
         }
       }
     }
   }
 }
 
-.top-selector-wrapper{
+.top-selector-wrapper {
   margin-top: 20px;
   line-height: 20px;
   letter-spacing: 0.5px;
 }
-.top-selector-wrapper__title{
+
+.top-selector-wrapper__title {
   font-size: 13px;
   color: #5d687a;
 }
 
-#header{
-  .flex{
+#header {
+  .flex {
     justify-content: space-between;
   }
 }
-.top-telephone{
+
+.top-telephone {
   font-family: $fmed;
   font-size: 18px;
   margin-top: 30px;
   margin-left: 15px;
-  a{
+
+  a {
     text-decoration: none;
     color: #000;
   }
 }
 
-.top-btn-group{
+.top-btn-group {
   margin-top: 22px;
   margin-left: 15px;
-  .btn{
+
+  .btn {
     margin-right: 10px;
-    &:last-child{
+
+    &:last-child {
       margin-right: 0;
     }
   }
+}
+.btn-burger{
+  position: relative;
+  width: 25px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  span {
+    width: 25px;
+    height: 2px;
+    background: #58595b;
+    display: block;
+    transition: 0.3s all;
+  }
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 2px;
+    background: #58595b;
+    transition: 0.3s all;
+  }
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 25px;
+    height: 2px;
+    background: #58595b;
+    transition: 0.3s all;
+  }
+}
+.btn-burger.active:before {
+  transform: rotate(45deg);
+  top: 8px;
+  transition: 0.3s all;
+}
+.btn-burger.active:after {
+  transform: rotate(-45deg);
+  bottom: 6px;
+  transition: 0.3s all;
+}
+.btn-burger.active span {
+  opacity: 0;
+  transition: 0.3s all;
+}
+
+#mobile_menu{
+  display: none;
+}
+.mobile.burger{
+  margin-top: 24px;
+}
+#mobile_menu.active {
+  display: block;
+}
+
+#mobile_menu{
+  background: #fff;
+  position: absolute;
+  top: 49px;
+  z-index: 99999;
+  display: none;
+  width: 100%;
+  left: 0;
+  box-shadow: 0 10px 10px rgba(#000,0.2);
+  ul{
+    text-align: center;
+    margin: 20px 0 20px;
+    padding: 0;
+    li{
+      list-style: none;
+      margin-bottom: 10px;
+      a{
+        text-transform: uppercase;
+        color: #5d687a;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(93, 104, 122, 0.4);
+        font-size: 15px;
+        font-family: $fmed;
+      }
+    }
+  }
+  .top-telephone{
+    display: block;
+    text-align: center;
+    margin: 0 0 20px;
+  }
+  .top-btn-group{
+    display: block;
+    text-align: center;
+    margin:0 0 20px;
+  }
+  &.active{
+    display: block;
+  }
+}
+
+#header .social-btn-group{
+  display: none;
+}
+
+@media (max-width: 1500px) and (min-width: 1024px) {
+  .in {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 1024px){
+  body {
+    padding-top: 49px;
+  }
+  .in {
+    padding: 0 10px;
+  }
+  #header{
+    padding-bottom: 0;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+    background: #fff;
+  }
+  #header > .in > .flex {
+    height: 48px;
+    align-items: center;
+  }
+  .mobile.burger {
+    margin-top: 0;
+  }
+  #top-menu,
+  .top-selector-wrapper,
+  .top-telephone,
+  .top-btn-group
+  {
+    display: none;
+  }
+  .logo {
+    width: 160px;
+    height: 16px;
+    top: 50%;
+    margin-top: -8px;
+    position: absolute;
+    margin-left: -80px;
+  }
+  #header .social-btn-group{
+    display: block;
+  }
+
 }

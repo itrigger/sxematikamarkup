@@ -4,10 +4,11 @@ body{
 
 .breadcrumbs{
   align-self: flex-start;
-  border: 2px solid rgba(#fff,0.5);
+  border: 2px solid rgba(#000,0.2);
   border-radius: 20px;
-  padding: 2px 20px 6px;
+  padding: 2px 20px 1px;
   display: inline-block;
+  margin-top: 20px;
   ul{
     margin: 0;
     padding: 0;
@@ -18,12 +19,13 @@ body{
       line-height: 14px;
       position: relative;
       padding-right: 26px;
-      color: #fff;
+      color: #000;
+      margin-bottom: 5px;
       &:after{
         content: "";
         display: block;
         position: absolute;
-        background: url('../img/breadcrumb.svg') 0 0 no-repeat;
+        background: url('../img/breadcrumb-black.svg') 0 0 no-repeat;
         background-size: cover;
         width: 7px;
         height: 13px;
@@ -33,14 +35,30 @@ body{
       a{
         font-size: 14px;
         line-height: 14px;
-        color: #fff;
-        border-bottom-color: rgba(#fff,0.4);
+        color: #000;
+        border-bottom-color: rgba(#000,0.4);
       }
       &:last-child{
         padding-right: 0;
         &:after{
           display: none;
         }
+      }
+    }
+  }
+}
+
+.woocommerce-page{
+  .breadcrumbs{
+    border: 2px solid rgba(#fff,0.5);
+    li{
+      color: #fff;
+      a{
+        color: #fff;
+        border-bottom-color: rgba(#fff,0.4);
+      }
+      &:after{
+        background: url('../img/breadcrumb.svg') 0 0 no-repeat;
       }
     }
   }
@@ -168,4 +186,75 @@ body{
 
 .hidden_inputs{
   display: none;
+}
+
+
+@media (min-width: 660px) and (max-width: 1024px){
+  .d-col-4{
+    display: none;
+  }
+  .divide-2-1_left{
+    width: 100%;
+    margin-right: 0;
+  }
+  .divide-2-1_right{
+    display: none;
+  }
+  .pld-like-dislike-wrap{
+    padding-bottom: 0;
+  }
+  .pld-common-wrap a{
+    font-size: 14px;
+  }
+  .pld-common-wrap{
+    font-size: 13px;
+    padding: 10px;
+  }
+
+}
+
+@media (max-width: 660px) {
+  .d-col-4{
+    display: none;
+  }
+  .divide-2-1_left{
+    width: 100%;
+    margin-right: 0;
+  }
+  .divide-2-1_right{
+    display: none;
+  }
+  .pld-like-dislike-wrap{
+    padding-bottom: 0;
+    margin-top: 30px;
+    .heading{
+      font-size: 18px;
+    }
+  }
+  .pld-common-wrap a{
+    font-size: 14px;
+  }
+  .pld-common-wrap{
+    font-size: 13px;
+    padding: 10px;
+  }
+  .breadcrumbs{
+    margin-bottom: 20px;
+    padding: 0 14px 0;
+    &+h1{
+      margin-top: 0;
+    }
+  }
+  .breadcrumbs ul li{
+    font-size: 12px;
+    a{
+      font-size: inherit;
+    }
+  }
+  .breadcrumbs ul li:after{
+    width: 6px;
+    height: 11px;
+    background-size: contain;
+  }
+
 }
