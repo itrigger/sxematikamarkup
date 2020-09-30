@@ -223,6 +223,9 @@ p{
 @media (min-width: 661px) and (max-width: 1024px){
   .inner-carousel{
     width: 100%;
+    .swiper-slide{
+      width: 100% !important;
+    }
   }
   .inner-carousel img {
     width: 100%;

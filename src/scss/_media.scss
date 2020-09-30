@@ -1,6 +1,10 @@
 a.desktop, .btn-ico.vb.desktop {
   display: inline-block;
 }
+.flex-grid.desktop{
+  display: flex;
+}
+
 a.mobile, .btn-ico.vb.mobile {
   display: none;
 }
@@ -34,6 +38,7 @@ a.desktop,
 {
   display: inline-block;
 }
+
 @media (min-width: 320px) and (max-width: 1024px) {
   .mobile{
     display: block;
@@ -50,7 +55,9 @@ a.desktop,
   {
     display: none;
   }
-
+  .flex-grid.desktop{
+    display: none;
+  }
   .dotted-border-left:before{
     display: none;
   }
@@ -206,9 +213,17 @@ a.desktop,
     background-position: right 12px;
     background-size: 10px 10px;
   }
+  h1 .main-page-map--selector .selector-title{
+    font-size: inherit;
+  }
   .map_bubble{
     margin-bottom: -140px;
   }
 
 }
 
+@media (min-width: 320px) and (max-width: 1280px) {
+  .mobile.burger{
+    display: block;
+  }
+}

@@ -191,7 +191,38 @@ h2.entry-title{
   }
 }
 
+@media (min-width: 661px) and (max-width: 1024px){
+  h1{
+    font-size: 35px;
+    text-align: center;
+  }
+  .blogs-item .blogs-item__heading{
+    font-size: 28px;
+    line-height: 33px;
+  }
+  h2.entry-title{
+    font-size: 31px;
+    line-height: 36px;
+  }
+  .page-template-contacts .map_bubble{
+    position: relative;
+    margin: 0 auto -150px;
+    top: auto;
+    box-shadow: 0 1px 10px rgba(#000,0.2);
+    max-width: 650px;
+  }
+  .page-template-contacts .map_bubble .heading{
+    font-size: 22px;
+    text-align: center;
+  }
+  .page-template-contacts .map_bubble .address_wrapper{
+    flex-direction: row;
+  }
+  .page-template-contacts .map_bubble .address_wrapper .pic{
 
+    text-align: center;
+  }
+}
 
 @media (max-width: 660px) {
   .page-blog{
@@ -239,6 +270,7 @@ h2.entry-title{
   }
   .page-template-contacts .map_bubble{
     position: relative;
+    margin: 0 auto;
     top: auto;
     box-shadow: 0 1px 10px rgba(#000,0.2);
   }
@@ -265,7 +297,7 @@ h2.entry-title{
   }
   .blogs-item .blogs-item__heading{
     font-size: 19px;
-    line-height: 22px;
+    line-height: 25px;
     margin-top: 10px;
   }
   .blogs-item .blogs-item__img a{

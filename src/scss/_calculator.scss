@@ -185,6 +185,9 @@
   }
 }
 
+.els-row-1 .els-del{
+  display: none !important;}
+
 @media (min-width: 661px) and (max-width: 1024px){
   .els-row{
     flex-direction: row;
@@ -325,3 +328,38 @@
 }/*<660*/
 
 
+@media (min-width: 1025px) and (max-width: 1439px){
+  .els-row{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2%;
+    align-items: baseline;
+    justify-content: flex-start;
+  }
+  .el-wrap{
+    flex-basis: 49%;
+    &.labeled-input{
+      flex-basis: auto;
+    }
+  }
+  .calculator select{
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 0;
+
+  }
+  .calculator input[type=text]{
+    width: 65px;
+  }
+  .calculator .labeled-input{
+    margin-left: 0;
+  }
+  .calculator .row-total{
+
+    font-size: 24px;
+  }
+  .labeled-input.input-dark{
+    margin-top: 10px;
+  }
+
+}

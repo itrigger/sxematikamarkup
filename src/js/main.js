@@ -2,11 +2,8 @@ window.$ = require('jquery');
 window.jQuery = $;
 require("@fancyapps/fancybox");
 import Swiper from 'swiper/bundle';
-// const domToPdf = require('dom-to-pdf'); delete this
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-//import html2pdf from "html2pdf.js";
-
 
 $(document).ready(function () {
 
@@ -51,7 +48,7 @@ $(document).ready(function () {
       },
       1180: {
         slidesPerView: 3,
-        spaceBetween: 50,
+        spaceBetween: 30,
       },
     }
   });
@@ -114,10 +111,6 @@ $(document).ready(function () {
       hideList()
     }
   });
-  /*  $("#getaddress").on("click", ".tabs_h", function(event){
-      event.stopPropagation();
-      hideList()
-    });*/
 
   $('.btn-burger').on('click', function () {
     if ($(this).hasClass('active')) {
@@ -150,7 +143,7 @@ $(document).ready(function () {
   const STOCK_DATE = stock_date.toString();
   const TYPES = ["кг", "шт", "г", "кольцо", "секцию", "2 секции", "контакт", "гр"];
 
-  const CONST_HOST = 'http://shematika'; // храним ХОСТ
+  const CONST_HOST = 'http://testim.pw'; // храним ХОСТ
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a'; // ключи аутентификации
   const CONST_CS = 'cs_d4f6f902c2d7d3ec65159392fa6d245a2ce722cf';
   const $dropdown = $(".el-type-1"); // начальные ссылки на селекты
@@ -460,48 +453,6 @@ $(document).ready(function () {
     }
   }
 
-  /* const getItem = function (id, rowId, col) { //ID товара по каталогу, rowId номер строки в верстке, col вес или штуки для поля Кол-во
-     fetch(`${CONST_HOST}/wp-json/wc/v3/products/${id}?consumer_key=${CONST_CK}&consumer_secret=${CONST_CS}`)
-       .then(
-         function (response) {
-           if (response.status !== 200) {
-             console.log('Looks like there was a problem. Status Code: ' +
-               response.status);
-             notify("Возникла ошибка при получении данных! Попробуйте перезагрузить страницу или зайти позже.", "error");
-             return;
-           }
-
-           /!**!/
-           response.json().then(function (data) {
-
-
-             if (data) {
-               console.log(data);
-               console.log(data.categories[0].id);
-               console.log(rowId);
-               $(".inputCount-" + rowId).val(col);
-               fillChildSelect(rowId, data.categories[0].id);
-
-             } else {
-               /!* $childDD.empty(); // очищаем селект
-                $childDD.append($("<option />")
-                  .val('')
-                  .text('Нет данных!')
-                );*!/
-             }
-
-             isLoading(0);
-           });
-           /!**!/
-
-         }
-       )
-       .catch(function (err) {
-         console.log('Fetch Error :-S', err);
-         notify("Возникла ошибка при получении данных! Попробуйте перезагрузить страницу или зайти позже.", "error");
-       });
-   }*/
-
   //run function on dynamic els
   $parentEl.on('change', '.el-type', function () {
     let id = $(this).parent().parent().attr("data-id");
@@ -584,11 +535,8 @@ $(document).ready(function () {
 
   //Кнопка ОФОРМИТЬ ЗАЯВКУ. Отсылает все данные на почту (через форму CF7)
   $(".send-btn-wrapper a").on('click', function (e) {
-
     e.stopPropagation();
-
   })
-
 
   /*Построение строки с данными из локального хранилища*/
   async function buildRow(id, rowCol, col) { //id элемента, rowCol порядковый номер создаваемой строки, col кол-во элементов данного типа
@@ -748,7 +696,6 @@ $(document).ready(function () {
 
   }
 
-
   //Высчитывание цены
   const getPrice = function (id, countTotal) { //id - номер строки
     let item_price = 0;
@@ -897,27 +844,9 @@ $(document).ready(function () {
 
 });
 
-/*https://woocommerce.github.io/woocommerce-rest-api-docs/?shell#list-all-products*/
-
-/*
-ck_670b652a9f73358f82c849217a0d2d5a61356840
-cs_f6839273529302a1a530006eb82eabc0ada17edc
-*/
-
-
-/*
-* <script type="text/javascript">
-jQuery(document).ready(function(){
-     jQuery("#wpcf7-f3857-o1 form").submit(1);
-});
-</script>
-*/
-
 /********/
 /*https://www.npmjs.com/package/dom-to-pdf*/
 $(document).ready(function () {
-
-
   $("#btn-Convert-Html2Image").on('click', function () {
     let element = document.getElementById("tabletext");
     $(this).prop('disabled', true);
@@ -944,98 +873,8 @@ $(document).ready(function () {
         $(".alert--wrapper").html("");
       });
 
-    /*   let doc = new jsPDF();
-       doc.addFont("/wp-content/themes/sxematika/assets/fonts/PTSans.ttf", "PTSans", "normal");
-
-       doc.setFont("PTSans"); // set font
-       doc.setFontSize(10);
-       doc.html(element, {
-         callback: function (doc) {
-           doc.save('test.pdf');
-         },
-         html2canvas:  { scale: 1 },
-         x: 10,
-         y: 10
-       });*/
   });
 
-
-  /* $("#btn-Convert-Html2Image").on('click', function () {
-
-     let element = document.getElementById("tabletext");
-     $(this).prop('disabled', true);
-     $(".alert--wrapper").html("<div class='alert process'><span>Подготовка прайс листа...</span></div>")
-
-     let today;
-     var opt = {
-       margin:       5,
-       filename:     'newprice.pdf',
-       image:        { type: 'jpeg', quality: 2 },
-       pagebreak:    {mode: 'css'},
-       html2canvas:  { scale: 1 },
-       jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
-     };
-     html2pdf().set(opt).from(element).save();
-     //$(this).prop('disabled', false);
-    // $(".alert--wrapper").html("");
-
-
-
-
-  /!* function makePDF() {
-     console.log("sd 1");
-       var quotes = document.getElementById('tabletext');
-
-     html2canvas(quotes, {
-       onclone: function(canvas) {
-         //! MAKE YOUR PDF
-         var pdf = new jsPDF('p', 'pt', 'a4');
-
-         for (var i = 0; i <= quotes.clientHeight/980; i++) {
-           //! This is all just html2canvas stuff
-           var srcImg  = canvas;
-           var sX      = 0;
-           var sY      = 980*i; // start 980 pixels down for every new page
-           var sWidth  = 900;
-           var sHeight = 980;
-           var dX      = 0;
-           var dY      = 0;
-           var dWidth  = 900;
-           var dHeight = 980;
-
-           window.onePageCanvas = document.createElement("canvas");
-           onePageCanvas.setAttribute('width', 900);
-           onePageCanvas.setAttribute('height', 980);
-           var ctx = onePageCanvas.getContext('2d');
-           // details on this usage of this function:
-           // https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Using_images#Slicing
-           ctx.drawImage(srcImg,sX,sY,sWidth,sHeight,dX,dY,dWidth,dHeight);
-
-           // document.body.appendChild(canvas);
-           var canvasDataURL = onePageCanvas.toDataURL("image/png", 1.0);
-
-           var width         = onePageCanvas.width;
-           var height        = onePageCanvas.clientHeight;
-
-           //! If we're on anything other than the first page,
-           // add another page
-           if (i > 0) {
-             pdf.addPage(612, 791); //8.5" x 11" in pts (in*72)
-           }
-           //! now we declare that we're working on that page
-           pdf.setPage(i+1);
-           //! now we add content to that page!
-           pdf.addImage(canvasDataURL, 'PNG', 20, 40, (width*.62), (height*.62));
-
-         }
-         //! after the for loop is finished running, we save the pdf.
-         pdf.save('Test.pdf');
-       }
-     });
-   }
-     makePDF();*!/
-
-   });*/
 });
 
 /* ToDO

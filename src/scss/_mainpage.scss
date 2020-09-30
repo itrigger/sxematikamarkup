@@ -689,7 +689,9 @@ input[type=submit] {
   right: 10%;
   z-index: 12;
   border-radius: 10px;
-
+  .pic{
+    line-height: 0;
+  }
   .desc {
     padding: 15px 15px 25px;
   }
@@ -844,18 +846,41 @@ a.big-vb {
   .main-page--blog .flex > div {
     margin-right: 0;
     margin-bottom: 15px;
+    display: flex;
   }
   .main-page--blog .blog--item .pic {
     height: auto;
-
+    min-width: 190px;
+    display: block;
+    width: 190px;
+    line-height: 0;
+    border-radius: 10px 0 0 10px;
     img {
       width: 100%;
       height: auto;
     }
   }
+  .blog--title{
+    flex-direction: column;
+  }
+  .main-page--blog .blog--title{
+    max-width: 200px;
+  }
+  .main-page--blog .blog--title h2{
+    font-size: 32px;
+  }
+  .main-page--blog .btn-custom:after{
+    background-size: contain;
+    width: 29px;
+    height: 21px;
+    top: 13px;
+  }
   .main-page--blog .blog--item .title{
     font-size: 18px;
     line-height: 23px;
+  }
+  .main-page--blog .blog--item .desc{
+    display: none;
   }
   .block-hts h1 {
     margin-top: 20px;
@@ -877,8 +902,8 @@ a.big-vb {
 
 @media (min-width: 661px) and (max-width: 1024px) {
   .cat-block {
-    width: 47.2%;
-    height: 180px;
+    width: 23%;
+    height: 190px;
     padding: 15px;
     margin-bottom: 15px;
   }
@@ -888,7 +913,8 @@ a.big-vb {
   .mobile--mainpage--categories {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 0 2%;
   }
   .pic-condensator {
     width: 125px;
@@ -920,20 +946,21 @@ a.big-vb {
   }
 
   .categories--btn-custom_wrapper {
-    width: 47.2%;
+    width: 23%;
     display: flex;
     align-items: center;
   }
 
   .main-page--categories_title {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 24px;
+    line-height: 28px;
   }
   .block-process .flex {
     flex-direction: column;
   }
   .block-process .desc {
-    display: none;
+    max-width: 80%;
+    margin: 0 auto;
   }
   .main-page--blog .flex {
     flex-direction: column;
@@ -942,12 +969,109 @@ a.big-vb {
   .main-page--blog .flex > div {
     margin-right: 0;
     margin-bottom: 15px;
+    display: flex;
   }
   .main-page--blog .blog--item .pic {
     height: auto;
-
+    min-width: 250px;
+    display: block;
+    width: 250px;
+    line-height: 0;
+    border-radius: 10px 0 0 10px;
     img {
       width: 100%;
+      height: auto;
+    }
+  }
+  .blog--title{
+    flex-direction: column;
+  }
+  .main-page--blog .blog--item .desc{
+    display: block;
+  }
+
+
+}
+
+@media (max-width: 440px) {
+  .main-page--blog .flex {
+    flex-direction: column;
+    padding: 20px;
+  }
+  .main-page--blog .flex > div {
+    margin-right: 0;
+    margin-bottom: 15px;
+    flex-direction: column;
+  }
+  .main-page--blog .blog--item .pic {
+    height: auto;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .main-page--blog .blog--item .pic{
+    width: 100%;
+  }
+  .main-page--blog .blog--item .title{
+    font-size: 18px;
+    line-height: 23px;
+  }
+  .main-page--blog .blog--item .desc{
+    display: block;
+  }
+}
+
+@media (min-width: 441px) and (max-width: 660px){
+  .main-page-map .map_bubble{
+    width: 90%;
+    display: flex;
+    right: 0;
+    left: 0;
+    margin-bottom: -40px;
+    .pic{
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1439px){
+  .main-page--categories_title{
+    font-size: 30px;
+    line-height: 35px;
+  }
+  .cat-block{
+    padding: 15px 15px 20px;
+  }
+  .cat-block .pic{
+    background-position: left bottom;
+    width: 90%;
+    height: 90%;
+  }
+  .cat-block .title{
+    font-size: 14px;
+  }
+  .block-hts .hts-3-blocks .custom-size--left, .block-hts .hts-3-blocks .custom-size--middle, .block-hts .hts-3-blocks .custom-size--right{
+    width: 100%;
+  }
+  .main-page--blog .flex{
+   //flex-wrap: wrap;
+    padding: 25px 20px 25px 20px;
+  }
+  .main-page--blog .blog--item .padded{
+    padding: 10px 15px 15px;
+  }
+  .main-page--blog .blog--item .title{
+    font-size: 18px;
+  }
+  .main-page--blog .blog--item{
+    width: 300px;
+  }
+  .main-page--blog .blog--item .pic{
+    height: auto;
+    line-height: 0;
+    img{
+      max-width: 100%;
       height: auto;
     }
   }

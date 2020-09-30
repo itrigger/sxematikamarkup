@@ -38,3 +38,13 @@
     margin-bottom: 30px;
   }
 }
+
+.separator{
+  margin-bottom: 160px;
+}
+
+@media (min-width: 320px) and (max-width: 1024px){
+  .separator{
+    margin-bottom: 20px;
+  }
+}
