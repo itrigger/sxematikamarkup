@@ -39,3 +39,46 @@
     border-left: 1px solid #ccc;
   }
 }
+
+.form--wrap .btn-secondary{
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.or_w {
+  text-align: center;
+  margin-bottom: 10px;
+}
+span.or {
+  display: inline-block;
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+span.or:before, span.or:after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.35);
+  position: absolute;
+}
+span.or:before {
+  left: -45px;
+  top: 13px;
+}
+span.or:after {
+  left: 198px;
+  top: 13px;
+}
+.form--wrap .dashed {
+  background: rgba(85, 103, 130, 0.6);
+  border: 2px dotted #c5c5c5;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 25px;
+  align-items: center;
+}

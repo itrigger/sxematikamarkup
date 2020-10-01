@@ -767,6 +767,20 @@ a.big-vb {
   background-size: contain;
   border-bottom: none;
 }
+.about .points--legend ul li{
+  position: relative;
+}
+.about .points--legend ul li:before{
+  content: '';
+  display: block;
+  position: absolute;
+  left: -12px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: #0bbc93;
+  border-radius: 50%;
+}
 
 @media (max-width: 1500px) and (min-width: 1280px) {
   .main-page--blog .blog--item .pic {

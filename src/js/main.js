@@ -157,7 +157,8 @@ $(document).ready(function () {
     $(".stocks_silver").text(Math.round((SILVER * USD + Number.EPSILON) * 100) / 100 + " RUB");
     $(".stocks_platinum").text(Math.round((PLATINUM * USD + Number.EPSILON) * 100) / 100 + " RUB");
     $(".stocks_palladium").text(Math.round((PALLADIUM * USD + Number.EPSILON) * 100) / 100 + " RUB");
-    $(".stocks .date").text(STOCK_DATE.slice(0, 2) + "." + STOCK_DATE.slice(2, 4) + "." + STOCK_DATE.slice(4, 8));
+    //$(".stocks .date").text(STOCK_DATE.slice(0, 2) + "." + STOCK_DATE.slice(2, 4) + "." + STOCK_DATE.slice(4, 8));
+    $(".stocks .date").text(STOCK_DATE.slice(6, 8) + "." + STOCK_DATE.slice(4, 6) + "." + STOCK_DATE.slice(0, 4));
   }
 
   /* Add fancybox to product img */
@@ -858,7 +859,7 @@ $(document).ready(function () {
         element.style.display = 'block';
       },
       width: 1140,
-      height: 8487,
+      height: 8600,
       scrollX: 0,
       scrollY: 0,
       scale: 1
