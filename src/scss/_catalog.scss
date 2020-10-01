@@ -20,7 +20,7 @@
     margin: 0;
     padding: 0;
     display: flex;
-    gap: 20px 12px;
+    //gap: 20px 12px;
     flex-wrap: wrap;
     justify-content: center;
 
@@ -30,6 +30,8 @@
       border-radius: 5px;
       white-space: nowrap;
       transition: 0.3s all;
+      margin-bottom: 20px;
+      margin-right: 12px;
 
       a {
         text-decoration: none;
@@ -62,6 +64,7 @@
   margin-top: 40px;
 
   .heading {
+    white-space: nowrap;
     .text {
       font-size: 26px;
       font-family: $fmed;
@@ -84,12 +87,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 30px;
+    //gap: 30px;
   }
   .stock--item {
     list-style: none;
     font-size: 15px;
     white-space: nowrap;
+    padding-right: 30px;
     span {
       padding: 7px 10px;
       background: #f2f4f5;
@@ -104,22 +108,23 @@
 }
 
 .categories {
-  margin-top: 65px;
+  margin-top: 35px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 justify-content: space-between;
-  gap: 30px 1%;
-
+  //gap: 30px 1%;
   a {
     display: block;
-    width: 32%;
+    width: 23.5%;
     max-width: 465px;
-    height: 495px;
+    //height: 495px;
+    height: 350px;
     border-radius: 10px;
     padding: 25px;
     border-bottom: none;
     text-decoration: none;
+    margin-bottom: 30px;
   }
 
   .heading {
@@ -133,6 +138,11 @@ justify-content: space-between;
       border-bottom: 1px solid #fff;
     }
   }
+  &::after {
+    content: "";
+    flex: 0 0 23.5%;
+    max-width: 465px;
+  }
 }
 
 .category--item {
@@ -141,6 +151,9 @@ justify-content: space-between;
   &:before {
     transform: scale(1);
     transition: .2s all;
+    width: 80% !important;
+    height: 80% !important;
+    background-position: left bottom !important;
   }
 
   &:hover {
@@ -437,13 +450,13 @@ justify-content: space-between;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 30px 2%;
+ justify-content: space-between;
   width: 100%;
   li {
     width: 23.5%;
     max-width: 344px;
     list-style: none;
-
+    margin-bottom: 30px;
     img.attachment-woocommerce_thumbnail {
       cursor: pointer;
     }
@@ -514,18 +527,24 @@ justify-content: space-between;
     }
     .price{
       font-size: 18px;
+      border: 1px solid #ccc;
+      padding: 6px 7px;
+      border-radius: 5px;
     }
     .price_value{
-      font-size: 24px;
+      font-size: 22px;
       font-family: $fmed;
     }
     .woocommerce-loop-product__title{
       font-size: 18px;
-      font-family: $fmed;
+      //font-family: $fmed;
     }
   }
 }
-
+.btn-buy-wrapper{
+  margin-top: 12px;
+  text-align: left;
+}
 .woocommerce nav.woocommerce-pagination ul{
   border: none;
   margin: 0;
@@ -606,7 +625,7 @@ justify-content: space-between;
     padding: 0 10px;
   }
   .catalog--tags ul{
-    gap: 15px 10px;
+    //gap: 15px 10px;
   }
   .catalog--tags ul li a{
     padding: 7px 7px;
@@ -614,7 +633,7 @@ justify-content: space-between;
   }
   .categories{
     margin-top: 30px;
-    gap: 20px 0;
+    //gap: 20px 0;
     justify-content: space-around;
     a:last-child:nth-child(odd){
       margin-right: auto;
@@ -635,7 +654,7 @@ justify-content: space-between;
     position: relative;
   }
   .catalog--products-ul{
-    gap: 30px 2%;
+    //gap: 30px 2%;
     flex-direction: row;
     justify-content: space-around;
   }
@@ -652,7 +671,10 @@ justify-content: space-between;
 @media (max-width: 660px){
   .categories{
     margin-top: 30px;
-    gap: 20px 4%;
+    //gap: 20px 4%;
+    a{
+      margin-bottom: 20px;
+    }
   }
   .categories a{
     width: 48%;
@@ -703,7 +725,7 @@ justify-content: space-between;
   }
 
   .catalog--products-ul{
-    gap: 30px 2%;
+    //gap: 30px 2%;
     flex-direction: row;
   }
   .catalog--products-ul li{
@@ -728,7 +750,7 @@ justify-content: space-between;
 
 @media (max-width: 440px){
   .catalog--products-ul{
-    gap: 30px;
+    //gap: 30px;
     flex-direction: column;
   }
   .catalog--products-ul li{
