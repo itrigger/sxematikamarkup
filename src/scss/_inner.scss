@@ -15,7 +15,7 @@
     top: 0;
   }
   .tophead {
-    background: #00bb9c;
+    background: url("../img/tilebg-02.jpg") repeat #00bb9c;
     border-radius: 10px 10px 0 0;
     color: #FFFFFF;
     display: flex;
@@ -79,20 +79,20 @@
 
     .f_line {
       display: flex;
-
+      flex-direction: column;
       input[type=text] {
-        width: 50%;
+        width: 100%;
         font-size: 15px;
         padding: 10px;
         height: 45px;
 
         &:first-child {
-          border-radius: 3px 0 0 3px;
-          border-right: 1px solid #ccc;
+          border-radius: 3px 3px 0 0;
+          border-bottom: 1px solid #ccc;
         }
 
         &:last-child {
-          border-radius: 0 3px 3px 0;
+          border-radius: 0;
         }
       }
 
@@ -114,6 +114,7 @@
     }
   }
 }
+
 
 .intro{
   font-size: 22px;
@@ -164,6 +165,12 @@ p{
       }
     }
   }
+  .points--map{
+    margin-top: -160px;
+    overflow: hidden;
+    position: relative;
+    right: -10px;
+  }
   .points{
     position: relative;
   }
@@ -175,7 +182,8 @@ p{
 .inner-carousel{
   position: relative;
   max-width: 849px;
-  overflow: hidden;
+  margin-bottom: 40px;
+  //overflow: hidden;
   .swiper-slide{
     border-radius: 10px;
     overflow: hidden;
@@ -191,6 +199,7 @@ p{
     justify-content: center;
     top: auto;
     width: 100%;
+    left: 0;
   }
   .swiper-pagination-bullet{
     background: #5d687a !important;
@@ -217,7 +226,6 @@ p{
     line-height: 20px;
     margin-bottom: 15px;
   }
-
 }
 
 @media (min-width: 661px) and (max-width: 1024px){
@@ -238,3 +246,16 @@ p{
   }
 
 }
+
+@media (max-width: 1500px) and (min-width: 1280px){
+  .points--map img {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 1024px){
+  .content .about .points--map{
+    margin-top: -70px;
+  }
+}
+

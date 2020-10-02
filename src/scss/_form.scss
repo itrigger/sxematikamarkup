@@ -82,3 +82,95 @@ span.or:after {
   padding: 25px;
   align-items: center;
 }
+
+
+.form--wrap .form .f_line span {
+  width: 100%;
+}
+
+.form--wrap .form .f_line span.your-message {
+  width: 100%;
+}
+
+.form--wrap .form .f_line input[type=text],
+.form--wrap .form .f_line input[type=tel] {
+  width: 100%;
+}
+
+.form--wrap .form .f_line input[type=tel] {
+  font-size: 15px;
+  padding: 10px;
+  height: 45px;
+}
+
+.form--wrap .form .f_line span:first-child input[type=text] {
+  border-radius: 3px 0 0 3px;
+  border-right: 1px solid #ccc;
+}
+
+.form--wrap .form .f_line span:last-child input[type=tel] {
+  border-radius: 0 3px 3px 0;
+}
+
+.wpcf7-submit {
+  padding: 8px 17px;
+  text-decoration: none;
+  border: 2px solid;
+  border-radius: 3px;
+  font-family: Stem-Medium, sans-serif;
+  font-size: 16px;
+  word-break: keep-all;
+  display: inline-block;
+  transition: all .2s;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  background: #0bbc93 !important;
+  border-color: #0bbc93;
+}
+
+.wpcf7-submit:hover {
+  background: #40cdad !important;
+  border-color: #40cdad;
+  transition: all .2s;
+}
+
+.form--wrap .form .f_line {
+  position: relative;
+}
+
+div.wpcf7 .ajax-loader {
+  position: absolute;
+  width: 16px !important;
+  right: 10px;
+  top: 30px;
+}
+
+.form p {
+  margin: 0;
+}
+
+.wpcf7-response-output {
+  font-size: 13px;
+  margin: 10px 0 0;
+}
+
+.form--wrap .form .f_line input[type=text].wpcf7-not-valid,
+.form--wrap .form .f_line input[type=tel].wpcf7-not-valid,
+.form--wrap .form .f_line input[type=email].wpcf7-not-valid {
+  background-color: #f3a9a9;
+}
+
+.wpcf7-not-valid-tip {
+  display: none !important;
+}
+
+.form--wrap .form .f_line textarea {
+  height: 90px;
+}
+
+input[type=submit] {
+  &:focus, &:active {
+    outline: none;
+  }
+}

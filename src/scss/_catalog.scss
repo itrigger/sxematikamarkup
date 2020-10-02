@@ -1,13 +1,8 @@
-.catalog {
-
-}
-
 .catalog--header {
   text-align: center;
   border-bottom: 1px solid rgba(#556782, 0.3);
   padding-bottom: 40px;
   padding-top: 50px;
-
   h1 {
     margin: 0 0 50px;
   }
@@ -15,15 +10,12 @@
 
 .catalog--tags {
   padding: 0 125px;
-
   ul {
     margin: 0;
     padding: 0;
     display: flex;
-    //gap: 20px 12px;
     flex-wrap: wrap;
     justify-content: center;
-
     li {
       list-style: none;
       border: 1px solid rgba(#556782, 0.25);
@@ -32,7 +24,6 @@
       transition: 0.3s all;
       margin-bottom: 20px;
       margin-right: 12px;
-
       a {
         text-decoration: none;
         color: #000;
@@ -42,14 +33,9 @@
         align-items: center;
         justify-content: center;
       }
-
       &:hover {
         border-color: rgba(#556782, 0.7);
         transition: 0.3s all;
-
-        a {
-
-        }
       }
     }
   }
@@ -60,16 +46,13 @@
 .stocks {
   display: flex;
   flex-direction: row;
-  align-items: top;
   margin-top: 40px;
-
   .heading {
     white-space: nowrap;
     .text {
       font-size: 26px;
       font-family: $fmed;
     }
-
     .date {
       margin-top: 8px;
       font-size: 12px;
@@ -80,14 +63,12 @@
 
 .stocks--items {
   margin-left: 30px;
-
   .swiper-wrapper {
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
-    //gap: 30px;
   }
   .stock--item {
     list-style: none;
@@ -112,8 +93,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-justify-content: space-between;
-  //gap: 30px 1%;
+  justify-content: space-between;
   a {
     display: block;
     width: 23.5%;
@@ -126,7 +106,6 @@ justify-content: space-between;
     text-decoration: none;
     margin-bottom: 30px;
   }
-
   .heading {
     display: inline-block;
     font-size: 22px;
@@ -147,7 +126,6 @@ justify-content: space-between;
 
 .category--item {
   overflow: hidden;
-
   &:before {
     transform: scale(1);
     transition: .2s all;
@@ -155,7 +133,6 @@ justify-content: space-between;
     height: 80% !important;
     background-position: left bottom !important;
   }
-
   &:hover {
     &:before {
       transform: scale(1.1);
@@ -164,33 +141,15 @@ justify-content: space-between;
   }
 }
 
-.ci--bg-green {
-  background: url("../img/tilebg-02.jpg") repeat;
-}
-.ci--bg-green2{
-  background: url("../img/tilebg-10.jpg") repeat;
-}
-.ci--bg-red {
-  background: url("../img/tilebg-07.jpg") repeat;
-}
-.ci--bg-yellow {
-  background: url("../img/tilebg-04.jpg") repeat;
-}
-.ci--bg-purple {
-  background: url("../img/tilebg-06.jpg") repeat;
-}
-.ci--bg-purple2 {
-  background: url("../img/tilebg-03.jpg") repeat;
-}
-.ci--bg-sand {
-  background: url("../img/tilebg-08.jpg") repeat;
-}
-.ci--bg-blue {
-  background: url("../img/tilebg-09.jpg") repeat;
-}
-.ci--bg-skyblue {
-  background: url("../img/tilebg-05.jpg") repeat;
-}
+.ci--bg-green {background: url("../img/tilebg-02.jpg") repeat;}
+.ci--bg-green2{background: url("../img/tilebg-10.jpg") repeat;}
+.ci--bg-red {background: url("../img/tilebg-07.jpg") repeat;}
+.ci--bg-yellow {background: url("../img/tilebg-04.jpg") repeat;}
+.ci--bg-purple {background: url("../img/tilebg-06.jpg") repeat;}
+.ci--bg-purple2 {background: url("../img/tilebg-03.jpg") repeat;}
+.ci--bg-sand {background: url("../img/tilebg-08.jpg") repeat;}
+.ci--bg-blue {background: url("../img/tilebg-09.jpg") repeat;}
+.ci--bg-skyblue {background: url("../img/tilebg-05.jpg") repeat;}
 
 .term-diody .category--header{
   background: url("../img/tilebg-02.jpg") repeat;
@@ -198,7 +157,6 @@ justify-content: space-between;
 
 .ci--diods {
   position: relative;
-
   &:before {
     display: block;
     content: "";
@@ -410,8 +368,6 @@ justify-content: space-between;
 }
 
 
-
-
 .page-template-catalog,
 .woocommerce-page {
   .footer .line1,
@@ -450,13 +406,17 @@ justify-content: space-between;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
- justify-content: space-between;
+ justify-content: flex-start;
   width: 100%;
   li {
     width: 23.5%;
     max-width: 344px;
     list-style: none;
     margin-bottom: 30px;
+    margin-right: 2%;
+    &:nth-child(4n){
+      margin-right: 0;
+    }
     img.attachment-woocommerce_thumbnail {
       cursor: pointer;
     }
@@ -488,7 +448,6 @@ justify-content: space-between;
 .term-serebro .category--header{background: url("../img/tilebg-08.jpg") repeat;}
 .term-radiolom .category--header{background: url("../img/tilebg-05.jpg") repeat;}
 .term-razyomy .category--header{background: url("../img/tilebg-07.jpg") repeat;}
-
 
 
 .catalog--products-ul {

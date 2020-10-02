@@ -141,7 +141,7 @@ $(document).ready(function () {
   const USD = stock_rub;
   const EUR = 1 / stock_eur * stock_rub;
   const STOCK_DATE = stock_date.toString();
-  const TYPES = ["кг", "шт", "г", "кольцо", "секцию", "2 секции", "контакт", "гр"];
+  const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт", "гр"];
 
   const CONST_HOST = 'http://testim.pw'; // храним ХОСТ
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a'; // ключи аутентификации
@@ -304,8 +304,9 @@ $(document).ready(function () {
             $.each(categoriesAPI, function () {
               $dropdown.append($("<option />").val(this.id).text(this.name));
             });
+            $dropdown.append($("<option disabled hidden selected value='9999'></option>").text("Выберите тип элемента"));
             $dropdown.prop('disabled', false);
-            fillChildSelect(1);
+            //fillChildSelect(1);
             isLoading(0);
           });
 
@@ -376,7 +377,7 @@ $(document).ready(function () {
       isLoading(0);
     } else {
       // запрос на АПИ
-      fetch(`${CONST_HOST}/wp-json/wc/v3/products?consumer_key=${CONST_CK}&consumer_secret=${CONST_CS}&category=${thiscatID}`)
+      fetch(`${CONST_HOST}/wp-json/wc/v3/products?consumer_key=${CONST_CK}&consumer_secret=${CONST_CS}&category=${thiscatID}&per_page=100`)
         .then(
           function (response) {
             if (response.status !== 200) {
@@ -626,7 +627,7 @@ $(document).ready(function () {
 
     // запрос на АПИ
     try {
-      let response = await fetch(`${CONST_HOST}/wp-json/wc/v3/products?consumer_key=${CONST_CK}&consumer_secret=${CONST_CS}&category=${thiscatID}`);
+      let response = await fetch(`${CONST_HOST}/wp-json/wc/v3/products?consumer_key=${CONST_CK}&consumer_secret=${CONST_CS}&category=${thiscatID}&per_page=100`);
       let item = await response.json();
 
       isLoading(0);

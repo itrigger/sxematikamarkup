@@ -6,9 +6,9 @@
 .logo {
   width: 254px;
   height: 26px;
-  background: url('../img/logo2-19.svg') 0 0 no-repeat;
+  background: url('../img/logo1.svg') 0 0 no-repeat;
   background-size: contain;
-  margin-left: 15px;
+  margin-left: 0;
   margin-top: 28px;
 }
 
@@ -43,8 +43,8 @@
 }
 
 .top-selector-wrapper {
-  margin-top: 20px;
-  line-height: 20px;
+  margin-top: 22px;
+  line-height: 17px;
   letter-spacing: 0.5px;
 }
 
@@ -63,7 +63,7 @@
   font-family: $fmed;
   font-size: 18px;
   margin-top: 30px;
-  margin-left: 15px;
+  margin-left: 20px;
 
   a {
     text-decoration: none;
@@ -73,11 +73,9 @@
 
 .top-btn-group {
   margin-top: 22px;
-  margin-left: 15px;
-
+  margin-left: 13px;
   .btn {
     margin-right: 10px;
-
     &:last-child {
       margin-right: 0;
     }
@@ -187,9 +185,12 @@
 }
 
 #header .social-btn-group{
-  display: none;
+  //display: none;
 }
-
+.social-btn-group {
+  margin-top: 27px;
+  margin-left: 20px;
+}
 @media (max-width: 1500px) and (min-width: 1024px) {
   .in {
     padding: 0 20px;
@@ -235,10 +236,29 @@
   }
   #header .social-btn-group{
     display: block;
+    margin-top: 2px;
+    margin-left: 0px;
   }
 
 }
 
-@media (min-width: 1025px) and (max-width: 1280px){
+@media (min-width: 1281px) and (max-width: 1440px){
+  .logo{
+    width: 204px;
+  }
+  #top-menu{
+    margin-left: 35px;
+    margin-top: 32px;
+  }
+}
 
+@media (max-width: 380px) {
+  .logo{
+    width: 160px;
+    height: 16px;
+    left: -10px;
+    margin-top: -2px;
+    position: relative;
+    margin-left: 0;
+  }
 }

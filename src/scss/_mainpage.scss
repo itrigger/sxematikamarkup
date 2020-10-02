@@ -1,42 +1,14 @@
 .main-page--categories-wrapper {
   position: relative;
-  padding-bottom: 80px;
   z-index: 9;
-
+  clip-path: polygon(100% 0, 100% 93%, 50% 100%, 0 93%, 0 0);
+  padding-bottom: 30px;
+  margin-bottom: -40px;
+  background: #fff;
   .in {
     z-index: 2;
   }
 
-  &:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: -100px;
-    right: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background: #fff;
-    z-index: 0;
-    transform: skewY(5deg);
-    transform-origin: top right;
-  }
-
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    bottom: -100px;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    background: #fff;
-    z-index: 0;
-    transform: skewY(-5deg);
-    transform-origin: top left;
-  }
 }
 
 .main-page--categories_title {
@@ -56,13 +28,14 @@
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border: none;
   width: 100%;
   padding: 14px 20px 12px;
   border-radius: 7px;
   position: relative;
   transition: 0.2s all;
-  background: #f9d564;
+  //background: #f9d564;
+  border: 1px solid #ccc;
+  background: #fff;
 
   &:after {
     position: absolute;
@@ -192,14 +165,24 @@
   background: url('/img/cats/mpcat-30.png') 0 0 no-repeat;
 }
 
-
+.block-hts:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: transparent;
+  border: none;
+  box-shadow: 0 0 30px 20px rgba(0, 0, 0, 0.3);
+}
 .block-hts {
   position: relative;
-  top: -110px;
-  padding-top: 110px;
-  margin-bottom: -90px;
+  padding-top: 30px;
+  margin-bottom: 20px;
   color: #fff;
-  background: #0fc097;
+  background: url(../img/details-bg.png) center -80px repeat-x #0fc097;
 
   h1 {
     text-align: center;
@@ -242,7 +225,8 @@
       width: 441px;
 
       .pic {
-        margin-top: 58px;
+        margin-top: 41px;
+        line-height: 0;
       }
     }
 
@@ -250,7 +234,7 @@
       width: 437px;
 
       .pic {
-        margin-top: 25px;
+        margin-top: 40px;
         text-align: center;
         line-height: 0;
       }
@@ -260,7 +244,8 @@
       width: 441px;
 
       .pic {
-        margin-top: 40px;
+        margin-top: 41px;
+        line-height: 0;
       }
     }
   }
@@ -512,96 +497,6 @@
 }
 
 
-.form--wrap .form .f_line span {
-  width: 50%;
-}
-
-.form--wrap .form .f_line span.your-message {
-  width: 100%;
-}
-
-.form--wrap .form .f_line input[type=text],
-.form--wrap .form .f_line input[type=tel] {
-  width: 100%;
-}
-
-.form--wrap .form .f_line input[type=tel] {
-  font-size: 15px;
-  padding: 10px;
-  height: 45px;
-}
-
-.form--wrap .form .f_line span:first-child input[type=text] {
-  border-radius: 3px 0 0 3px;
-  border-right: 1px solid #ccc;
-}
-
-.form--wrap .form .f_line span:last-child input[type=tel] {
-  border-radius: 0 3px 3px 0;
-}
-
-.wpcf7-submit {
-  padding: 8px 17px;
-  text-decoration: none;
-  border: 2px solid;
-  border-radius: 3px;
-  font-family: Stem-Medium, sans-serif;
-  font-size: 16px;
-  word-break: keep-all;
-  display: inline-block;
-  transition: all .2s;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  background: #0bbc93 !important;
-  border-color: #0bbc93;
-}
-
-.wpcf7-submit:hover {
-  background: #40cdad !important;
-  border-color: #40cdad;
-  transition: all .2s;
-}
-
-.form--wrap .form .f_line {
-  position: relative;
-}
-
-div.wpcf7 .ajax-loader {
-  position: absolute;
-  width: 16px !important;
-  right: 10px;
-  top: 30px;
-}
-
-.form p {
-  margin: 0;
-}
-
-.wpcf7-response-output {
-  font-size: 13px;
-  margin: 10px 0 0;
-}
-
-.form--wrap .form .f_line input[type=text].wpcf7-not-valid,
-.form--wrap .form .f_line input[type=tel].wpcf7-not-valid,
-.form--wrap .form .f_line input[type=email].wpcf7-not-valid {
-  background-color: #f3a9a9;
-}
-
-.wpcf7-not-valid-tip {
-  display: none !important;
-}
-
-.form--wrap .form .f_line textarea {
-  height: 90px;
-}
-
-input[type=submit] {
-  &:focus, &:active {
-    outline: none;
-  }
-}
 
 .fancybox-content {
   background: transparent !important;
@@ -975,6 +870,7 @@ a.big-vb {
   .block-process .desc {
     max-width: 80%;
     margin: 0 auto;
+    text-align: center;
   }
   .main-page--blog .flex {
     flex-direction: column;

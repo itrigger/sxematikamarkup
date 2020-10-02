@@ -188,18 +188,25 @@
 .els-row-1 .els-del{
   display: none !important;}
 
+.catalog--products-ul .product .catalog--item--name .title{
+  display: none;
+}
+
 @media (min-width: 661px) and (max-width: 1024px){
   .els-row{
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2%;
     align-items: baseline;
     justify-content: flex-start;
   }
   .el-wrap{
     flex-basis: 49%;
+    margin-right: 2%;
     &.labeled-input{
       flex-basis: auto;
+    }
+    &:nth-child(2n){
+      margin-right: 0;
     }
   }
   .calculator select{
