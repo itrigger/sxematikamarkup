@@ -159,6 +159,14 @@ $(document).ready(function () {
     $(".stocks_palladium").text(Math.round((PALLADIUM * USD + Number.EPSILON) * 100) / 100 + " RUB");
     //$(".stocks .date").text(STOCK_DATE.slice(0, 2) + "." + STOCK_DATE.slice(2, 4) + "." + STOCK_DATE.slice(4, 8));
     $(".stocks .date").text(STOCK_DATE.slice(6, 8) + "." + STOCK_DATE.slice(4, 6) + "." + STOCK_DATE.slice(0, 4));
+
+    if(stock_rub > old_stock_rub){$(".stocks_usd").addClass("stock-up");} else {$(".stocks_usd").addClass("stock-down");}
+    if(stock_eur > old_stock_eur){$(".stocks_eur").addClass("stock-up");} else {$(".stocks_eur").addClass("stock-down");}
+    if(stock_gold > old_stock_gold){$(".stocks_gold").addClass("stock-up");} else {$(".stocks_gold").addClass("stock-down");}
+    if(stock_silver > old_stock_silver){$(".stocks_silver").addClass("stock-up");} else {$(".stocks_silver").addClass("stock-down");}
+    if(stock_platinum > old_stock_platinum){$(".stocks_platinum").addClass("stock-up");} else {$(".stocks_platinum").addClass("stock-down");}
+    if(stock_palladium > old_stock_palladium){$(".stocks_palladium").addClass("stock-up");} else {$(".stocks_palladium").addClass("stock-down");}
+
   }
 
   /* Add fancybox to product img */
