@@ -40,7 +40,47 @@
 }
 
 .separator{
-  margin-bottom: 160px;
+  margin-bottom: 20px;
+}
+
+.hintbox{
+  margin: 20px auto 30px;
+  max-width: 95%;
+  border: 1px solid rgba(#556782, 0.25);
+  padding: 25px 25px 35px;
+  text-align: center;
+  background: #fff;
+  border-radius: 15px;
+  font-size: 17px;
+  line-height: 27px;
+}
+.page-template-print{
+  h1{
+    text-align: center;
+  }
+}
+.price_btn_wrapper{
+  text-align: center;
+}
+.hintbox-text{
+  width: 90%;
+  margin: 0 auto;
+}
+.ico-alert{
+  display: inline-block;
+  position: relative;
+  left: 0;
+  top: 0;
+  margin-right: 10px;
+  font-family: $fmed;
+  font-size: 26px;
+  line-height: 32px;
+  color: #fff;
+  text-align: center;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background: #566783;
 }
 
 @media (min-width: 320px) and (max-width: 1024px){

@@ -210,6 +210,39 @@ p{
   }
 }
 
+.page-template-print, .page-template-catalog{
+  position: relative;
+  &:before{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 76px;
+    right: 0;
+    bottom: 0;
+    background: url("../img/details-bg-fill-13-03.png") repeat;
+    height: 340px;
+    width: 100%;
+    z-index: -2;
+  }
+  &:after{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 320px;
+    height: 200px;
+    width: 100%;
+    background: rgb(255,255,255);
+    background: -moz-linear-gradient(0deg, rgba(255,255,255,1) 39%, rgba(159,213,241,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(255,255,255,1) 39%, rgba(159,213,241,0) 100%);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 39%, rgba(159,213,241,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#9fd5f1",GradientType=1);
+    z-index: -1;
+  }
+}
+
 @media (max-width: 660px) {
   body{
     font-size: 15px;
