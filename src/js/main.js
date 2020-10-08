@@ -199,7 +199,16 @@ $(document).ready(function () {
     $(".catalog--products-ul .product img.attachment-woocommerce_thumbnail").on('click', function () {
       $.fancybox.open({
         src: $(this).attr('src'),
-        type: 'image'
+        type: 'image',
+        buttons: [
+          "close"
+        ],
+        opts : {
+          afterShow : function( instance, current ) {
+            $(".fancybox-content").append("<div class='fancy_close'><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1\" viewBox=\"0 0 24 24\"><path d=\"M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z\"></path></svg></div>")
+          }
+        }
+        //fancybox-content
       });
     });
 
