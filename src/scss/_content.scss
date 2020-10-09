@@ -68,6 +68,9 @@ h2.entry-title{
       color: #000;
       border-bottom: 2px solid #0bbc93;
       text-decoration: none;
+      &:hover{
+        border-bottom-color: rgba(#000, 0.2);
+      }
     }
   }
   .blogs-item__desc{
@@ -88,7 +91,11 @@ h2.entry-title{
     display: none;
   }
 }
-
+.blogs-item__more_w a{
+  &:hover{
+    border-bottom-color: rgba(#000, 0.2);
+  }
+}
 #map{
   height: 540px;
   width: 100%;
@@ -189,6 +196,10 @@ h2.entry-title{
       padding-top: 5px;
     }
   }
+}
+
+.content .about{
+
 }
 
 @media (min-width: 661px) and (max-width: 1024px){

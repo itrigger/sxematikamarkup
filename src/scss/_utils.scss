@@ -194,9 +194,11 @@ body{
   border-radius: 50%;
   opacity: 1;
   padding: 10px;
-  right: 0;
-  top: 0;
+  right: -22px;
+  top: -22px;
   position: absolute;
+  width: 44px;
+  height: 44px;
 }
 
 @media (min-width: 660px) and (max-width: 1024px){

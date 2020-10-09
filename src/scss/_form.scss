@@ -174,3 +174,105 @@ input[type=submit] {
     outline: none;
   }
 }
+
+
+.whitebg{
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  .heading{
+    font-family: $fmed;
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
+.form--wrap:before{
+  pointer-events: none;
+}
+#restable{
+  width: 100%;
+  max-width: 980px;
+  table{
+    border-collapse: collapse;
+    width: 100%;
+  }
+  tr{
+    border-bottom: 1px solid #ccc;
+    &:last-child{
+      border-bottom: none;
+    }
+    &:nth-child(2n){
+      td{
+        background: #F2F4F5;
+      }
+    }
+  }
+  td{
+    border: none;
+    font-size: 18px;
+    padding: 20px;
+  }
+  .col1{
+
+  }
+  .col2{
+    font-family: $fmed;
+  }
+  .col3{
+    white-space: nowrap;
+    .izm{
+      font-size: 15px;
+      color: #5D687A;
+    }
+  }
+  .col4{
+    white-space: nowrap;
+    .sum{
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 15px;
+      color: #5D687A;
+    }
+  }
+  .totalsum{
+    background: #fff !important;
+    text-align: right;
+    font-size: 36px;
+    font-family: $fmed;
+    div{
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-end;
+      text-align: right;
+      .yellow-rounded{
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+#popupform{
+  .form--wrap .form .f_line input[type=submit]{
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 990px){
+  #restable td {
+    font-size: 16px;
+    padding: 10px;
+  }
+  #restable .totalsum{
+    font-size: 26px;
+  }
+  .whitebg .heading{
+    font-size: 30px;
+  }
+}
+@media (max-width: 990px) {
+  #restable td{
+    display: block;
+  }
+}

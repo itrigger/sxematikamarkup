@@ -200,12 +200,13 @@ $(document).ready(function () {
       $.fancybox.open({
         src: $(this).attr('src'),
         type: 'image',
-        buttons: [
-          "close"
-        ],
+        toolbar: false,
         opts : {
+          beforeShow : function( instance, current ) {
+            $(".fancybox-toolbar").css("display","none");
+          },
           afterShow : function( instance, current ) {
-            $(".fancybox-content").append("<div class='fancy_close'><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1\" viewBox=\"0 0 24 24\"><path d=\"M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z\"></path></svg></div>")
+            $(".fancybox-content").append("<div class='fancy_close'><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1\" viewBox=\"0 0 24 24\"><path d=\"M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z\"></path></svg></div>");
           }
         }
         //fancybox-content
@@ -354,8 +355,8 @@ $(document).ready(function () {
 
           /*Fill fields from localstorage*/
           let lsArr = [];
-          if (localStorage.getItem('order') !== null) {
-            lsArr = JSON.parse(localStorage.getItem('order'));
+          if (sessionStorage.getItem('order') !== null) {
+            lsArr = JSON.parse(sessionStorage.getItem('order'));
             getFromLs(lsArr).then(r => console.log('Data loaded from local storage!'));
           }
           // ToDo: заполнить второй селект
@@ -391,10 +392,10 @@ $(document).ready(function () {
     delete_notify($childDD); // удаляем все сообщения об ошибках и красную обводку с поля
 
 
-    if (localStorage.getItem('category' + thiscatID) !== null) {
+    if (sessionStorage.getItem('category' + thiscatID) !== null) {
 
       let lsArr = [];
-      lsArr = JSON.parse(localStorage.getItem('category' + thiscatID));
+      lsArr = JSON.parse(sessionStorage.getItem('category' + thiscatID));
 
       $childDD.empty(); // очищаем селект
 
@@ -470,8 +471,8 @@ $(document).ready(function () {
 
                 }
 
-                if (localStorage.getItem('category' + thiscatID) === null) {
-                  localStorage.setItem('category' + thiscatID, JSON.stringify(temp));
+                if (sessionStorage.getItem('category' + thiscatID) === null) {
+                  sessionStorage.setItem('category' + thiscatID, JSON.stringify(temp));
                 }
 
                 $childDD.prop('disabled', false);
@@ -549,15 +550,15 @@ $(document).ready(function () {
       temp[i - 1] = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
     }
 
-    localStorage.setItem('order', JSON.stringify(temp)); //превращаем все данные в строку и сохраняем в локальное хранилище
+    sessionStorage.setItem('order', JSON.stringify(temp)); //превращаем все данные в строку и сохраняем в локальное хранилище
 
   }
 
   //Удаление строки из локального хранилища
   const removeFromLS = function (rowID) {
-    let items = JSON.parse(localStorage.getItem('order'));
+    let items = JSON.parse(sessionStorage.getItem('order'));
     const filteredItems = items.slice(0, rowID - 1).concat(items.slice(rowID, items.length))
-    localStorage.setItem('order', JSON.stringify(filteredItems));
+    sessionStorage.setItem('order', JSON.stringify(filteredItems));
   }
 
 
@@ -605,10 +606,10 @@ $(document).ready(function () {
 
       //тут await заполнения второго селекта
       // Проверяем, был ли такой запрос, есть ли объект с данными уже в локальном хранилище
-      if (localStorage.getItem('category' + catId) !== null) {
+      if (sessionStorage.getItem('category' + catId) !== null) {
         let lsArr = [];
 
-        lsArr = JSON.parse(localStorage.getItem('category' + catId));
+        lsArr = JSON.parse(sessionStorage.getItem('category' + catId));
         $row.find('.el-name').empty();
         for (const [i, arr] of lsArr.entries()) {
           if (arr[8] !== '999999') {
@@ -706,22 +707,22 @@ $(document).ready(function () {
     delete_notify();
 
     $(".els-body").append('<div class="els-row els-row-' + rowId + ' collapsed" data-id="' + rowId + '">\n' +
-      '        <div class="els-del">×</div><div class="el-wrap">\n' +
+      '        <div class="els-del">×</div><div class="el-wrap ew1">\n' +
       '          <select class="el-type" name="el-type" disabled>\n' +
       '            <option disabled hidden selected value="">Выберите тип элемента</option>\n' +
       '          </select>\n' +
       '        </div>\n' +
-      '        <div class="el-wrap">\n' +
+      '        <div class="el-wrap ew2">\n' +
       '          <select class="el-name" name="el-name" disabled>\n' +
       '            <option disabled hidden selected value="">Наименование</option>\n' +
       '          </select>\n' +
       '        </div>\n' +
-      '        <div class="el-wrap labeled-input">\n' +
+      '        <div class="el-wrap labeled-input ew3">\n' +
       '          <label>Количество\n' +
       '            <input  type="text" value="1" class="inputCount"/> <span class="typeOfCount">кг.</span>\n' +
       '          </label>\n' +
       '        </div>\n' +
-      '        <div class="el-wrap labeled-input input-dark to-right">\n' +
+      '        <div class="el-wrap ew4 labeled-input input-dark to-right">\n' +
       '          <label>Сумма</label>\n' +
       '          <div class="row-total"><span>0</span> ₽</div>\n' +
       '        </div>\n' +
@@ -799,22 +800,22 @@ $(document).ready(function () {
         delete_notify($errorInput);
         rowsCount += 1;
         $(".els-body").append('<div class="els-row els-row-' + rowsCount + ' collapsed" data-id="' + rowsCount + '">\n' +
-          '        <div class="els-del">×</div><div class="el-wrap">\n' +
+          '        <div class="els-del">×</div><div class="el-wrap ew1">\n' +
           '          <select class="el-type" name="el-type" disabled>\n' +
           '            <option disabled hidden selected value="">Выберите тип элемента</option>\n' +
           '          </select>\n' +
           '        </div>\n' +
-          '        <div class="el-wrap">\n' +
+          '        <div class="el-wrap ew2">\n' +
           '          <select class="el-name" name="el-name" disabled>\n' +
           '            <option disabled hidden selected value="">Наименование</option>\n' +
           '          </select>\n' +
           '        </div>\n' +
-          '        <div class="el-wrap labeled-input">\n' +
+          '        <div class="el-wrap ew3 labeled-input">\n' +
           '          <label>Количество\n' +
           '            <input  type="text" value="1" class="inputCount"/> <span class="typeOfCount">кг.</span>\n' +
           '          </label>\n' +
           '        </div>\n' +
-          '        <div class="el-wrap labeled-input input-dark to-right">\n' +
+          '        <div class="el-wrap ew4 labeled-input input-dark to-right">\n' +
           '          <label>Сумма</label>\n' +
           '          <div class="row-total"><span>0</span> ₽</div>\n' +
           '        </div>\n' +
@@ -869,15 +870,18 @@ $(document).ready(function () {
       src: '#popupform',
       type: 'inline',
       opts: {
-        afterShow: function (instance, current) {
-          let lsArr = JSON.parse(localStorage.getItem('order'));
+        beforeShow: function (instance, current) {
+          $("#restable table").html("");
+          let lsArr = JSON.parse(sessionStorage.getItem('order'));
           for (const [i, arr] of lsArr.entries()) {
             $("#z1").val($("#z1").val() + "_" + arr[1]);
             $("#z2").val($("#z2").val() + "_" + arr[2]);
             $("#z3").val($("#z3").val() + "_" + arr[3]);
             $("#z4").val($("#z4").val() + "_" + arr[4]);
             $("#z5").val($("#z5").val() + "_" + arr[5]);
+            $("#restable table").append("<tr><td class='col1'>"+arr[1]+"</td><td class='col2'>"+arr[2]+"</td><td class='col3'>"+arr[3]+" <span class='izm'>"+arr[4]+"</span></td><td class='col4'><span class='sum'>Сумма </span>"+arr[5]+" ₽</td></tr>");
           }
+          $("#restable table").append("<tr><td colspan='4' class='totalsum'><div><span class='yellow-rounded'>Итого</span> "+$('#els-total-price-num span').text() +" ₽</div></td></tr>");
         }
       }
     });
@@ -921,12 +925,9 @@ $(document).ready(function () {
 
 });
 
+
 /* ToDO
     0. Максимальное кол-во строк в калькуляторе??
     1. Сделать проверку на "только цифры" в поле ввода кол-ва
-    4. Отправка данных на почту
-    5. Формирование таблицы с прайсом и сохранение в пдф
-    6. BUG! На движке при первой загрузке не заполняется дочерний селект
-    7. Как чистить локалсторадж, если есть обновы?
 */
 
