@@ -174,6 +174,10 @@
     }
   }
 }
+.ci--tranzistory:before{
+  width: 70% !important;
+  height: 70% !important;
+}
 
 .ci--bg-green {background: url("../img/tilebg-02.jpg") repeat;}
 .ci--bg-green2{background: url("../img/tilebg-10.jpg") repeat;}
@@ -309,8 +313,8 @@
     content: "";
     position: absolute;
     background: url("../img/cats/tranzistor.png") 0 0 no-repeat;
-    width: 468px;
-    height: 408px;
+    width: 316px;
+    height: 339px;
     left: 0;
     bottom: 0;
     background-size: contain;

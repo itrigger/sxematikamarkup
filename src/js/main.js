@@ -160,7 +160,7 @@ $(document).ready(function () {
     //$(".stocks .date").text(STOCK_DATE.slice(0, 2) + "." + STOCK_DATE.slice(2, 4) + "." + STOCK_DATE.slice(4, 8));
     $(".stocks .date").text(STOCK_DATE.slice(6, 8) + "." + STOCK_DATE.slice(4, 6) + "." + STOCK_DATE.slice(0, 4));
 
-    if(old_stock_rub) {
+    if (old_stock_rub) {
       if (stock_rub > old_stock_rub) {
         $(".stocks_usd").addClass("stock-up");
       } else {
@@ -201,11 +201,11 @@ $(document).ready(function () {
         src: $(this).attr('src'),
         type: 'image',
         toolbar: false,
-        opts : {
-          beforeShow : function( instance, current ) {
-            $(".fancybox-toolbar").css("display","none");
+        opts: {
+          beforeShow: function (instance, current) {
+            $(".fancybox-toolbar").css("display", "none");
           },
-          afterShow : function( instance, current ) {
+          afterShow: function (instance, current) {
             $(".fancybox-content").append("<div class='fancy_close'><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1\" viewBox=\"0 0 24 24\"><path d=\"M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z\"></path></svg></div>");
           }
         }
@@ -873,15 +873,17 @@ $(document).ready(function () {
         beforeShow: function (instance, current) {
           $("#restable table").html("");
           let lsArr = JSON.parse(sessionStorage.getItem('order'));
-          for (const [i, arr] of lsArr.entries()) {
-            $("#z1").val($("#z1").val() + "_" + arr[1]);
-            $("#z2").val($("#z2").val() + "_" + arr[2]);
-            $("#z3").val($("#z3").val() + "_" + arr[3]);
-            $("#z4").val($("#z4").val() + "_" + arr[4]);
-            $("#z5").val($("#z5").val() + "_" + arr[5]);
-            $("#restable table").append("<tr><td class='col1'>"+arr[1]+"</td><td class='col2'>"+arr[2]+"</td><td class='col3'>"+arr[3]+" <span class='izm'>"+arr[4]+"</span></td><td class='col4'><span class='sum'>Сумма </span>"+arr[5]+" ₽</td></tr>");
+          if (lsArr) {
+            for (const [i, arr] of lsArr.entries()) {
+              $("#z1").val($("#z1").val() + "_" + arr[1]);
+              $("#z2").val($("#z2").val() + "_" + arr[2]);
+              $("#z3").val($("#z3").val() + "_" + arr[3]);
+              $("#z4").val($("#z4").val() + "_" + arr[4]);
+              $("#z5").val($("#z5").val() + "_" + arr[5]);
+              $("#restable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>Сумма </span>" + arr[5] + " ₽</td></tr>");
+            }
+            $("#restable table").append("<tr><td colspan='4' class='totalsum'><div><span class='yellow-rounded'>Итого</span> " + $('#els-total-price-num span').text() + " ₽</div></td></tr>");
           }
-          $("#restable table").append("<tr><td colspan='4' class='totalsum'><div><span class='yellow-rounded'>Итого</span> "+$('#els-total-price-num span').text() +" ₽</div></td></tr>");
         }
       }
     });
