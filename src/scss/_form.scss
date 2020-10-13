@@ -190,7 +190,10 @@ input[type=submit] {
 .form--wrap:before{
   pointer-events: none;
 }
-#restable{
+#printtable{
+  position:fixed; left: -9999px;top:0;
+}
+#restable, #printtable{
   width: 100%;
   max-width: 980px;
   table{
@@ -259,6 +262,19 @@ input[type=submit] {
   }
 }
 
+#print, #print_all{
+  background: #617791;
+  color: #fff;
+  border: 2px solid #dde1e8;
+
+  &:hover{
+    background: rgba(#617791,0.7);
+  }
+}
+#print_all{
+  margin-left: 10px;
+  border: 2px solid #617791;
+}
 @media (max-width: 990px){
   #restable td {
     font-size: 16px;

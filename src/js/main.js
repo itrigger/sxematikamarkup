@@ -4,6 +4,8 @@ require("@fancyapps/fancybox");
 import Swiper from 'swiper/bundle';
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import print from 'print-js';
+
 
 $(document).ready(function () {
 
@@ -864,16 +866,17 @@ $(document).ready(function () {
 
 
   //Заполняем скрытые поля в форме ContactForm7 данными из локального хранилища
-  $('.send-btn-wrapper a').on('click', function (e) {
+  $('.send-btn-wrapper a.btn-secondary').on('click', function (e) {
     e.preventDefault();
-    $.fancybox.open({
-      src: '#popupform',
-      type: 'inline',
-      opts: {
-        beforeShow: function (instance, current) {
-          $("#restable table").html("");
-          let lsArr = JSON.parse(sessionStorage.getItem('order'));
-          if (lsArr) {
+    let lsArr = JSON.parse(sessionStorage.getItem('order'));
+    if (lsArr) {
+      $.fancybox.open({
+        src: '#popupform',
+        type: 'inline',
+        opts: {
+          beforeShow: function (instance, current) {
+            $("#restable table").html("");
+
             for (const [i, arr] of lsArr.entries()) {
               $("#z1").val($("#z1").val() + "_" + arr[1]);
               $("#z2").val($("#z2").val() + "_" + arr[2]);
@@ -883,14 +886,62 @@ $(document).ready(function () {
               $("#restable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>Сумма </span>" + arr[5] + " ₽</td></tr>");
             }
             $("#restable table").append("<tr><td colspan='4' class='totalsum'><div><span class='yellow-rounded'>Итого</span> " + $('#els-total-price-num span').text() + " ₽</div></td></tr>");
+
           }
         }
-      }
-    });
+      });
+    } else {
+      return false;
+    }
     /*
 */
   });
 
+
+  //печать накладной
+  $("#print").on("click", function () {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    today = dd + '.' + mm + '.' + yyyy;
+
+    $("#printtable table").html("");
+
+    let lsArr = JSON.parse(sessionStorage.getItem('order'));
+    if (lsArr) {
+      for (const [i, arr] of lsArr.entries()) {
+        $("#printtable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>Сумма </span>" + arr[5] + " ₽</td></tr>");
+      }
+      $("#printtable table").append("<tr><td colspan='4' class='totalsum'><span class='yellow-rounded'>Итого</span> " + $('#els-total-price-num span').text() + " ₽</td></tr>");
+      //https://printjs.crabbly.com/
+      printJS({
+        printable: 'printtable',
+        type: 'html',
+        header: '<div style="text-align: center; margin-bottom: 20px;"><img src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /> - заказ от ' + today + '</div>',
+        style: "#printtable table{border-collapse:collapse;width:100%}#printtable td{border:1px solid #ccc;font-size:18px;padding:10px}#printtable .col2{font-weight:bold;}#printtable .col3{white-space:nowrap}#printtable .col3 .izm{font-size:15px;color:#5d687a}#printtable .col4{white-space:nowrap}#printtable .col4 .sum{display:inline-block;margin-right:10px;font-size:15px;color:#5d687a}#printtable .totalsum{border: none; font-size:30px !important;text-align:right;}#printtable .totalsum .yellow-rounded{margin-right:10px}"
+      })
+    } else {
+      return false;
+    }
+  });
+
+  $("#print_all").on("click", function () {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    today = dd + '.' + mm + '.' + yyyy;
+
+      printJS({
+        printable: 'tabletext',
+        type: 'html',
+        style: 'table{border-collapse:collapse;}table td{border:1px solid #ccc;padding:5px;}table tr{border:none;}'
+      })
+
+  });
 
 });
 
