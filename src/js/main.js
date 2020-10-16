@@ -151,6 +151,11 @@ $(document).ready(function () {
   const $dropdown = $(".el-type-1"); // начальные ссылки на селекты
   const $dropdownChild = $(".el-name-1");
 
+  let lsArr = JSON.parse(sessionStorage.getItem('order'));
+  if (lsArr) {
+    $("#print").addClass("active");
+  }
+
   //Заполняем данные блока Биржевые котировки (данные получены с помощью php и сохраняются в кэше WP)
   if ($(".stocks--items").length > 0) {
     $(".stocks_usd").text(Math.round((USD + Number.EPSILON) * 100) / 100 + " ₽");
@@ -379,6 +384,7 @@ $(document).ready(function () {
 // заполняем дочерний селект при выборе опции в родительском
   const fillChildSelect = function (id, catId = 0) {
     isLoading(1); //Отображаем лоадер
+    $("#print").addClass("active");
     let thiscatID = 0;
     let $row = $('.els-row-' + id);
 
@@ -864,6 +870,34 @@ $(document).ready(function () {
     getTotalPrice(); // пересчет итоговой цены
   })
 
+  $(".btn-put-to-storage a").on("click", function (e) {
+    if ($(this).hasClass("added")) {
+      e.preventDefault();
+      return false;
+    } else {
+      e.preventDefault();
+      let curSS = JSON.parse(sessionStorage.getItem('order'));
+      let temp = [];
+
+      let lsType = $('.category--header h1').text(); //Название категории
+      let lsName = $(this).parent().parent().parent().find('.woocommerce-loop-product__title').text(); //Название самой радиодетали
+      let lsId = $(this).parent().parent().parent().find('.item--id').text(); //ID самой радиодетали
+      let lsCount = "1"; //Кол-во радиодеталей
+      let lsTypeOf = $(this).parent().parent().parent().find('.itemcount').text(); //Мера исчисления (1 - кг, 2 - штуки)
+      let lsRowSum = $(this).parent().parent().parent().find('.price_value').text(); //Сумма как (кол-во * меру исчисления)
+
+
+      if(curSS) {
+        temp = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
+        curSS.push(temp);
+        sessionStorage.setItem('order', JSON.stringify(curSS));
+      } else {
+        temp[0] = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
+        sessionStorage.setItem('order', JSON.stringify(temp));
+      }
+      $(this).addClass("added").text("Добавлено!");
+    }
+  });
 
   //Заполняем скрытые поля в форме ContactForm7 данными из локального хранилища
   $('.send-btn-wrapper a.btn-secondary').on('click', function (e) {
@@ -935,11 +969,11 @@ $(document).ready(function () {
 
     today = dd + '.' + mm + '.' + yyyy;
 
-      printJS({
-        printable: 'tabletext',
-        type: 'html',
-        style: 'table{border-collapse:collapse;}table td{border:1px solid #ccc;padding:5px;}table tr{border:none;}'
-      })
+    printJS({
+      printable: 'tabletext',
+      type: 'html',
+      style: 'table{border-collapse:collapse;}table td{border:1px solid #ccc;padding:5px;}table tr{border:none;}'
+    })
 
   });
 

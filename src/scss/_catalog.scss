@@ -405,6 +405,46 @@
   }
 }
 
+.ico-calc{
+  display: inline-block;
+  margin-left: 10px;
+  width: 16px;
+  height: 16px;
+  background: url('../img/calculator.svg') 0 0 no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 8px;
+}
+
+.btns-wrapper{
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.btn-buy-wrapper{
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.btn-put-to-storage a.btn{
+  padding-right: 38px;
+  background: #617791;
+  color: #fff;
+  border-color: #617791;
+  &:hover{
+    background: rgba(#617791,0.8);
+    border-color: #617791;
+  }
+  &.added{
+    padding-right: 20px;
+    opacity: 0.8;
+    transition: all 0s;
+    cursor: default;
+  }
+}
 
 .page-template-catalog,
 .woocommerce-page {
@@ -539,7 +579,6 @@
   }
 }
 .btn-buy-wrapper{
-  margin-top: 12px;
   text-align: left;
 }
 .woocommerce nav.woocommerce-pagination ul{
