@@ -23,7 +23,11 @@ $(document).ready(function () {
       renderBullet: function (index, className) {
         return '<span class="' + className + '"></span>';
       },
-    }
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
   });
 
   const mySwiper3 = new Swiper('.cont2', {
@@ -208,14 +212,16 @@ $(document).ready(function () {
         src: $(this).attr('src'),
         type: 'image',
         toolbar: false,
-        opts: {
+
           beforeShow: function (instance, current) {
             $(".fancybox-toolbar").css("display", "none");
           },
           afterShow: function (instance, current) {
-            $(".fancybox-content").append("<div class='fancy_close'><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1\" viewBox=\"0 0 24 24\"><path d=\"M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z\"></path></svg></div>");
-          }
-        }
+            $(".fancybox-content").prepend("<div class='fancy_close'><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1\" viewBox=\"0 0 24 24\"><path d=\"M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z\"></path></svg></div>");
+          },
+
+        clickContent: 'close',
+        buttons: ['close']
         //fancybox-content
       });
     });
@@ -366,7 +372,7 @@ $(document).ready(function () {
             lsArr = JSON.parse(sessionStorage.getItem('order'));
             getFromLs(lsArr).then(r => console.log('Data loaded from local storage!'));
           }
-          // ToDo: заполнить второй селект
+
 
         }
       )
@@ -406,7 +412,7 @@ $(document).ready(function () {
       lsArr = JSON.parse(sessionStorage.getItem('category' + thiscatID));
 
       $childDD.empty(); // очищаем селект
-
+      $childDD.append($("<option hidden disabled selected value='9999'></option>").text("Выберите наименование"));
       for (const [i, arr] of lsArr.entries()) {
         if (arr[8] !== '999999') {
           $childDD.append($("<option />")
@@ -419,7 +425,8 @@ $(document).ready(function () {
               'data-pd': arr[6],
               'data-counttype': arr[7],
               'data-fixprice': arr[8],
-            }).prop('selected', true));
+            //}).prop('selected', true));
+            }));
         }
       }
 
@@ -444,6 +451,7 @@ $(document).ready(function () {
               let temp = [];
               if (data.length) {
                 $childDD.empty(); // очищаем селект
+                $childDD.append($("<option hidden disabled selected value='9999'></option>").text("Выберите наименование"));
                 let i = 0;
                 for (let key in productsAPI) {
                   // заполняем селект данными
@@ -459,7 +467,8 @@ $(document).ready(function () {
                           'data-pd': productsAPI[key].meta_data[6].value,
                           'data-counttype': productsAPI[key].meta_data[8].value,
                           'data-fixprice': productsAPI[key].meta_data[10].value,
-                        }).prop('selected', true));
+                        //}).prop('selected', true));
+                        }));
 
                       //заполняем локальное хранилище
 
@@ -476,7 +485,6 @@ $(document).ready(function () {
                       i++;
                     }
                   }
-
                 }
 
                 if (sessionStorage.getItem('category' + thiscatID) === null) {
@@ -484,7 +492,10 @@ $(document).ready(function () {
                 }
 
                 $childDD.prop('disabled', false);
-                getPrice(id);
+                if($childDD.find('option:selected').attr('value').toString() !== '9999') {
+                  getPrice(id);
+                }
+
               } else {
                 $childDD.empty(); // очищаем селект
                 $childDD.append($("<option />")
@@ -683,7 +694,6 @@ $(document).ready(function () {
 
       isLoading(0);
       $childDD.empty(); // очищаем селект
-
       for (let key in item) {
         // заполняем селект данными
         if (item.hasOwnProperty(key)) {
@@ -891,12 +901,19 @@ $(document).ready(function () {
         temp = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
         curSS.push(temp);
         sessionStorage.setItem('order', JSON.stringify(curSS));
+        $(".alertwindow").addClass("active").find(".textall").text("Всего деталей: "+curSS.length);
       } else {
         temp[0] = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
         sessionStorage.setItem('order', JSON.stringify(temp));
+        $(".alertwindow").addClass("active").find(".textall").text("Всего деталей: 1");
       }
+
       $(this).addClass("added").text("Добавлено!");
     }
+  });
+
+  $(".alertwindow .btn-close").click(function () {
+    $(".alertwindow").removeClass("active");
   });
 
   //Заполняем скрытые поля в форме ContactForm7 данными из локального хранилища

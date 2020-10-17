@@ -492,6 +492,9 @@
     list-style: none;
     margin-bottom: 30px;
     margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+
     &:nth-child(4n){
       margin-right: 0;
     }
@@ -559,6 +562,7 @@
     }
 
     .price_w {
+      margin-top: auto;
       display: flex;
       align-items: baseline;
     }
@@ -620,7 +624,52 @@
     font-size: 17px;
   }
 
-
+.alertwindow{
+  position: fixed;
+  right: 20px;
+  top: 70px;
+  padding: 15px 15px 15px 72px;
+  width: 270px;
+  background: #617791;
+  color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 10px rgba(#000,0.2);
+  opacity: 0;
+  transition: all 0.3s;
+  font-size: 15px;
+  &.active{
+    opacity: 1;
+    transition: all 0.3s;
+  }
+  .text{
+    margin-bottom: 4px;
+  }
+  .textall{
+    margin-bottom: 4px;
+  }
+  .btn-w{
+    a{
+      color: #fff;
+    }
+  }
+  .ico-calc{
+    display: block;
+    width: 56px;
+    height: 56px;
+    top: 16px;
+    right: auto;
+    left: 0;
+  }
+  .btn-close{
+    color: #fff;
+    font-size: 20px;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+  }
+}
 
 @media (min-width: 661px) and (max-width: 1024px){
   .page-template-catalog .footer .line2, .woocommerce-page .footer .line2{

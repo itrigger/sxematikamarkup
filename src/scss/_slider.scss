@@ -46,10 +46,11 @@
 }
 .swiper-pagination{
   position: absolute;
-  top: -215px;
-  left: 30px;
+  top: -185px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .swiper-pagination-bullet {
   width: 7px !important;
@@ -97,6 +98,15 @@
     max-width: 495px;
     color: #fff;
     font-size: 23px;
+  }
+}
+
+.swiper-button-next, .swiper-button-prev{
+  top: -280px;
+  color: #fff;
+  opacity: 0.7;
+  &:hover{
+    opacity: 1;
   }
 }
 

@@ -200,7 +200,11 @@ body{
   width: 44px;
   height: 44px;
 }
-
+.fancybox-slide--image .fancy_close{
+  right: 12px;
+  top: 12px;
+  z-index: 10;
+}
 @media (min-width: 660px) and (max-width: 1024px){
   .d-col-4{
     display: none;
