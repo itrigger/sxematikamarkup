@@ -16,18 +16,32 @@
     height: 271px;
   }
 }
-.slide-wrap-bg2{
-  background: url('../img/tilebg-10.jpg') repeat;
+.slide-wrap.slide-wrap-bg2{
+  background: url('../img/tilebg-03.jpg') repeat;
+  padding-top: 44px;
   &:before{
     display: block;
     content: "";
     position: absolute;
     left: 50%;
-    margin-left: -273px;
-    top: 0;
-    background: url('../img/banner-img-2.png') center center no-repeat;
-    width: 546px;
-    height: 271px;
+    margin-left: -303px;
+    top: -60px;
+    background: url('../img/car.png') center center no-repeat;
+    width: 1040px;
+    height: 333px;
+  }
+  .title{
+    span{
+      display: block;
+    }
+  }
+  .flex {
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  .desc{
+    padding-left: 20px;
+    font-size: 21px;
   }
 }
 .slide-wrap-bg3{
@@ -91,13 +105,14 @@
     font-family: $fmed;
     color: #fff;
     max-width: 460px;
-    padding-left: 0;
+    padding-left: 20px;
   }
   .desc{
     padding-top: 20px;
     max-width: 495px;
     color: #fff;
     font-size: 23px;
+    padding-right: 20px;
   }
 }
 
@@ -109,7 +124,9 @@
     opacity: 1;
   }
 }
-
+.swiper-button-next:after, .swiper-button-prev:after{
+  font-size: 36px;
+}
 @media (max-width: 470px){
   .slide-wrap.slide-wrap-bg2 .title{
     max-width: 50%;
@@ -123,6 +140,10 @@
 }
 
 @media (max-width: 660px){
+  .swiper-button-next, .swiper-button-prev{
+    display: none;
+  }
+
   .slide-wrap .desc{
     display: none;
   }
@@ -175,8 +196,26 @@
     margin-left: 0;
     right: -170px;
   }
+  .slide-wrap.slide-wrap-bg2:before{
+    width: 553px;
+    height: 140px;
+    background-size: contain;
+    left: auto;
+    margin-left: 0;
+    right: -170px;
+    top: 0;
+  }
+  .slide-wrap.slide-wrap-bg2{
+    padding-top: 20px;
+  }
 }
 @media (min-width: 661px) and (max-width: 1024px){
+  .swiper-button-next{
+    right: 0;
+  }
+  .swiper-button-prev{
+    left: 0;
+  }
   .slide-wrap .desc{
     display: none;
   }
@@ -198,6 +237,14 @@
   .slide-wrap .title{
     max-width: 360px;
     font-size: 38px;
+  }
+}
+@media (min-width: 1025px) and (max-width: 1280px){
+  .swiper-button-next{
+    right: 0;
+  }
+  .swiper-button-prev{
+    left: 0;
   }
 }
 @media (min-width: 1025px) and (max-width: 1440px){
