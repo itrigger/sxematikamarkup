@@ -566,7 +566,9 @@ $(document).ready(function () {
       let lsCount = $row.find('.inputCount').val().toString(); //Кол-во радиодеталей
       let lsTypeOf = $row.find('.typeOfCount').text(); //Мера исчисления (1 - кг, 2 - штуки)
       let lsRowSum = $row.find('.row-total span').text(); //Сумма как (кол-во * меру исчесления)
-      temp[i - 1] = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
+      if(lsId !== '9999') {
+        temp[i - 1] = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
+      }
     }
 
     sessionStorage.setItem('order', JSON.stringify(temp)); //превращаем все данные в строку и сохраняем в локальное хранилище
@@ -804,10 +806,11 @@ $(document).ready(function () {
 // Добавление новой строки (тут проверка, заполнена ли предыдущая строка)
   $(".el-add-row-btn").on('click', function () {
 
-    if ($('.els-row-' + rowsCount).find(".el-name").attr("disabled")) {
+    if (($('.els-row-' + rowsCount).find(".el-name").attr("disabled"))||($('.els-row-' + rowsCount).find(".el-name option:selected").attr('value').toString()=='9999')) {
       harddelete_notify();
       notify("Заполните все поля!", "error");
       $('.els-row-' + rowsCount).find(".el-name").addClass('input-error');
+
     } else {
       if (!($('.els-row-' + rowsCount).find('.inputCount').val())) {
         harddelete_notify();
