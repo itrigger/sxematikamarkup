@@ -128,6 +128,10 @@ $(document).ready(function () {
     }
   });
 
+  $(".btn-buy-wrapper").click(function () {
+    $("textarea#mytext").text("Здравствуйте! Я хочу продать деталь: "+$(this).parent().parent().find(".woocommerce-loop-product__title").text());
+  })
+
   $('html').click(function () {
     hideList()
   });
@@ -239,6 +243,7 @@ $(document).ready(function () {
       if (item_fixprice > 0) {
         if (item_fixprice == "999999") {
           $(this).find(".price").text("договорная");
+          $(this).find(".btn-put-to-storage").css("display","none");
         } else {
           $(this).find(".price .price_value").text(item_fixprice);
         }
@@ -342,7 +347,7 @@ $(document).ready(function () {
 
   if ($("body").hasClass("home")) {
     // первоначальный запрос при загрузке страницы, чтобы заполнить первый селект данными
-    fetch(`${CONST_HOST}/wp-json/wc/v3/products/categories?consumer_key=${CONST_CK}&consumer_secret=${CONST_CS}&exclude=15`)
+    fetch(`${CONST_HOST}/wp-json/wc/v3/products/categories?consumer_key=${CONST_CK}&consumer_secret=${CONST_CS}&exclude=15&per_page=100`)
       .then(
         function (response) {
           isLoading(1);
