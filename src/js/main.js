@@ -2,10 +2,15 @@ window.$ = require('jquery');
 window.jQuery = $;
 require("@fancyapps/fancybox");
 import Swiper from 'swiper/bundle';
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+//import html2canvas from "html2canvas";
 import print from 'print-js';
+//import jsPDF from "jspdf";
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import htmlToPdfmake from "html-to-pdfmake"
 
+//import autoTable from 'jspdf-autotable';
 
 $(document).ready(function () {
 
@@ -129,7 +134,7 @@ $(document).ready(function () {
   });
 
   $(".btn-buy-wrapper").click(function () {
-    $("textarea#mytext").text("Здравствуйте! Я хочу продать деталь: "+$(this).parent().parent().find(".woocommerce-loop-product__title").text());
+    $("textarea#mytext").text("Здравствуйте! Я хочу продать деталь: " + $(this).parent().parent().find(".woocommerce-loop-product__title").text());
   })
 
   $('html').click(function () {
@@ -217,12 +222,12 @@ $(document).ready(function () {
         type: 'image',
         toolbar: false,
 
-          beforeShow: function (instance, current) {
-            $(".fancybox-toolbar").css("display", "none");
-          },
-          afterShow: function (instance, current) {
-            $(".fancybox-content").prepend("<div class='fancy_close'><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1\" viewBox=\"0 0 24 24\"><path d=\"M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z\"></path></svg></div>");
-          },
+        beforeShow: function (instance, current) {
+          $(".fancybox-toolbar").css("display", "none");
+        },
+        afterShow: function (instance, current) {
+          $(".fancybox-content").prepend("<div class='fancy_close'><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1\" viewBox=\"0 0 24 24\"><path d=\"M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z\"></path></svg></div>");
+        },
 
         clickContent: 'close',
         buttons: ['close']
@@ -243,7 +248,7 @@ $(document).ready(function () {
       if (item_fixprice > 0) {
         if (item_fixprice == "999999") {
           $(this).find(".price").text("договорная");
-          $(this).find(".btn-put-to-storage").css("display","none");
+          $(this).find(".btn-put-to-storage").css("display", "none");
         } else {
           $(this).find(".price .price_value").text(item_fixprice);
         }
@@ -260,7 +265,7 @@ $(document).ready(function () {
   /**/
   if ($(".print--ul").length > 0) {
     $(".print--ul").each(function () {
-      $(this).find("tr").each(function () {
+
         let item_gold = $(this).find(".item--gold").text();
         let item_silver = $(this).find(".item--silver").text();
         let item_platinum = $(this).find(".item--platinum").text();
@@ -283,7 +288,7 @@ $(document).ready(function () {
           $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
         }
         $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
-      })
+
     })
   }
   /**/
@@ -430,7 +435,7 @@ $(document).ready(function () {
               'data-pd': arr[6],
               'data-counttype': arr[7],
               'data-fixprice': arr[8],
-            //}).prop('selected', true));
+              //}).prop('selected', true));
             }));
         }
       }
@@ -472,7 +477,7 @@ $(document).ready(function () {
                           'data-pd': productsAPI[key].meta_data[6].value,
                           'data-counttype': productsAPI[key].meta_data[8].value,
                           'data-fixprice': productsAPI[key].meta_data[10].value,
-                        //}).prop('selected', true));
+                          //}).prop('selected', true));
                         }));
 
                       //заполняем локальное хранилище
@@ -497,7 +502,7 @@ $(document).ready(function () {
                 }
 
                 $childDD.prop('disabled', false);
-                if($childDD.find('option:selected').attr('value').toString() !== '9999') {
+                if ($childDD.find('option:selected').attr('value').toString() !== '9999') {
                   getPrice(id);
                 }
 
@@ -571,7 +576,7 @@ $(document).ready(function () {
       let lsCount = $row.find('.inputCount').val().toString(); //Кол-во радиодеталей
       let lsTypeOf = $row.find('.typeOfCount').text(); //Мера исчисления (1 - кг, 2 - штуки)
       let lsRowSum = $row.find('.row-total span').text(); //Сумма как (кол-во * меру исчесления)
-      if(lsId !== '9999') {
+      if (lsId !== '9999') {
         temp[i - 1] = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
       }
     }
@@ -811,7 +816,7 @@ $(document).ready(function () {
 // Добавление новой строки (тут проверка, заполнена ли предыдущая строка)
   $(".el-add-row-btn").on('click', function () {
 
-    if (($('.els-row-' + rowsCount).find(".el-name").attr("disabled"))||($('.els-row-' + rowsCount).find(".el-name option:selected").attr('value').toString()=='9999')) {
+    if (($('.els-row-' + rowsCount).find(".el-name").attr("disabled")) || ($('.els-row-' + rowsCount).find(".el-name option:selected").attr('value').toString() == '9999')) {
       harddelete_notify();
       notify("Заполните все поля!", "error");
       $('.els-row-' + rowsCount).find(".el-name").addClass('input-error');
@@ -905,11 +910,11 @@ $(document).ready(function () {
       let lsRowSum = $(this).parent().parent().parent().find('.price_value').text(); //Сумма как (кол-во * меру исчисления)
 
 
-      if(curSS) {
+      if (curSS) {
         temp = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
         curSS.push(temp);
         sessionStorage.setItem('order', JSON.stringify(curSS));
-        $(".alertwindow").addClass("active").find(".textall").text("Всего деталей: "+curSS.length);
+        $(".alertwindow").addClass("active").find(".textall").text("Всего деталей: " + curSS.length);
       } else {
         temp[0] = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
         sessionStorage.setItem('order', JSON.stringify(temp));
@@ -1005,33 +1010,44 @@ $(document).ready(function () {
 });
 
 /********/
-/*https://www.npmjs.com/package/dom-to-pdf*/
+/*https://pdfmake.github.io/docs/0.1/document-definition-object/tables/*/
+/*https://github.com/Aymkdn/html-to-pdfmake#default-styles*/
+
+
 $(document).ready(function () {
   $("#btn-Convert-Html2Image").on('click', function () {
-    let element = document.getElementById("tabletext");
+
     $(this).prop('disabled', true);
     $(".alert--wrapper").html("<div class='alert process'><span>Подготовка прайс листа...</span></div>")
-    let today = new Date();
-    let date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
-    html2canvas(element, {
-      onclone: function () {
-        element.style.display = 'block';
-      },
-      width: 1140,
-      height: 8600,
-      scrollX: 0,
-      scrollY: 0,
-      scale: 1
-    }).then(
-      canvas => {
-        // The following code is to create a pdf file for the taken screenshot
-        let pdf = new jsPDF('p', 'px', [canvas.width, canvas.height]);
-        let imgData = canvas.toDataURL("image/png", 0.98);
-        pdf.addImage(imgData, 0, 0, (canvas.width), (canvas.height));
-        pdf.save('price' + date + '.pdf');
+    setTimeout(function () {
+      let element = document.getElementById("tabletext").innerHTML;
+      let today = new Date();
+      let date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
+
+      var val = htmlToPdfmake(element);
+      var dd = {content:val,
+        styles:{
+          'html-em':{
+            color:'white', // it will add a yellow background to all <STRONG> elements
+            fontSize: 0
+          },
+          'td--typeof':{
+            width: 100
+          },
+          'td--price':{
+            width: 200,
+            textAlign: 'right',
+            whiteSpace: 'nowrap'
+          }
+        },
+        tableAutoSize: true,
+        watermark: { text: 'sxematika.ru', color: '#0bbc93', opacity: 0.2, bold: true, italics: false }
+      };
+      pdfMake.createPdf(dd).download('price(' + date + ').pdf', function() {
         $(this).prop('disabled', false);
         $(".alert--wrapper").html("");
       });
+    }, 200)
 
   });
 
