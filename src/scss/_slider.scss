@@ -8,7 +8,7 @@
     display: block;
     content: "";
     position: absolute;
-    left: 50%;
+    left: 64%;
     margin-left: -370px;
     top: 0;
     background: url('../img/banner-img-1.png') center center no-repeat;
@@ -18,7 +18,6 @@
 }
 .slide-wrap.slide-wrap-bg2{
   background: url('../img/tilebg-03.jpg') repeat;
-  padding-top: 44px;
   &:before{
     display: block;
     content: "";
@@ -30,19 +29,6 @@
     width: 1040px;
     height: 333px;
   }
-  .title{
-    span{
-      display: block;
-    }
-  }
-  .flex {
-    justify-content: flex-start;
-    flex-direction: column;
-  }
-  .desc{
-    padding-left: 20px;
-    font-size: 21px;
-  }
 }
 .slide-wrap-bg3{
   background: url('../img/tilebg-09.jpg') repeat;
@@ -50,7 +36,7 @@
     display: block;
     content: "";
     position: absolute;
-    left: 50%;
+    left: 64%;
     margin-left: -383px;
     top: 0;
     background: url('../img/banner-img-3.png') center center no-repeat;
@@ -96,28 +82,34 @@
 }
 
 .slide-wrap{
-  padding: 64px 0 0;
+  padding: 44px 0 0;
   .flex{
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-direction: column;
   }
   .title{
     font-size: 40px;
     font-family: $fmed;
     color: #fff;
     max-width: 460px;
-    padding-left: 20px;
+    padding-left: 30px;
+    span{
+      display: block;
+    }
   }
   .desc{
     padding-top: 20px;
     max-width: 495px;
     color: #fff;
-    font-size: 23px;
-    padding-right: 20px;
+  }
+  .desc{
+    padding-left: 30px;
+    font-size: 21px;
   }
 }
 
 .swiper-button-next, .swiper-button-prev{
-  top: -280px;
+  top: -270px;
   color: #fff;
   opacity: 0.7;
   &:hover{
@@ -125,7 +117,7 @@
   }
 }
 .swiper-button-next:after, .swiper-button-prev:after{
-  font-size: 36px;
+  font-size: 30px;
 }
 @media (max-width: 470px){
   .slide-wrap.slide-wrap-bg2 .title{
@@ -150,6 +142,7 @@
   .slide-wrap .title{
     max-width: 50%;
     font-size: 19px;
+    padding-left: 5px;
   }
   .slide-wrap{
     height: 300px;
@@ -248,9 +241,9 @@
   }
 }
 @media (min-width: 1025px) and (max-width: 1440px){
-  .slide-wrap .desc{
+/*  .slide-wrap .desc{
     display: none;
-  }
+  }*/
   .slide-wrap-bg1:before{
     left: 390px;
     margin-left: 0;

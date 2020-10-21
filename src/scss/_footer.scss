@@ -308,6 +308,9 @@
   .footer .line1 .left .title {
     font-size: 17px;
   }
+  .footer--btn-group-wrapper .btn-group{
+    justify-content: center;
+  }
   .yellow-rounded {
     font-size: 11px;
     line-height: 11px;
@@ -569,7 +572,7 @@
     font-size: 15px;
   }
   .footer .footer--logo {
-    width: 100%;
+    width: 140px;
     background-position: center 0;
   }
   .footer .footer--logo_title {

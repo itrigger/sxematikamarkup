@@ -2,15 +2,11 @@ window.$ = require('jquery');
 window.jQuery = $;
 require("@fancyapps/fancybox");
 import Swiper from 'swiper/bundle';
-//import html2canvas from "html2canvas";
 import print from 'print-js';
-//import jsPDF from "jspdf";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import htmlToPdfmake from "html-to-pdfmake"
-
-//import autoTable from 'jspdf-autotable';
 
 $(document).ready(function () {
 
@@ -158,7 +154,7 @@ $(document).ready(function () {
   const STOCK_DATE = stock_date.toString();
   const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт", "гр"];
 
-  const CONST_HOST = 'http://testim.pw'; // храним ХОСТ
+  const CONST_HOST = 'https://sxematika.ru'; // храним ХОСТ
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a'; // ключи аутентификации
   const CONST_CS = 'cs_d4f6f902c2d7d3ec65159392fa6d245a2ce722cf';
   const $dropdown = $(".el-type-1"); // начальные ссылки на селекты
