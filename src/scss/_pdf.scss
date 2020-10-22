@@ -90,3 +90,12 @@
     margin-bottom: 20px;
   }
 }
+
+@media (min-width: 320px) and (max-width: 550px){
+  .price_btn_wrapper{
+    flex-direction: column;
+    a{
+      margin: 15px 0 0;
+    }
+  }
+}
