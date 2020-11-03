@@ -217,16 +217,19 @@ $(document).ready(function () {
         src: $(this).attr('src'),
         type: 'image',
         toolbar: false,
-
         beforeShow: function (instance, current) {
           $(".fancybox-toolbar").css("display", "none");
         },
         afterShow: function (instance, current) {
           $(".fancybox-content").prepend("<div class='fancy_close'><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1\" viewBox=\"0 0 24 24\"><path d=\"M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z\"></path></svg></div>");
+          $(".fancy_close").on('click', function () {
+            instance.close();
+          })
         },
-
         clickContent: 'close',
-        buttons: ['close']
+        clickSlide: "close",
+        buttons: ['close'],
+        touch: false
         //fancybox-content
       });
     });
