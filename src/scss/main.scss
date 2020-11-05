@@ -656,6 +656,24 @@ h3, h4, h5, h6{
 @import "_utils";
 @import "_footer";
 @import "_pdf";
+
+
+.krasnodar .footer{
+  .line1 .pic{
+    background: url(../img/man2.png) 0 0 no-repeat;
+  }
+}
+.krasnodar .form--wrap {
+  .tophead{
+    &:before {
+      width: 211px;
+      height: 196px;
+      left: 20px;
+      top: -25px;
+      background: url("../img/man-04.png") 0 0 no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
 @import "_media";
-
-
