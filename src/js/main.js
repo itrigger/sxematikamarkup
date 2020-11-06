@@ -252,9 +252,9 @@ $(document).ready(function () {
           $(this).find(".price .price_value").text(item_fixprice);
         }
       } else {
-        // Золото -40%, Серебро -30%, Платина -25%, Палладиум -30% (Москва, Питер)
+        // Золото -40%, Серебро -30%, Платина -30%, Палладиум -30% (Москва, Питер)
+        item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.7 + item_palladium * PALLADIUM * 0.7) * USD;
         // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-        item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.75 + item_palladium * PALLADIUM * 0.7) * USD;
         //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
         $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
       }
@@ -280,9 +280,9 @@ $(document).ready(function () {
             $(this).find(".price .price_value").text(item_fixprice);
           }
         } else {
-          // Золото -40%, Серебро -30%, Платина -25%, Палладиум -30% (Москва, Питер)
+          // Золото -40%, Серебро -30%, Платина -30%, Палладиум -30% (Москва, Питер)
+          item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.70 + item_palladium * PALLADIUM * 0.7) * USD;
           // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-          item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.75 + item_palladium * PALLADIUM * 0.7) * USD;
           //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
           $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
         }
