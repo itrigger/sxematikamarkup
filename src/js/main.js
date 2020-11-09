@@ -999,9 +999,16 @@ $(document).ready(function () {
     today = dd + '.' + mm + '.' + yyyy;
 
     printJS({
+      onLoadingStart: function(){
+        $('tr.heading').css("display","none");
+      },
+      onPrintDialogClose: function(){
+        $('tr.heading').css("display","table-row");
+      },
       printable: 'tabletext',
       type: 'html',
-      style: 'table{border-collapse:collapse;}table td{border:1px solid #ccc;padding:5px;}table tr{border:none;}'
+      header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>Внимание! Цены действительны на: ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").text() + '<br/>'+ $("#mainaddress .tel").text() + '<br/>'+$("#mainaddress .email").text()+ '</div>',
+      style: 'table{border-collapse:collapse;font-family:"Tahoma", sans-serif;}table td{border:1px solid #ccc;padding:5px;}table tr{border:none;}'
     })
 
   });
@@ -1037,6 +1044,11 @@ $(document).ready(function () {
             width: 200,
             textAlign: 'right',
             whiteSpace: 'nowrap'
+          },
+          'heading-right':{
+            width: 300,
+            whiteSpace: 'nowrap',
+            textAlign: 'right',
           }
         },
         tableAutoSize: true,
