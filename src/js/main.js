@@ -153,9 +153,10 @@ $(document).ready(function () {
   const EUR = 1 / stock_eur * stock_rub;
   const STOCK_DATE = stock_date.toString();
   const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт", "гр"];
-
-  const CONST_HOST = 'https://sxematika.ru'; // храним ХОСТ
-  const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a'; // ключи аутентификации
+  console.log("city: krasnodar");
+  //const CONST_HOST = 'https://sxematika.ru'; // храним ХОСТ
+  const CONST_HOST = 'https://krasnodar.sxematika.ru'; // храним ХОСТ
+  const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a';
   const CONST_CS = 'cs_d4f6f902c2d7d3ec65159392fa6d245a2ce722cf';
   const $dropdown = $(".el-type-1"); // начальные ссылки на селекты
   const $dropdownChild = $(".el-name-1");
@@ -253,9 +254,9 @@ $(document).ready(function () {
         }
       } else {
         // Золото -40%, Серебро -30%, Платина -30%, Палладиум -30% (Москва, Питер)
-        item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.7 + item_palladium * PALLADIUM * 0.7) * USD;
+        //item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.7 + item_palladium * PALLADIUM * 0.7) * USD;
         // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-        //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
+        item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
         $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
       }
       $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
@@ -281,9 +282,9 @@ $(document).ready(function () {
           }
         } else {
           // Золото -40%, Серебро -30%, Платина -30%, Палладиум -30% (Москва, Питер)
-          item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.70 + item_palladium * PALLADIUM * 0.7) * USD;
+          //item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.70 + item_palladium * PALLADIUM * 0.7) * USD;
           // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-          //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
+          item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
           $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
         }
         $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
@@ -686,7 +687,6 @@ $(document).ready(function () {
     isLoading(1); //Отображаем лоадер
     let thiscatID = 0;
     let $row = $('.els-row-' + rowCol);
-    console.log($row);
     if (catId > 0) {
       thiscatID = catId;
       $row.find('.el-type').val(catId);
@@ -982,8 +982,8 @@ $(document).ready(function () {
       printJS({
         printable: 'printtable',
         type: 'html',
-        header: '<div style="text-align: center; margin-bottom: 20px;"><img src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /> - заказ от ' + today + '</div>',
-        style: "#printtable table{border-collapse:collapse;width:100%}#printtable td{border:1px solid #ccc;font-size:18px;padding:10px}#printtable .col2{font-weight:bold;}#printtable .col3{white-space:nowrap}#printtable .col3 .izm{font-size:15px;color:#5d687a}#printtable .col4{white-space:nowrap}#printtable .col4 .sum{display:inline-block;margin-right:10px;font-size:15px;color:#5d687a}#printtable .totalsum{border: none; font-size:30px !important;text-align:right;}#printtable .totalsum .yellow-rounded{margin-right:10px}"
+        header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>Внимание! Цены действительны на: ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").text() + '<br/>'+ $("#mainaddress .tel").text() + '<br/>'+$("#mainaddress .email").text()+ '</div>',
+        style: "#printtable{font-family:'Tahoma', sans-serif;} #printtable table{border-collapse:collapse;width:95%}#printtable td{border:1px solid #ccc;font-size:18px;padding:5px 10px}#printtable .col2{font-weight:bold;}#printtable .col3{white-space:nowrap}#printtable .col3 .izm{font-size:15px;color:#5d687a}#printtable .col4{white-space:nowrap}#printtable .col4 .sum{display:inline-block;margin-right:10px;font-size:15px;color:#5d687a}#printtable .totalsum{border: none; font-size:30px !important;text-align:right;}#printtable .totalsum .yellow-rounded{margin-right:10px}"
       })
     } else {
       return false;

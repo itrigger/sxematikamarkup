@@ -660,7 +660,7 @@ h3, h4, h5, h6{
 
 .krasnodar .footer{
   .line1 .pic{
-    background: url(../img/man2.png) 0 0 no-repeat;
+    background-image: url(../img/man2.png);
   }
 }
 .krasnodar .form--wrap {
@@ -670,7 +670,7 @@ h3, h4, h5, h6{
       height: 196px;
       left: 20px;
       top: -25px;
-      background: url("../img/man-04.png") 0 0 no-repeat;
+      background-image: url("../img/man-04.png");
       background-size: contain;
     }
   }

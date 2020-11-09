@@ -8,7 +8,7 @@ const
   minifyCss                 = require('gulp-clean-css'),
   babel                     = require('gulp-babel'),
   webpack                   = require('webpack-stream'),
-  uglify                    = require('gulp-uglify'),
+  terser                    = require('gulp-terser'),
   concat                    = require('gulp-concat'),
   imagemin                  = require('gulp-imagemin'),
   browserSync               = require('browser-sync').create(),
@@ -53,7 +53,7 @@ gulp.task('js', () => {
   return gulp.src([ src_assets_folder + 'js/**/*.js' ], { since: gulp.lastRun('js') })
     .pipe(plumber())
     .pipe(webpack({
-      mode: 'development',
+      mode: 'production',
       output: {filename: 'main.js'}
     }))
     .pipe(sourcemaps.init())
@@ -61,7 +61,7 @@ gulp.task('js', () => {
       presets: [ '@babel/env' ]
     }))
     .pipe(concat('all.js'))
-    .pipe(uglify())
+    .pipe(terser())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(dist_assets_folder + 'js'))
     .pipe(browserSync.stream());
