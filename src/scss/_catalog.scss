@@ -799,6 +799,14 @@
   .catalog--tags{
     display: none;
   }
+  .catalog--tags_footer{
+    display: block;
+    padding: 0 15px;
+    ul li a{
+      font-size: 13px;
+      padding: 7px 10px;
+    }
+  }
   .catalog--header{
     padding-top: 20px;
     padding-bottom: 0;
