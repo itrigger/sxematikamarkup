@@ -676,4 +676,57 @@ h3, h4, h5, h6{
   }
 }
 
+.essentuki .footer{.line1 .pic{background-image: url(../img/man-esn.png);}}
+.essentuki .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-esn2.png"); background-size: contain;}}}
+
+.simferopol .footer{.line1 .pic{background-image: url(../img/man-sim.png);}}
+.simferopol .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-sim2.png"); background-size: contain;}}}
+.simferopol .footer .line1 .left .name{font-size: 31px;}
+.simferopol .form--wrap .tophead .right{width: 210px;}
+.simferopol .form--wrap .tophead .name{font-size: 21px;}
+
+@media (max-width: 1439px) and (min-width: 1025px){
+  .simferopol .footer .line1 .left .name {
+    font-size: 28px;
+    margin: 10px 0 7px 0;
+  }
+}
+@media (max-width: 1024px){
+  .simferopol .footer .line1 .left .name {
+    font-size: 24px;
+  }
+}
+
+
+.voronezh .footer{.line1 .pic{background-image: url(../img/man-vor.png);}}
+.voronezh .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-vor2.png"); background-size: contain;}}}
+.voronezh .footer .line1 .left .name{font-size: 31px;}
+.voronezh .form--wrap .tophead .right{width: 210px;}
+.voronezh .form--wrap .tophead .name{font-size: 21px;}
+
+@media (max-width: 1439px) and (min-width: 1025px){
+  .voronezh .footer .line1 .left .name {
+    font-size: 28px;
+    margin: 10px 0 7px 0;
+  }
+}
+@media (max-width: 1024px){
+  .voronezh .footer .line1 .left .name {
+    font-size: 24px;
+  }
+}
+
+
+.piter .footer{.line1 .pic{background-image: url(../img/man-spb.png);}}
+.piter .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-spb2.png"); background-size: contain;}}}
+
+.nnovgorod .footer{.line1 .pic{background-image: url(../img/man-nn.png);}}
+.nnovgorod .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-nn2.png"); background-size: contain;}}}
+
+.izhevsk .footer{.line1 .pic{background-image: url(../img/man-izh.png);}}
+.izhevsk .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-izh2.png"); background-size: contain;}}}
+
+.penza .footer{.line1 .pic{background-image: url(../img/man-pen.png);}}
+.penza .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-pen2.png"); background-size: contain;}}}
+
 @import "_media";
