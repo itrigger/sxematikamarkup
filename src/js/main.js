@@ -160,8 +160,8 @@ $(document).ready(function () {
   const EUR = 1 / stock_eur * stock_rub;
   const STOCK_DATE = stock_date.toString();
   const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт", "гр"];
-  console.log("city: voronezh");
-  const CONST_HOST = 'https://voronezh.sxematika.ru/';
+  console.log("city: izhevsk");
+  const CONST_HOST = 'https://izhevsk.sxematika.ru/';
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a';
   const CONST_CS = 'cs_d4f6f902c2d7d3ec65159392fa6d245a2ce722cf';
   const $dropdown = $(".el-type-1"); // начальные ссылки на селекты
