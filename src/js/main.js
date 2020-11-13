@@ -160,8 +160,8 @@ $(document).ready(function () {
   const EUR = 1 / stock_eur * stock_rub;
   const STOCK_DATE = stock_date.toString();
   const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт", "гр"];
-  console.log("city: izhevsk");
-  const CONST_HOST = 'https://izhevsk.sxematika.ru/';
+  console.log("city: spb");
+  const CONST_HOST = 'https://spb.sxematika.ru/';
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a';
   const CONST_CS = 'cs_d4f6f902c2d7d3ec65159392fa6d245a2ce722cf';
   const $dropdown = $(".el-type-1"); // начальные ссылки на селекты
@@ -259,9 +259,9 @@ $(document).ready(function () {
         }
       } else {
         // Золото -40%, Серебро -30%, Платина -30%, Палладиум -30% (Москва, Питер)
-        //item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.7 + item_palladium * PALLADIUM * 0.7) * USD;
+        item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.7 + item_palladium * PALLADIUM * 0.7) * USD;
         // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-        item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
+        //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
         $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
       }
       $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
@@ -287,9 +287,9 @@ $(document).ready(function () {
           }
         } else {
           // Золото -40%, Серебро -30%, Платина -30%, Палладиум -30% (Москва, Питер)
-          //item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.70 + item_palladium * PALLADIUM * 0.7) * USD;
+          item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.70 + item_palladium * PALLADIUM * 0.7) * USD;
           // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-          item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
+          //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
           $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
         }
         $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
@@ -805,9 +805,9 @@ $(document).ready(function () {
       item_price = FixPrice * weight;
     } else {
       // Золото -40%, Серебро -30%, Платина -30%, Палладиум -30% (Москва, Питер)
-      //item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.7 + item_palladium * PALLADIUM * 0.7) * USD * weight;
+      item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.7 + item_palladium * PALLADIUM * 0.7) * USD * weight;
       // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-      item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD * weight;
+      //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD * weight;
     }
 
     if (item_price > 0) {
