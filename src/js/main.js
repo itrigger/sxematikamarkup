@@ -160,8 +160,8 @@ $(document).ready(function () {
   const EUR = 1 / stock_eur * stock_rub;
   const STOCK_DATE = stock_date.toString();
   const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт", "гр"];
-  console.log("city: krasnodar");
-  const CONST_HOST = 'https://krasnodar.sxematika.ru/';
+  const CONST_HOST = window.location.origin; //'https://krasnodar.sxematika.ru/';
+  console.log(CONST_HOST);
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a';
   const CONST_CS = 'cs_d4f6f902c2d7d3ec65159392fa6d245a2ce722cf';
   const $dropdown = $(".el-type-1"); // начальные ссылки на селекты
@@ -258,10 +258,9 @@ $(document).ready(function () {
           $(this).find(".price .price_value").text(item_fixprice);
         }
       } else {
-        // Золото -40%, Серебро -30%, Платина -30%, Палладиум -30% (Москва, Питер)
-        item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.7 + item_palladium * PALLADIUM * 0.7) * USD;
-        // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-        //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
+        // З -40%, С -30%, Пл -30%, Пал -30%
+        item_price = (item_gold * GOLD * GOLD_DISCOUNT + item_silver * SILVER * SILVER_DISCOUNT + item_platinum * PLATINUM * PLATINUM_DISCOUNT + item_palladium * PALLADIUM * PALLADIUM_DISCOUNT) * USD;
+        // З -50%, С -35%, Пл -30%, Пал -35% (ост города)
         $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
       }
       $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
@@ -270,7 +269,6 @@ $(document).ready(function () {
   /**/
   if ($(".print--ul").length > 0) {
     $(".print--ul").each(function () {
-
         let item_gold = $(this).find(".item--gold").text();
         let item_silver = $(this).find(".item--silver").text();
         let item_platinum = $(this).find(".item--platinum").text();
@@ -286,10 +284,9 @@ $(document).ready(function () {
             $(this).find(".price .price_value").text(item_fixprice);
           }
         } else {
-          // Золото -40%, Серебро -30%, Платина -30%, Палладиум -30% (Москва, Питер)
-          item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.70 + item_palladium * PALLADIUM * 0.7) * USD;
-          // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-          //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD;
+          // З -40%, С -30%, Пл -30%, Пал -30%
+          item_price = (item_gold * GOLD * GOLD_DISCOUNT + item_silver * SILVER * SILVER_DISCOUNT + item_platinum * PLATINUM * PLATINUM_DISCOUNT + item_palladium * PALLADIUM * PALLADIUM_DISCOUNT) * USD;
+          // З -50%, С -35%, Пл -30%, Пал -35% (ост города)
           $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
         }
         $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
@@ -799,15 +796,10 @@ $(document).ready(function () {
       notify("Не указано количество!", "error");
       $inputText.addClass('input-error');
     }
-    // Золото -40%, Серебро -30%, Платина -25%, Палладиум -30% (Москва, Питер)
-    // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
     if (FixPrice > 0) {
       item_price = FixPrice * weight;
     } else {
-      // Золото -40%, Серебро -30%, Платина -30%, Палладиум -30% (Москва, Питер)
-      item_price = (item_gold * GOLD * 0.6 + item_silver * SILVER * 0.7 + item_platinum * PLATINUM * 0.7 + item_palladium * PALLADIUM * 0.7) * USD * weight;
-      // Золото -50%, Серебро -35%, Платина -30%, Палладиум -35% (ост города)
-      //item_price = (item_gold * GOLD * 0.5 + item_silver * SILVER * 0.65 + item_platinum * PLATINUM * 0.7+ item_palladium * PALLADIUM * 0.65) * USD * weight;
+      item_price = (item_gold * GOLD * GOLD_DISCOUNT + item_silver * SILVER * SILVER_DISCOUNT + item_platinum * PLATINUM * PLATINUM_DISCOUNT + item_palladium * PALLADIUM * PALLADIUM_DISCOUNT) * USD * weight;
     }
 
     if (item_price > 0) {
