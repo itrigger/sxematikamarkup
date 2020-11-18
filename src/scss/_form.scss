@@ -224,9 +224,11 @@ input[type=submit] {
 #restable, #printtable{
   width: 100%;
   max-width: 980px;
+  min-width: 980px;
   table{
     border-collapse: collapse;
     width: 100%;
+    min-width: 980px;
   }
   tr{
     border-bottom: 1px solid #ccc;

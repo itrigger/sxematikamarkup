@@ -975,15 +975,15 @@ $(document).ready(function () {
     let lsArr = JSON.parse(sessionStorage.getItem('order'));
     if (lsArr) {
       for (const [i, arr] of lsArr.entries()) {
-        $("#printtable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>Сумма </span>" + arr[5] + " ₽</td></tr>");
+        $("#printtable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>Сумма </span>" + arr[5] + " руб.</td></tr>");
       }
-      $("#printtable table").append("<tr><td colspan='4' class='totalsum'><span class='yellow-rounded'>Итого</span> " + $('#els-total-price-num span').text() + " ₽</td></tr>");
+      $("#printtable table").append("<tr><td colspan='4' class='totalsum'><span class='yellow-rounded'>Итого</span> " + $('#els-total-price-num span').text() + " руб.</td></tr>");
       //https://printjs.crabbly.com/
       printJS({
         printable: 'printtable',
         type: 'html',
         header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>Внимание! Цены действительны на: ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").html() + '<br/>'+ $("#mainaddress .tel").text() + '<br/>'+$("#mainaddress .email").text()+ '</div>',
-        style: "#printtable{font-family:'Tahoma', sans-serif;} #printtable table{border-collapse:collapse;width:95%}#printtable td{border:1px solid #ccc;font-size:18px;padding:5px 10px}#printtable .col2{font-weight:bold;}#printtable .col3{white-space:nowrap}#printtable .col3 .izm{font-size:15px;color:#5d687a}#printtable .col4{white-space:nowrap}#printtable .col4 .sum{display:inline-block;margin-right:10px;font-size:15px;color:#5d687a}#printtable .totalsum{border: none; font-size:30px !important;text-align:right;}#printtable .totalsum .yellow-rounded{margin-right:10px}"
+        style: "#printtable{font-family:'Tahoma', sans-serif;} #printtable table{border-collapse:collapse;width:95%;min-width:95%;}#printtable td{border:1px solid #ccc;font-size:18px;padding:5px 10px}#printtable .col2{font-weight:bold;}#printtable .col3{white-space:nowrap}#printtable .col3 .izm{font-size:15px;color:#5d687a}#printtable .col4{white-space:nowrap}#printtable .col4 .sum{display:inline-block;margin-right:10px;font-size:15px;color:#5d687a}#printtable .totalsum{border: none; font-size:30px !important;text-align:right;}#printtable .totalsum .yellow-rounded{margin-right:10px}"
       })
     } else {
       return false;
