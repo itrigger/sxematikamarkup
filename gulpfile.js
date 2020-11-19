@@ -16,8 +16,8 @@ const
 
   src_folder                = './src/',
   src_assets_folder         = './src/',
-  dist_folder               = '../assets/',
-  dist_assets_folder        = dist_folder + '../assets/',
+  dist_folder               = './assets/',
+  dist_assets_folder        = dist_folder + './assets/',
   node_modules_folder       = './node_modules/',
   dist_node_modules_folder  = dist_folder + 'node_modules/',
   node_dependencies         = Object.keys(require('./package.json').dependencies || {});

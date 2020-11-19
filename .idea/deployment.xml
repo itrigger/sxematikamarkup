@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="sxematika">
+    <serverData>
+      <paths name="smx_simferopol">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/assets/assets" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sxematika">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/assets/assets" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sxm_essentuki">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/assets/assets" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sxm_izhevsk">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/assets/assets" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sxm_krasnodar">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/assets/assets" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sxm_novgorod">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/assets/assets" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sxm_penza">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/assets/assets" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sxm_spb">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/assets/assets" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="sxm_voronezh">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/assets/assets" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

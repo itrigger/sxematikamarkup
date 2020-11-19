@@ -983,7 +983,7 @@ $(document).ready(function () {
         printable: 'printtable',
         type: 'html',
         header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>Внимание! Цены действительны на: ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").html() + '<br/>'+ $("#mainaddress .tel").text() + '<br/>'+$("#mainaddress .email").text()+ '</div>',
-        style: "#printtable{font-family:'Tahoma', sans-serif;} #printtable table{border-collapse:collapse;width:95%;min-width:95%;}#printtable td{border:1px solid #ccc;font-size:18px;padding:5px 10px}#printtable .col2{font-weight:bold;}#printtable .col3{white-space:nowrap}#printtable .col3 .izm{font-size:15px;color:#5d687a}#printtable .col4{white-space:nowrap}#printtable .col4 .sum{display:inline-block;margin-right:10px;font-size:15px;color:#5d687a}#printtable .totalsum{border: none; font-size:30px !important;text-align:right;}#printtable .totalsum .yellow-rounded{margin-right:10px}"
+        style: "#printtable{font-family:'Tahoma', sans-serif;} #printtable table{border-collapse:collapse;width:95%;min-width:95%;}#printtable td{border:1px solid #ccc;font-size:18px;padding:5px 10px}#printtable .col2{font-weight:bold;}#printtable .col3{white-space:nowrap}#printtable .col3 .izm{font-size:15px;color:#5d687a}#printtable .col4{white-space:nowrap; text-align:right;}#printtable .col4 .sum{display:inline-block;margin-right:10px;font-size:15px;color:#5d687a}#printtable .totalsum{border: none; font-size:30px !important;text-align:right;}#printtable .totalsum .yellow-rounded{margin-right:10px}"
       })
     } else {
       return false;
