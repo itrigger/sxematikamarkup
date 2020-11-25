@@ -152,13 +152,13 @@ $(document).ready(function () {
   let $parentEl = $('.calculator'); // ссылка на родительскую обертку
   let totalPrice = 0; // начальное значение итоговой цены
 
-  const GOLD = stock_gold / 31.1; // здесь будут курсы драгметаллов и доллара делим на 31,1 для перевода из унций в кг
-  const SILVER = stock_silver / 31.1;
-  const PLATINUM = stock_platinum / 31.1;
-  const PALLADIUM = stock_palladium / 31.1;
-  const USD = stock_rub;
-  const EUR = 1 / stock_eur * stock_rub;
-  const STOCK_DATE = stock_date.toString();
+  let GOLD = stock_gold / 31.1; // здесь будут курсы драгметаллов и доллара делим на 31,1 для перевода из унций в кг
+  let SILVER = stock_silver / 31.1;
+  let PLATINUM = stock_platinum / 31.1;
+  let PALLADIUM = stock_palladium / 31.1;
+  let USD = stock_rub;
+  let EUR = 1 / stock_eur * stock_rub;
+  let STOCK_DATE = stock_date.toString();
   const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт", "гр"];
   const CONST_HOST = window.location.origin; //'https://krasnodar.sxematika.ru/';
   console.log(CONST_HOST);
@@ -173,48 +173,75 @@ $(document).ready(function () {
   }
 
   //Заполняем данные блока Биржевые котировки (данные получены с помощью php и сохраняются в кэше WP)
-  if ($(".stocks--items").length > 0) {
-    $(".stocks_usd").text(Math.round((USD + Number.EPSILON) * 100) / 100 + " ₽");
-    $(".stocks_eur").text(Math.round((EUR + Number.EPSILON) * 100) / 100 + " ₽");
-    $(".stocks_gold").text(Math.round((GOLD * USD + Number.EPSILON) * 100) / 100 + " ₽");
-    $(".stocks_silver").text(Math.round((SILVER * USD + Number.EPSILON) * 100) / 100 + " ₽");
-    $(".stocks_platinum").text(Math.round((PLATINUM * USD + Number.EPSILON) * 100) / 100 + " ₽");
-    $(".stocks_palladium").text(Math.round((PALLADIUM * USD + Number.EPSILON) * 100) / 100 + " ₽");
-    $(".stocks .date").text(STOCK_DATE.slice(6, 8) + "." + STOCK_DATE.slice(4, 6) + "." + STOCK_DATE.slice(0, 4));
 
-    if (old_stock_rub) {
-      if (stock_rub > old_stock_rub) {
-        $(".stocks_usd").addClass("stock-up");
-      } else {
-        $(".stocks_usd").addClass("stock-down");
+  function updateStocksHTML() {
+    if ($(".stocks--items").length > 0) {
+      $('.stocks').addClass('updating');
+      $(".stocks_usd").text(Math.round((USD + Number.EPSILON) * 100) / 100 + " ₽");
+      $(".stocks_eur").text(Math.round((EUR + Number.EPSILON) * 100) / 100 + " ₽");
+      $(".stocks_gold").text(Math.round((GOLD * USD + Number.EPSILON) * 100) / 100 + " ₽");
+      $(".stocks_silver").text(Math.round((SILVER * USD + Number.EPSILON) * 100) / 100 + " ₽");
+      $(".stocks_platinum").text(Math.round((PLATINUM * USD + Number.EPSILON) * 100) / 100 + " ₽");
+      $(".stocks_palladium").text(Math.round((PALLADIUM * USD + Number.EPSILON) * 100) / 100 + " ₽");
+      $(".stocks .date").text(STOCK_DATE.slice(6, 8) + "." + STOCK_DATE.slice(4, 6) + "." + STOCK_DATE.slice(0, 4));
+
+      if (old_stock_rub) {
+        if (stock_rub > old_stock_rub) {
+          $(".stocks_usd").addClass("stock-up");
+        } else if(stock_rub < old_stock_rub){
+          $(".stocks_usd").addClass("stock-down");
+        } else {
+          $(".stocks_usd").removeClass("stock-down");
+          $(".stocks_usd").removeClass("stock-up");
+        }
+        if (stock_eur > old_stock_eur) {
+          $(".stocks_eur").addClass("stock-up");
+        } else if(stock_eur < old_stock_eur){
+          $(".stocks_eur").addClass("stock-down");
+        } else {
+          $(".stocks_eur").removeClass("stock-down");
+          $(".stocks_eur").removeClass("stock-up");
+        }
+        if (stock_gold > old_stock_gold) {
+          $(".stocks_gold").addClass("stock-up");
+        } else if(stock_gold < old_stock_gold){
+          $(".stocks_gold").addClass("stock-down");
+        } else {
+          $(".stocks_gold").removeClass("stock-down");
+          $(".stocks_gold").removeClass("stock-up");
+        }
+        if (stock_silver > old_stock_silver) {
+          $(".stocks_silver").addClass("stock-up");
+        } else if(stock_silver < old_stock_silver){
+          $(".stocks_silver").addClass("stock-down");
+        } else {
+          $(".stocks_silver").removeClass("stock-down");
+          $(".stocks_silver").removeClass("stock-up");
+        }
+        if (stock_platinum > old_stock_platinum) {
+          $(".stocks_platinum").addClass("stock-up");
+        } else if(stock_platinum < old_stock_platinum){
+          $(".stocks_platinum").addClass("stock-down");
+        } else {
+          $(".stocks_platinum").removeClass("stock-down");
+          $(".stocks_platinum").removeClass("stock-up");
+        }
+        if (stock_palladium > old_stock_palladium) {
+          $(".stocks_palladium").addClass("stock-up");
+        } else if(stock_palladium < old_stock_palladium){
+          $(".stocks_palladium").addClass("stock-down");
+        } else {
+          $(".stocks_palladium").removeClass("stock-down");
+          $(".stocks_palladium").removeClass("stock-up");
+        }
       }
-      if (stock_eur > old_stock_eur) {
-        $(".stocks_eur").addClass("stock-up");
-      } else {
-        $(".stocks_eur").addClass("stock-down");
-      }
-      if (stock_gold > old_stock_gold) {
-        $(".stocks_gold").addClass("stock-up");
-      } else {
-        $(".stocks_gold").addClass("stock-down");
-      }
-      if (stock_silver > old_stock_silver) {
-        $(".stocks_silver").addClass("stock-up");
-      } else {
-        $(".stocks_silver").addClass("stock-down");
-      }
-      if (stock_platinum > old_stock_platinum) {
-        $(".stocks_platinum").addClass("stock-up");
-      } else {
-        $(".stocks_platinum").addClass("stock-down");
-      }
-      if (stock_palladium > old_stock_palladium) {
-        $(".stocks_palladium").addClass("stock-up");
-      } else {
-        $(".stocks_palladium").addClass("stock-down");
-      }
+      $('.stocks').removeClass('updating');
+      $('.stocks').addClass('renew');
     }
   }
+
+  updateStocksHTML();
+
 
   /* Add fancybox to product img */
   if ($(".catalog--products").length > 0) {
@@ -1013,6 +1040,52 @@ $(document).ready(function () {
 
   });
 
+
+
+  updateStocks();
+  setInterval(updateStocks, 60000); //1 minute
+
+  function updateStocks() {
+    let new_cur_date = stock_date.toString();
+
+    $.get( "/wp-content/themes/sxematika/update.php/?date="+new_cur_date, function( data ) {
+      if(data){
+        if (data.success_code == 1){
+          //console.log(data.message); //удалить
+        }
+        if (data.success_code == 2){
+          //обновить все цены на сайте
+          stock_gold = data.stock_gold;
+          stock_silver = data.stock_silver;
+          stock_platinum = data.stock_platinum;
+          stock_palladium = data.stock_palladium;
+          stock_rub = data.stock_rub;
+          stock_eur = data.stock_eur;
+          stock_date = data.stock_date;
+
+          GOLD = stock_gold / 31.1; // здесь будут курсы драгметаллов и доллара делим на 31,1 для перевода из унций в кг
+          SILVER = stock_silver / 31.1;
+          PLATINUM = stock_platinum / 31.1;
+          PALLADIUM = stock_palladium / 31.1;
+          USD = stock_rub;
+          EUR = 1 / stock_eur * stock_rub;
+          STOCK_DATE = stock_date.toString();
+          updateStocksHTML();
+        }
+        if (data.success_code == 3){
+          //первая загрузка, можно ничего не делать
+          console.log(data.message);
+        }
+
+      } else {
+        console.log( 'Ошибка асинхронного запроса' );
+      }
+    });
+  }
+
+
+
+
 });
 
 /********/
@@ -1063,4 +1136,18 @@ $(document).ready(function () {
 
   });
 
+
+  /*  $.get('/wp-content/themes/sxematika/update.php', function(response){
+        var jsonData = JSON.parse(response);
+        console.log(jsonData);
+      }
+   );*/
+
+
+
+
 });
+
+
+
+

@@ -50,6 +50,8 @@
   overflow: hidden;
 }
 .stocks {
+  opacity: 1;
+  transition: 0.5s all;
   display: flex;
   flex-direction: row;
   margin-top: 40px;
@@ -64,6 +66,12 @@
       font-size: 12px;
       color: #5d687a;
     }
+  }
+  &.updating{
+    opacity: 0.3;
+  }
+  &.renew{
+    //background: rgba(red,0.2);
   }
 }
 
