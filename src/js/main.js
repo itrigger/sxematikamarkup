@@ -5,8 +5,10 @@ import Swiper from 'swiper/bundle';
 import print from 'print-js';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import htmlToPdfmake from "html-to-pdfmake";
+import moment from 'moment';
 
 $(document).ready(function () {
 
@@ -105,7 +107,7 @@ $(document).ready(function () {
       "display": "none",
       "width": "125px",
       "marginLeft": "4px",
-      "top":"10px"
+      "top": "10px"
     });
     flag = 0;
   };
@@ -113,10 +115,18 @@ $(document).ready(function () {
   $(".selector").on("click", ".selector-title", function (event) {
     event.stopPropagation();
     if (flag === 0) {
-      if($(this).parent().hasClass("footer--selector")) {
-        $(this).next().css({"display": "block", "top": "-170px"}).animate({opacity: "1", width: "auto", marginLeft: "0px"}, 150);
-      } else if ($(this).parent().hasClass("contact--selector")){
-        $(this).next().css({"display": "block", "top": "-30px"}).animate({opacity: "1", width: "auto", marginLeft: "0px"}, 150);
+      if ($(this).parent().hasClass("footer--selector")) {
+        $(this).next().css({"display": "block", "top": "-170px"}).animate({
+          opacity: "1",
+          width: "auto",
+          marginLeft: "0px"
+        }, 150);
+      } else if ($(this).parent().hasClass("contact--selector")) {
+        $(this).next().css({"display": "block", "top": "-30px"}).animate({
+          opacity: "1",
+          width: "auto",
+          marginLeft: "0px"
+        }, 150);
       } else {
         $(this).next().css("display", "block").animate({opacity: "1", width: "auto", marginLeft: "0px"}, 150);
       }
@@ -188,7 +198,7 @@ $(document).ready(function () {
       if (old_stock_rub) {
         if (stock_rub > old_stock_rub) {
           $(".stocks_usd").addClass("stock-up");
-        } else if(stock_rub < old_stock_rub){
+        } else if (stock_rub < old_stock_rub) {
           $(".stocks_usd").addClass("stock-down");
         } else {
           $(".stocks_usd").removeClass("stock-down");
@@ -196,7 +206,7 @@ $(document).ready(function () {
         }
         if (stock_eur > old_stock_eur) {
           $(".stocks_eur").addClass("stock-up");
-        } else if(stock_eur < old_stock_eur){
+        } else if (stock_eur < old_stock_eur) {
           $(".stocks_eur").addClass("stock-down");
         } else {
           $(".stocks_eur").removeClass("stock-down");
@@ -204,7 +214,7 @@ $(document).ready(function () {
         }
         if (stock_gold > old_stock_gold) {
           $(".stocks_gold").addClass("stock-up");
-        } else if(stock_gold < old_stock_gold){
+        } else if (stock_gold < old_stock_gold) {
           $(".stocks_gold").addClass("stock-down");
         } else {
           $(".stocks_gold").removeClass("stock-down");
@@ -212,7 +222,7 @@ $(document).ready(function () {
         }
         if (stock_silver > old_stock_silver) {
           $(".stocks_silver").addClass("stock-up");
-        } else if(stock_silver < old_stock_silver){
+        } else if (stock_silver < old_stock_silver) {
           $(".stocks_silver").addClass("stock-down");
         } else {
           $(".stocks_silver").removeClass("stock-down");
@@ -220,7 +230,7 @@ $(document).ready(function () {
         }
         if (stock_platinum > old_stock_platinum) {
           $(".stocks_platinum").addClass("stock-up");
-        } else if(stock_platinum < old_stock_platinum){
+        } else if (stock_platinum < old_stock_platinum) {
           $(".stocks_platinum").addClass("stock-down");
         } else {
           $(".stocks_platinum").removeClass("stock-down");
@@ -228,7 +238,7 @@ $(document).ready(function () {
         }
         if (stock_palladium > old_stock_palladium) {
           $(".stocks_palladium").addClass("stock-up");
-        } else if(stock_palladium < old_stock_palladium){
+        } else if (stock_palladium < old_stock_palladium) {
           $(".stocks_palladium").addClass("stock-down");
         } else {
           $(".stocks_palladium").removeClass("stock-down");
@@ -296,27 +306,27 @@ $(document).ready(function () {
   /**/
   if ($(".print--ul").length > 0) {
     $(".print--ul").each(function () {
-        let item_gold = $(this).find(".item--gold").text();
-        let item_silver = $(this).find(".item--silver").text();
-        let item_platinum = $(this).find(".item--platinum").text();
-        let item_palladium = $(this).find(".item--palladium").text();
-        let item_typecount = $(this).find(".item--typeofcount").text();
-        let item_fixprice = $(this).find(".item--fixprice").text();
-        let item_price;
-        // Основная формула для каждого города и металла есть поправочный кэф
-        if (item_fixprice > 0) {
-          if (item_fixprice == "999999") {
-            $(this).find(".price").text("договорная");
-          } else {
-            $(this).find(".price .price_value").text(item_fixprice);
-          }
+      let item_gold = $(this).find(".item--gold").text();
+      let item_silver = $(this).find(".item--silver").text();
+      let item_platinum = $(this).find(".item--platinum").text();
+      let item_palladium = $(this).find(".item--palladium").text();
+      let item_typecount = $(this).find(".item--typeofcount").text();
+      let item_fixprice = $(this).find(".item--fixprice").text();
+      let item_price;
+      // Основная формула для каждого города и металла есть поправочный кэф
+      if (item_fixprice > 0) {
+        if (item_fixprice == "999999") {
+          $(this).find(".price").text("договорная");
         } else {
-          // З -40%, С -30%, Пл -30%, Пал -30%
-          item_price = (item_gold * GOLD * GOLD_DISCOUNT + item_silver * SILVER * SILVER_DISCOUNT + item_platinum * PLATINUM * PLATINUM_DISCOUNT + item_palladium * PALLADIUM * PALLADIUM_DISCOUNT) * USD;
-          // З -50%, С -35%, Пл -30%, Пал -35% (ост города)
-          $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
+          $(this).find(".price .price_value").text(item_fixprice);
         }
-        $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
+      } else {
+        // З -40%, С -30%, Пл -30%, Пал -30%
+        item_price = (item_gold * GOLD * GOLD_DISCOUNT + item_silver * SILVER * SILVER_DISCOUNT + item_platinum * PLATINUM * PLATINUM_DISCOUNT + item_palladium * PALLADIUM * PALLADIUM_DISCOUNT) * USD;
+        // З -50%, С -35%, Пл -30%, Пал -35% (ост города)
+        $(this).find(".price .price_value").text(Math.round((item_price + Number.EPSILON) * 100) / 100);
+      }
+      $(this).find(".itemcount").text(TYPES[item_typecount - 1]);
 
     })
   }
@@ -1009,7 +1019,7 @@ $(document).ready(function () {
       printJS({
         printable: 'printtable',
         type: 'html',
-        header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>Внимание! Цены действительны на: ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").html() + '<br/>'+ $("#mainaddress .tel").text() + '<br/>'+$("#mainaddress .email").text()+ '</div>',
+        header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>Внимание! Цены действительны на: ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").html() + '<br/>' + $("#mainaddress .tel").text() + '<br/>' + $("#mainaddress .email").text() + '</div>',
         style: "#printtable{font-family:'Tahoma', sans-serif;} #printtable table{border-collapse:collapse;width:95%;min-width:95%;}#printtable td{border:1px solid #ccc;font-size:18px;padding:5px 10px}#printtable .col2{font-weight:bold;}#printtable .col3{white-space:nowrap}#printtable .col3 .izm{font-size:15px;color:#5d687a}#printtable .col4{white-space:nowrap; text-align:right;}#printtable .col4 .sum{display:inline-block;margin-right:10px;font-size:15px;color:#5d687a}#printtable .totalsum{border: none; font-size:30px !important;text-align:right;}#printtable .totalsum .yellow-rounded{margin-right:10px}"
       })
     } else {
@@ -1026,64 +1036,64 @@ $(document).ready(function () {
     today = dd + '.' + mm + '.' + yyyy;
 
     printJS({
-      onLoadingStart: function(){
-        $('tr.heading').css("display","none");
+      onLoadingStart: function () {
+        $('tr.heading').css("display", "none");
       },
-      onPrintDialogClose: function(){
-        $('tr.heading').css("display","table-row");
+      onPrintDialogClose: function () {
+        $('tr.heading').css("display", "table-row");
       },
       printable: 'tabletext',
       type: 'html',
-      header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>Внимание! Цены действительны на: ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").html() + '<br/>'+ $("#mainaddress .tel").text() + '<br/>'+$("#mainaddress .email").text()+ '</div>',
+      header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>Внимание! Цены действительны на: ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").html() + '<br/>' + $("#mainaddress .tel").text() + '<br/>' + $("#mainaddress .email").text() + '</div>',
       style: 'table{border-collapse:collapse;font-family:"Tahoma", sans-serif;}table td{border:1px solid #ccc;padding:5px;}table tr{border:none;}'
     })
 
   });
 
 
-
   updateStocks();
   setInterval(updateStocks, 60000); //1 minute
 
   function updateStocks() {
-    let new_cur_date = stock_date.toString();
 
-    $.get( "/wp-content/themes/sxematika/update.php/?date="+new_cur_date, function( data ) {
-      if(data){
-        if (data.success_code == 1){
-          //console.log(data.message); //удалить
-        }
-        if (data.success_code == 2){
-          //обновить все цены на сайте
-          stock_gold = data.stock_gold;
-          stock_silver = data.stock_silver;
-          stock_platinum = data.stock_platinum;
-          stock_palladium = data.stock_palladium;
-          stock_rub = data.stock_rub;
-          stock_eur = data.stock_eur;
-          stock_date = data.stock_date;
+    var d = moment.utc().format('YYYYMMDD') + '0000';
+    var t = '202011270000';
+    var e = stock_date.toString();
 
-          GOLD = stock_gold / 31.1; // здесь будут курсы драгметаллов и доллара делим на 31,1 для перевода из унций в кг
-          SILVER = stock_silver / 31.1;
-          PLATINUM = stock_platinum / 31.1;
-          PALLADIUM = stock_palladium / 31.1;
-          USD = stock_rub;
-          EUR = 1 / stock_eur * stock_rub;
-          STOCK_DATE = stock_date.toString();
-          updateStocksHTML();
-        }
-        if (data.success_code == 3){
-          //первая загрузка, можно ничего не делать
-          console.log(data.message);
-        }
 
-      } else {
-        console.log( 'Ошибка асинхронного запроса' );
-      }
-    });
+    if (e < d) {
+      $.get("/wp-content/themes/sxematika/update.php", function (data) {
+        if (data) {
+          if (data.success_code == 2) {
+            //обновить все цены на сайте
+            stock_gold = data.stock_gold;
+            stock_silver = data.stock_silver;
+            stock_platinum = data.stock_platinum;
+            stock_palladium = data.stock_palladium;
+            stock_rub = data.stock_rub;
+            stock_eur = data.stock_eur;
+            stock_date = data.stock_date;
+
+            GOLD = stock_gold / 31.1;
+            SILVER = stock_silver / 31.1;
+            PLATINUM = stock_platinum / 31.1;
+            PALLADIUM = stock_palladium / 31.1;
+            USD = stock_rub;
+            EUR = 1 / stock_eur * stock_rub;
+            STOCK_DATE = stock_date.toString();
+            updateStocksHTML();
+          } else if (data.success_code == 3) {
+            //первая загрузка, можно ничего не делать
+            console.log(data.message);
+          }
+
+        } else {
+          console.log('Ошибка асинхронного запроса');
+        }
+      });
+
+    }
   }
-
-
 
 
 });
@@ -1104,21 +1114,22 @@ $(document).ready(function () {
       let date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear();
 
       var val = htmlToPdfmake(element);
-      var dd = {content:val,
-        styles:{
-          'html-em':{
-            color:'white', // it will add a yellow background to all <STRONG> elements
+      var dd = {
+        content: val,
+        styles: {
+          'html-em': {
+            color: 'white', // it will add a yellow background to all <STRONG> elements
             fontSize: 0
           },
-          'td--typeof':{
+          'td--typeof': {
             width: 100
           },
-          'td--price':{
+          'td--price': {
             width: 200,
             textAlign: 'right',
             whiteSpace: 'nowrap'
           },
-          'heading-right':{
+          'heading-right': {
             width: 300,
             whiteSpace: 'nowrap',
             textAlign: 'right',
@@ -1126,9 +1137,9 @@ $(document).ready(function () {
           }
         },
         tableAutoSize: true,
-        watermark: { text: 'sxematika.ru', color: '#0bbc93', opacity: 0.2, bold: true, italics: false }
+        watermark: {text: 'sxematika.ru', color: '#0bbc93', opacity: 0.2, bold: true, italics: false}
       };
-      pdfMake.createPdf(dd).download('price(' + date + ').pdf', function() {
+      pdfMake.createPdf(dd).download('price(' + date + ').pdf', function () {
         $(this).prop('disabled', false);
         $(".alert--wrapper").html("");
       });
@@ -1142,8 +1153,6 @@ $(document).ready(function () {
         console.log(jsonData);
       }
    );*/
-
-
 
 
 });
