@@ -719,7 +719,7 @@ h3, h4, h5, h6{
 
 .piter .footer{.line1 .pic{background-image: url(../img/man-spb.png);}}
 .piter .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-spb2.png"); background-size: contain;}}}
-
+.piter .form--wrap .tophead .right{width: 210px;}
 
 .nnovgorod .footer{.line1 .pic{background-image: url(../img/man-nnv.png);}}
 .nnovgorod .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-nnv2.png"); background-size: contain;}}}
