@@ -74,6 +74,14 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
+      <webServer id="7e2a1c57-7b01-42b9-bae4-315f9cac4184" name="sxm_kazan" url="http://37.140.192.157">
+        <fileTransfer host="37.140.192.157" port="21" rootFolder="/www/kazan.sxematika.ru/wp-content/themes/sxematika/assets">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

@@ -16,6 +16,9 @@ $(document).ready(function () {
     // Optional parameters
     direction: 'horizontal',
     loop: true,
+    autoplay: {
+      delay: 4000,
+    },
     effect: "fade",
     fadeEffect: {
       crossFade: true
@@ -116,13 +119,13 @@ $(document).ready(function () {
     event.stopPropagation();
     if (flag === 0) {
       if ($(this).parent().hasClass("footer--selector")) {
-        $(this).next().css({"display": "block", "top": "-170px"}).animate({
+        $(this).next().css({"display": "block", "top": "-210px"}).animate({
           opacity: "1",
           width: "auto",
           marginLeft: "0px"
         }, 150);
       } else if ($(this).parent().hasClass("contact--selector")) {
-        $(this).next().css({"display": "block", "top": "-30px"}).animate({
+        $(this).next().css({"display": "block", "top": "-70px"}).animate({
           opacity: "1",
           width: "auto",
           marginLeft: "0px"

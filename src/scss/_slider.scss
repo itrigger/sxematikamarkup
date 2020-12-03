@@ -108,6 +108,10 @@
   }
 }
 
+.slide-wrap.slide-wrap-bg3 .title{
+  max-width: 470px;
+}
+
 .krasnodar{
   .slide-wrap{
     .title{
@@ -173,6 +177,9 @@
   .slide-wrap-bg3 .title{
     max-width: 70%;
   }
+  .slide-wrap.slide-wrap-bg3 .title{
+    max-width: 70%;
+  }
   .slide-wrap-bg1:before{
     width: 553px;
     height: 140px;
@@ -236,8 +243,11 @@
     margin-left: 0;
   }
   .slide-wrap .title{
-    max-width: 360px;
-    font-size: 38px;
+    max-width: 380px;
+    font-size: 36px;
+  }
+  .slide-wrap.slide-wrap-bg3 .title{
+    max-width: 380px;
   }
 }
 @media (min-width: 1025px) and (max-width: 1280px){

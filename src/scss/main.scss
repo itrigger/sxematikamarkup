@@ -745,4 +745,8 @@ h3, h4, h5, h6{
 .penza .footer{.line1 .pic{background-image: url(../img/man-pen.png);}}
 .penza .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-pen2.png"); background-size: contain;}}}
 
+.kazan .footer{.line1 .pic{background-image: url(../img/man-kaz.png);}}
+.kazan .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-kaz2.png"); background-size: contain;}}}
+
+
 @import "_media";
