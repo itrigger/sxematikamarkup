@@ -722,6 +722,8 @@ h3, h4, h5, h6{
 .piter .form--wrap .tophead .right{width: 210px;}
 
 .nnovgorod .footer{.line1 .pic{background-image: url(../img/man-nnv.png);}}
+.nnovgorod .footer .line1 .left{max-width: 345px;}
+.nnovgorod .footer .line1 .right{margin-left: 120px;}
 .nnovgorod .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-nnv2.png"); background-size: contain;}}}
 .nnovgorod .footer .line1 .left .name{font-size: 31px;}
 .nnovgorod .form--wrap .tophead .right{width: 210px;}
@@ -731,6 +733,13 @@ h3, h4, h5, h6{
   .nnovgorod .footer .line1 .left .name {
     font-size: 28px;
     margin: 10px 0 7px 0;
+  }
+  .footer .line1 .right {
+    margin-left: 20px;
+  }
+  .footer .line1 .left {
+    min-width: 305px;
+    max-width: 305px;
   }
 }
 @media (max-width: 1024px){
