@@ -1054,6 +1054,61 @@ $(document).ready(function () {
   });
 
 
+  /*
+  var feed_url = "https://prices.lbma.org.uk/json/today.json";
+
+$(document).ready(function() {
+
+  if ((navigator.userAgent.match(/msie/i)) && window.XDomainRequest) {
+    xdr = new XDomainRequest();
+    xdr.onload = function() {
+      var r = xdr.responseText;
+      var data = JSON.parse(r);
+      $("#daily_gold_am_usd").html(data.gold.am.usd);
+      $("#daily_gold_am_date").html(data.gold.am.date);
+      $("#daily_gold_pm_usd").html(data.gold.pm.usd);
+      $("#daily_gold_pm_date").html(data.gold.pm.date);
+
+      $("#daily_silver_usd").html(data.silver.usd);
+      $("#daily_silver_date").html(data.silver.date);
+
+      $("#daily_platinum_am_usd").html(data.platinum.am.usd);
+      $("#daily_platinum_am_date").html(data.platinum.am.date);
+      $("#daily_platinum_pm_usd").html(data.platinum.pm.usd);
+      $("#daily_platinum_pm_date").html(data.platinum.pm.date);
+
+      $("#daily_palladium_am_usd").html(data.palladium.am.usd);
+      $("#daily_palladium_am_date").html(data.palladium.am.date);
+      $("#daily_palladium_pm_usd").html(data.palladium.pm.usd);
+      $("#daily_palladium_pm_date").html(data.palladium.pm.date);
+    }
+    xdr.open("GET", feed_url);
+    xdr.send();
+  } else {
+    $.getJSON(feed_url, function(data) {
+      $("#daily_gold_am_usd").html(data.gold.am.usd);
+      $("#daily_gold_am_date").html(data.gold.am.date);
+      $("#daily_gold_pm_usd").html(data.gold.pm.usd);
+      $("#daily_gold_pm_date").html(data.gold.pm.date);
+
+      $("#daily_silver_usd").html(data.silver.usd);
+      $("#daily_silver_date").html(data.silver.date);
+
+      $("#daily_platinum_am_usd").html(data.platinum.am.usd);
+      $("#daily_platinum_am_date").html(data.platinum.am.date);
+      $("#daily_platinum_pm_usd").html(data.platinum.pm.usd);
+      $("#daily_platinum_pm_date").html(data.platinum.pm.date);
+
+      $("#daily_palladium_am_usd").html(data.palladium.am.usd);
+      $("#daily_palladium_am_date").html(data.palladium.am.date);
+      $("#daily_palladium_pm_usd").html(data.palladium.pm.usd);
+      $("#daily_palladium_pm_date").html(data.palladium.pm.date);
+    });
+  }
+});
+
+  * */
+
   updateStocks();
   setInterval(updateStocks, 60000); //1 minute
 
