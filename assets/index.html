@@ -352,11 +352,42 @@
     </h1>
   </div>
   <div class="map">
-    <!-- <iframe
-       frameborder="0"
-       height="410"
-       src="https://yandex.ru/map-widget/v1/?um=constructor%3A20d4feb11df4425ab2ae6e2851e482f55e318556bf839f4c728556f7aae09868&amp;source=constructor"
-       width="100%"></iframe>-->
+
+    <script src="https://api-maps.yandex.ru/2.1?apikey=f84cdad7-7494-48e5-9737-c63faf7d970d&load=package.full&lang=ru_RU">
+    </script>
+    <script type="text/javascript">
+      ymaps.ready(function () {
+
+        var sites = [
+          ['Москва', 55.5797031, 37.5985269, 1, '<div class="pic"><img alt="" src="/img/map.jpg"></div>'],
+        ];
+        var myMap = new ymaps.Map("map", {
+          center: [55.580105, 37.598158],
+          zoom: 19
+        });
+
+        var myPlacemark = new ymaps.Placemark([55.580105, 37.598158], {}, {
+          iconLayout: 'default#image',
+          iconImageHref: 'http://localhost:3000/img/marker.png',
+          iconImageSize: [30, 42],
+          iconImageOffset: [-3, -42]
+        });
+        var myPlacemark2 = new ymaps.Placemark([55.580201, 37.597497], {}, {
+          iconLayout: 'default#image',
+          iconImageHref: 'http://localhost:3000/img/metro.svg',
+          iconImageSize: [30, 42],
+          iconImageOffset: [-3, -42]
+        });
+        // Размещение геообъекта на карте.
+        myMap.geoObjects.add(myPlacemark);
+        myMap.geoObjects.add(myPlacemark2);
+
+        myPlacemark.events.add('click', function () {
+          jQuery('.map_bubble .wrapper').html(sites[0][4]).parent().addClass('open');
+        });
+
+      });
+    </script>
   </div>
 </div>
 <!--end of main-page-map-->

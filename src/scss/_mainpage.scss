@@ -934,15 +934,27 @@ a.big-vb {
   .main-page--blog .blog--item .desc{
     display: block;
   }
+  .main-page-map #map{
+    height: 260px;
+    margin-bottom: 0;
+  }
+  .main-page-map .map_bubble{
+    margin-bottom: 20px;
+  }
 }
 
 @media (min-width: 441px) and (max-width: 660px){
+  .main-page-map #map{
+    height: 260px;
+    margin-bottom: 0;
+  }
+
   .main-page-map .map_bubble{
     width: 90%;
     display: flex;
     right: 0;
     left: 0;
-    margin-bottom: -40px;
+    margin-bottom: 20px;
     .pic{
       display: none;
     }
