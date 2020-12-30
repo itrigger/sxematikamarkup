@@ -505,7 +505,10 @@
   .footer .line1 .left .title {
     font-size: 15px;
   }
-
+  .footer .line1{
+    padding-top: 20px;
+    background: url(../img/tilebg-02.jpg) repeat #00bb9c;
+  }
 }
 
 @media (min-width: 1025px) and (max-width: 1439px){

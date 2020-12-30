@@ -716,6 +716,25 @@ h3, h4, h5, h6{
   }
 }
 
+@media (max-width: 660px){
+  .voronezh .footer .line1 .left .name {
+    font-size: 21px;
+  }
+  .footer .line1 .left .title{
+    font-size: 12px;
+  }
+  .footer .line1 .left{
+    min-height: 205px;
+    padding-right: 170px;
+  }
+  .footer .line1 .pic {
+    right: 10px;
+    width: 170px;
+  }
+  .footer .line1 .name.mobile{
+    margin-bottom: 0;
+  }
+}
 
 .piter .footer{.line1 .pic{background-image: url(../img/man-spb.png);}}
 .piter .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-spb2.png"); background-size: contain;}}}
@@ -756,6 +775,7 @@ h3, h4, h5, h6{
 
 .kazan .footer{.line1 .pic{background-image: url(../img/man-kaz.png);}}
 .kazan .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-kaz2.png"); background-size: contain;}}}
+
 
 
 @import "_media";
