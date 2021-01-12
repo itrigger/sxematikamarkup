@@ -685,14 +685,27 @@ h3, h4, h5, h6{
 .simferopol .form--wrap .tophead .right{width: 210px;}
 .simferopol .form--wrap .tophead .name{font-size: 21px;}
 
+.khabarovsk .footer{.line1 .pic{background-image: url(../img/man-hab.png);}}
+.khabarovsk .form--wrap {.tophead{&:before { width: 211px; height: 196px; left: 20px; top: -25px; background-image: url("../img/man-hab2.png"); background-size: contain;}}}
+.khabarovsk .footer .line1 .left .name{font-size: 31px;}
+.khabarovsk .form--wrap .tophead .right{width: 210px;}
+.khabarovsk .form--wrap .tophead .name{font-size: 21px;}
+
 @media (max-width: 1439px) and (min-width: 1025px){
   .simferopol .footer .line1 .left .name {
+    font-size: 28px;
+    margin: 10px 0 7px 0;
+  }
+  .khabarovsk .footer .line1 .left .name {
     font-size: 28px;
     margin: 10px 0 7px 0;
   }
 }
 @media (max-width: 1024px){
   .simferopol .footer .line1 .left .name {
+    font-size: 24px;
+  }
+  .khabarovsk .footer .line1 .left .name {
     font-size: 24px;
   }
 }

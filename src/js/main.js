@@ -119,13 +119,15 @@ $(document).ready(function () {
     event.stopPropagation();
     if (flag === 0) {
       if ($(this).parent().hasClass("footer--selector")) {
-        $(this).next().css({"display": "block", "top": "-210px"}).animate({
+        let ssHeight = ($(this).parent().find(".selector-dd").height() - 170)*(-1);
+        $(this).next().css({"display": "block", "top": ssHeight}).animate({
           opacity: "1",
           width: "auto",
           marginLeft: "0px"
         }, 150);
       } else if ($(this).parent().hasClass("contact--selector")) {
-        $(this).next().css({"display": "block", "top": "-70px"}).animate({
+        let ssHeight = ($(this).parent().find(".selector-dd").height() - 270)*(-1);
+        $(this).next().css({"display": "block", "top": ssHeight}).animate({
           opacity: "1",
           width: "auto",
           marginLeft: "0px"
@@ -136,6 +138,17 @@ $(document).ready(function () {
       flag = 1;
     } else {
       hideList()
+    }
+  });
+
+  $(".top-selector .selector-dd li").on("click", function () {
+    let subdomain_attr = $(this).attr("data-sub");
+    //let subdomain_window = window.location.host.split('.')[1] ? window.location.host.split('.')[0] : false;
+    let path = window.location.pathname;
+    if(subdomain_attr){
+      location.href='https://'+subdomain_attr+'.sxematika.ru'+path
+    } else {
+      location.href='https://sxematika.ru'+path
     }
   });
 
