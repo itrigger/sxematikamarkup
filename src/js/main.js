@@ -141,7 +141,7 @@ $(document).ready(function () {
     }
   });
 
-  $(".top-selector .selector-dd li").on("click", function () {
+  $(".top-selector .selector-dd li, #citypopup .selector-dd li").on("click touch", function () {
     let subdomain_attr = $(this).attr("data-sub");
     //let subdomain_window = window.location.host.split('.')[1] ? window.location.host.split('.')[0] : false;
     let path = window.location.pathname;
