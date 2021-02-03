@@ -132,6 +132,12 @@ $(document).ready(function () {
           width: "auto",
           marginLeft: "0px"
         }, 150);
+      } else if ($(this).parent().hasClass("main-page-map--selector")) {
+        $(this).next().css({"display": "block", "top": "-45px"}).animate({
+          opacity: "1",
+          width: "auto",
+          marginLeft: "0px"
+        }, 150);
       } else {
         $(this).next().css("display", "block").animate({opacity: "1", width: "auto", marginLeft: "0px"}, 150);
       }
