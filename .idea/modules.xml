@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/sxematikamarkup.iml" filepath="$PROJECT_DIR$/sxematikamarkup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sxematikamarkup.iml" filepath="$PROJECT_DIR$/.idea/sxematikamarkup.iml" />
     </modules>
   </component>
 </project>

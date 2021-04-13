@@ -1,0 +1,87 @@
+.hotline .form--wrap .form {padding: 20px 20px 50px;}
+.hotline .form--wrap .form .name{font-size: 24px;}
+.hotline .form--wrap .form .title{font-size: 15px;}
+.hotline .form--wrap .form .heading{font-size: 22px;}
+.hotline .form--wrap .tophead .yellow-rounded{font-size: 15px; padding: 7px 20px 5px; height: 30px;}
+.btn.btn-red{background-color: #DD3907;border-color:#DD3907;}
+.btn.btn-red:hover{background-color: #ef5628;border-color:#DD3907;}
+
+.hotline-bottom{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	color: #000;
+	background: #fcd772;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	left: 0;
+    height: 33px;
+    border-radius: 0 0 10px 10px;
+}
+.hotline-bottom a{
+	color: #000;
+	display: inline-block;
+	margin-left: 6px;
+}
+.hotline .form--wrap .tophead:before{
+	width: 151px;
+    height: 189px;
+	top: 0;
+	background: url("hotline.png") 0 0 no-repeat;
+}
+.hotline .form--wrap .tophead{
+	height: 190px;
+}
+.hotline .form--wrap .tophead .right{
+	width: 240px;
+	padding-top: 30px;
+}
+.hotline span.or:after{
+	left: 138px;
+	top: 11px;
+}
+.hotline span.or:before{
+	top: 11px;
+}
+@media (max-width: 1380px){
+	.hotline .form--wrap .tophead:before{display: none;}
+	.hotline .form--wrap .tophead .right{width:100%; margin-left: 0; text-align: center;}
+}
+@media (min-width: 320px) and (max-width: 1024px){
+.footer--contact-block {
+    padding: 20px 20px 50px;
+}
+}
+
+
+
+
+
+
+.footer .line1 .pic{
+	position: absolute;
+    left: 365px;
+}
+.footer .line1 .right{
+    margin-left: 390px;
+}
+@media (max-width: 1439px) and (min-width: 1025px){
+	.footer .line1 .left {
+	  min-width: 335px;
+	  max-width: 335px;
+	}
+}
+@media (max-width: 660px){
+	.footer .line1 .pic {
+		left: auto;
+		right: 10px;
+		width: 170px;
+	}
+}
+
+@media (min-width: 1025px) and (max-width: 1439px){
+	.footer--contact-block {
+		padding: 20px 20px 50px;
+	}
+}
