@@ -117,11 +117,41 @@ $(document).ready(function () {
 
 
   $(".selector").on("click", ".selector-title", function (event) {
-    $.fancybox.open({
-      src: "#citypopup",
-      type: 'inline',
-      toolbar: false
-    });
+    let myBaseClass = "";
+    if ($(this).parent().hasClass("footer--selector")) {
+      myBaseClass = "footer--selector";
+      $.fancybox.open({
+        src: "#citypopup",
+        type: 'inline',
+        toolbar: false,
+        baseClass: myBaseClass
+      });
+    } else if ($(this).parent().hasClass("contact--selector")) {
+      myBaseClass = "contact--selector";
+      $.fancybox.open({
+        src: "#citypopupmap",
+        type: 'inline',
+        toolbar: false,
+        baseClass: myBaseClass
+      });
+    } else if ($(this).parent().hasClass("main-page-map--selector")){
+      myBaseClass = "main-page-map--selector";
+      $.fancybox.open({
+        src: "#citypopupmap",
+        type: 'inline',
+        toolbar: false,
+        baseClass: myBaseClass
+      });
+    } else {
+      $.fancybox.open({
+        src: "#citypopup",
+        type: 'inline',
+        toolbar: false
+      });
+    }
+
+
+
     /*event.stopPropagation();
     if (flag === 0) {
       $('body').addClass('citypopup_opened');
