@@ -109,8 +109,7 @@ $(document).ready(function () {
     $(".selector-dd").animate({opacity: "0"}, 100).css({
       "display": "none",
       "marginLeft": "4px",
-    }).find('.closebtn').remove();
-    $('.selector-dd').find('.city-popup-header').remove();
+    });
     $('body').removeClass('citypopup_opened');
     flag = 0;
   };
@@ -118,10 +117,15 @@ $(document).ready(function () {
 
 
   $(".selector").on("click", ".selector-title", function (event) {
-    event.stopPropagation();
+    $.fancybox.open({
+      src: "#citypopup",
+      type: 'inline',
+      toolbar: false
+    });
+    /*event.stopPropagation();
     if (flag === 0) {
       $('body').addClass('citypopup_opened');
-      $(this).parent().find(".selector-dd").prepend('<div class="closebtn"><svg xmlns="http://www.w3.org/2000/svg" version="1" viewBox="0 0 24 24"><path d="M13 12l5-5-1-1-5 5-5-5-1 1 5 5-5 5 1 1 5-5 5 5 1-1z"></path></svg></div>');
+
       if ($(this).parent().hasClass("footer--selector")) {
         let ssHeight = ($(this).parent().find(".selector-dd").height() - 170)*(-1);
         $(this).next().css({"display": "block", "top": ssHeight}).animate({
@@ -143,15 +147,14 @@ $(document).ready(function () {
           marginLeft: "0px"
         }, 150);
       } else {
-        $(this).next().css("display", "block").animate({opacity: "1", width: "auto", marginLeft: "0px"}, 150);
-        $(this).parent().find(".selector-dd").prepend('<div class="city-popup-header">Выберите Ваш город</div>');
+        $(this).parent().find(".selector-dd").css("display", "block").animate({opacity: "1", width: "auto", marginLeft: "0px"}, 150);
       }
 
 
       flag = 1;
     } else {
       hideList()
-    }
+    }*/
   });
 
 
