@@ -151,40 +151,6 @@ $(document).ready(function () {
     }
 
 
-
-    /*event.stopPropagation();
-    if (flag === 0) {
-      $('body').addClass('citypopup_opened');
-
-      if ($(this).parent().hasClass("footer--selector")) {
-        let ssHeight = ($(this).parent().find(".selector-dd").height() - 170)*(-1);
-        $(this).next().css({"display": "block", "top": ssHeight}).animate({
-          opacity: "1",
-          width: "auto",
-          marginLeft: "0px"
-        }, 150);
-      } else if ($(this).parent().hasClass("contact--selector")) {
-        let ssHeight = ($(this).parent().find(".selector-dd").height() - 270)*(-1);
-        $(this).next().css({"display": "block", "top": ssHeight}).animate({
-          opacity: "1",
-          width: "auto",
-          marginLeft: "0px"
-        }, 150);
-      } else if ($(this).parent().hasClass("main-page-map--selector")) {
-        $(this).next().css({"display": "block", "top": "-45px"}).animate({
-          opacity: "1",
-          width: "auto",
-          marginLeft: "0px"
-        }, 150);
-      } else {
-        $(this).parent().find(".selector-dd").css("display", "block").animate({opacity: "1", width: "auto", marginLeft: "0px"}, 150);
-      }
-
-
-      flag = 1;
-    } else {
-      hideList()
-    }*/
   });
 
 
@@ -195,9 +161,9 @@ $(document).ready(function () {
     //let subdomain_window = window.location.host.split('.')[1] ? window.location.host.split('.')[0] : false;
     let path = window.location.pathname;
     if(subdomain_attr){
-      location.href='https://'+subdomain_attr+'.sxematika.ru'+path
+      location.href='https://'+subdomain_attr+'.sxematika.com.ua'+path
     } else {
-      location.href='https://sxematika.ru'+path
+      location.href='https://sxematika.com.ua'+path
     }
   });
 
@@ -231,11 +197,12 @@ $(document).ready(function () {
   let SILVER = stock_silver / 31.1;
   let PLATINUM = stock_platinum / 31.1;
   let PALLADIUM = stock_palladium / 31.1;
-  let USD = stock_rub;
-  let EUR = 1 / stock_eur * stock_rub;
+  let USD = stock_uah;
+  //let USD = stock_rub;
+  let EUR = 1 / stock_eur * stock_uah;
   let STOCK_DATE = stock_date.toString();
   const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт", "гр"];
-  const CONST_HOST = window.location.origin; //'https://krasnodar.sxematika.ru/';
+  const CONST_HOST = window.location.origin;
   console.log(CONST_HOST);
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a';
   const CONST_CS = 'cs_d4f6f902c2d7d3ec65159392fa6d245a2ce722cf';
@@ -252,12 +219,12 @@ $(document).ready(function () {
   function updateStocksHTML() {
     if ($(".stocks--items").length > 0) {
       $('.stocks').addClass('updating');
-      $(".stocks_usd").text(Math.round((USD + Number.EPSILON) * 100) / 100 + " ₽");
-      $(".stocks_eur").text(Math.round((EUR + Number.EPSILON) * 100) / 100 + " ₽");
-      $(".stocks_gold").text(Math.round((GOLD * USD + Number.EPSILON) * 100) / 100 + " ₽");
-      $(".stocks_silver").text(Math.round((SILVER * USD + Number.EPSILON) * 100) / 100 + " ₽");
-      $(".stocks_platinum").text(Math.round((PLATINUM * USD + Number.EPSILON) * 100) / 100 + " ₽");
-      $(".stocks_palladium").text(Math.round((PALLADIUM * USD + Number.EPSILON) * 100) / 100 + " ₽");
+      $(".stocks_usd").text(Math.round((USD + Number.EPSILON) * 100) / 100 + " ₴");
+      $(".stocks_eur").text(Math.round((EUR + Number.EPSILON) * 100) / 100 + " ₴");
+      $(".stocks_gold").text(Math.round((GOLD * USD + Number.EPSILON) * 100) / 100 + " ₴");
+      $(".stocks_silver").text(Math.round((SILVER * USD + Number.EPSILON) * 100) / 100 + " ₴");
+      $(".stocks_platinum").text(Math.round((PLATINUM * USD + Number.EPSILON) * 100) / 100 + " ₴");
+      $(".stocks_palladium").text(Math.round((PALLADIUM * USD + Number.EPSILON) * 100) / 100 + " ₴");
       $(".stocks .date").text(STOCK_DATE.slice(6, 8) + "." + STOCK_DATE.slice(4, 6) + "." + STOCK_DATE.slice(0, 4));
 
       if (old_stock_rub) {
@@ -857,7 +824,7 @@ $(document).ready(function () {
       '        </div>\n' +
       '        <div class="el-wrap ew4 labeled-input input-dark to-right">\n' +
       '          <label>Сумма</label>\n' +
-      '          <div class="row-total"><span>0</span> ₽</div>\n' +
+      '          <div class="row-total"><span>0</span> ₴</div>\n' +
       '        </div>\n' +
       '      </div>');
     // заполнение родительского селекта уже полученными данными о категориях
@@ -949,7 +916,7 @@ $(document).ready(function () {
           '        </div>\n' +
           '        <div class="el-wrap ew4 labeled-input input-dark to-right">\n' +
           '          <label>Сумма</label>\n' +
-          '          <div class="row-total"><span>0</span> ₽</div>\n' +
+          '          <div class="row-total"><span>0</span> ₴</div>\n' +
           '        </div>\n' +
           '      </div>');
         // заполнение родительского селекта уже полученными данными о категориях
@@ -1048,9 +1015,9 @@ $(document).ready(function () {
               $("#z3").val($("#z3").val() + "_" + arr[3]);
               $("#z4").val($("#z4").val() + "_" + arr[4]);
               $("#z5").val($("#z5").val() + "_" + arr[5]);
-              $("#restable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>Сумма </span>" + arr[5] + " ₽</td></tr>");
+              $("#restable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>Сумма </span>" + arr[5] + " ₴</td></tr>");
             }
-            $("#restable table").append("<tr><td colspan='4' class='totalsum'><div><span class='yellow-rounded'>Итого</span> " + $('#els-total-price-num span').text() + " ₽</div></td></tr>");
+            $("#restable table").append("<tr><td colspan='4' class='totalsum'><div><span class='yellow-rounded'>Итого</span> " + $('#els-total-price-num span').text() + " ₴</div></td></tr>");
 
           }
         }
@@ -1157,7 +1124,7 @@ $(document).ready(function () {
           }
         },
         tableAutoSize: true,
-        watermark: {text: 'sxematika.ru', color: '#0bbc93', opacity: 0.2, bold: true, italics: false}
+        watermark: {text: 'sxematika.com.ua', color: '#0bbc93', opacity: 0.2, bold: true, italics: false}
       };
       pdfMake.createPdf(dd).download('price(' + date + ').pdf', function () {
         $(this).prop('disabled', false);
