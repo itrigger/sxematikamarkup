@@ -178,7 +178,7 @@ $(document).ready(function () {
   });
 
   $(".btn-buy-wrapper").click(function () {
-    $("textarea#mytext").text("Здравствуйте! Я хочу продать деталь: " + $(this).parent().parent().find(".woocommerce-loop-product__title").text());
+    $("textarea#mytext").text(lang_wt_text + $(this).parent().parent().find(".woocommerce-loop-product__title").text());
   })
 
   $('html').click(function () {
@@ -201,7 +201,7 @@ $(document).ready(function () {
   //let USD = stock_rub;
   let EUR = 1 / stock_eur * stock_uah;
   let STOCK_DATE = stock_date.toString();
-  const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт", "гр"];
+  //const TYPES = ["кг", "шт", "г", "кольцо", "секция", "2 секции", "контакт", "гр"];
   const CONST_HOST = window.location.origin;
   console.log(CONST_HOST);
   const CONST_CK = 'ck_4771acb3fb0f9a8a0aa4ff91508c51b479843f9a';
@@ -321,7 +321,7 @@ $(document).ready(function () {
       // Основная формула для каждого города и металла есть поправочный кэф
       if (item_fixprice > 0) {
         if (item_fixprice == "999999") {
-          $(this).find(".price").text("договорная");
+          $(this).find(".price").text(lang_price_custom);
           $(this).find(".btn-put-to-storage").css("display", "none");
         } else {
           $(this).find(".price .price_value").text(item_fixprice);
@@ -348,7 +348,7 @@ $(document).ready(function () {
       // Основная формула для каждого города и металла есть поправочный кэф
       if (item_fixprice > 0) {
         if (item_fixprice == "999999") {
-          $(this).find(".price").text("договорная");
+          $(this).find(".price").text(lang_price_custom);
         } else {
           $(this).find(".price .price_value").text(item_fixprice);
         }
@@ -430,7 +430,7 @@ $(document).ready(function () {
           if (response.status !== 200) {
             console.log('Looks like there was a problem. Status Code: ' +
               response.status);
-            notify("Возникла ошибка при получении данных! Попробуйте перезагрузить страницу или зайти позже.", "error");
+            notify(lang_error1, "error");
             return;
           }
 
@@ -441,7 +441,7 @@ $(document).ready(function () {
             $.each(categoriesAPI, function () {
               $dropdown.append($("<option />").val(this.id).text(this.name));
             });
-            $dropdown.append($("<option disabled hidden selected value='9999'></option>").text("Выберите тип элемента"));
+            $dropdown.append($("<option disabled hidden selected value='9999'></option>").text(lang_select_type));
             $dropdown.prop('disabled', false);
             //fillChildSelect(1);
             isLoading(0);
@@ -459,15 +459,13 @@ $(document).ready(function () {
       )
       .catch(function (err) {
         console.log('Fetch Error :-S', err);
-        notify("Возникла ошибка при получении данных! Попробуйте перезагрузить страницу или зайти позже.", "error");
+        notify(lang_error1, "error");
       });
   } else {
     isLoading(0);
   }
 
-  /*ToDO
-      вызвать функцию определение цены для первого элемента во втором селекте
-   */
+
 // заполняем дочерний селект при выборе опции в родительском
   const fillChildSelect = function (id, catId = 0) {
     isLoading(1); //Отображаем лоадер
@@ -493,7 +491,7 @@ $(document).ready(function () {
       lsArr = JSON.parse(sessionStorage.getItem('category' + thiscatID));
 
       $childDD.empty(); // очищаем селект
-      $childDD.append($("<option hidden disabled selected value='9999'></option>").text("Выберите наименование"));
+      $childDD.append($("<option hidden disabled selected value='9999'></option>").text(lang_select_name));
       for (const [i, arr] of lsArr.entries()) {
         if (arr[8] !== '999999') {
           $childDD.append($("<option />")
@@ -522,7 +520,7 @@ $(document).ready(function () {
             if (response.status !== 200) {
               console.log('Looks like there was a problem. Status Code: ' +
                 response.status);
-              notify("Возникла ошибка при получении данных! Попробуйте перезагрузить страницу или зайти позже.", "error");
+              notify(lang_error1, "error");
               return;
             }
 
@@ -532,7 +530,7 @@ $(document).ready(function () {
               let temp = [];
               if (data.length) {
                 $childDD.empty(); // очищаем селект
-                $childDD.append($("<option hidden disabled selected value='9999'></option>").text("Выберите наименование"));
+                $childDD.append($("<option hidden disabled selected value='9999'></option>").text(lang_select_name));
                 let i = 0;
                 for (let key in productsAPI) {
                   // заполняем селект данными
@@ -581,7 +579,7 @@ $(document).ready(function () {
                 $childDD.empty(); // очищаем селект
                 $childDD.append($("<option />")
                   .val('')
-                  .text('Нет данных!')
+                  .text(lang_no_data)
                 );
               }
 
@@ -593,7 +591,7 @@ $(document).ready(function () {
         )
         .catch(function (err) {
           console.log('Fetch Error :-S', err);
-          notify("Возникла ошибка при получении данных! Попробуйте перезагрузить страницу или зайти позже.", "error");
+          notify(lang_error1, "error");
         });
     }
   }
@@ -750,7 +748,7 @@ $(document).ready(function () {
       return item;
     } catch (err) {
       // перехватит любую ошибку в блоке try: и в fetch, и в response.json
-      notify("При получении данных возникла ошибка! (" + err + ")", "error")
+      notify(lang_error2 + " (" + err + ")", "error")
     }
   }
 
@@ -797,7 +795,7 @@ $(document).ready(function () {
       $childDD.prop('disabled', false);
       // getPrice(id);
     } catch (err) {
-      notify("При получении данных возникла ошибка! (" + err + ")", "error")
+      notify(lang_error2 + " (" + err + ")", "error")
     }
 
   }
@@ -809,21 +807,21 @@ $(document).ready(function () {
     $(".els-body").append('<div class="els-row els-row-' + rowId + ' collapsed" data-id="' + rowId + '">\n' +
       '        <div class="els-del">×</div><div class="el-wrap ew1">\n' +
       '          <select class="el-type" name="el-type" disabled>\n' +
-      '            <option disabled hidden selected value="">Выберите тип элемента</option>\n' +
+      '            <option disabled hidden selected value="">'+lang_select_type+'</option>\n' +
       '          </select>\n' +
       '        </div>\n' +
       '        <div class="el-wrap ew2">\n' +
       '          <select class="el-name" name="el-name" disabled>\n' +
-      '            <option disabled hidden selected value="">Наименование</option>\n' +
+      '            <option disabled hidden selected value="">'+lang_name+'</option>\n' +
       '          </select>\n' +
       '        </div>\n' +
       '        <div class="el-wrap labeled-input ew3">\n' +
-      '          <label>Количество\n' +
-      '            <input  type="text" value="1" class="inputCount"/> <span class="typeOfCount">кг.</span>\n' +
+      '          <label>'+lang_count+'\n' +
+      '            <input  type="text" value="1" class="inputCount"/> <span class="typeOfCount">'+TYPES[0]+'</span>\n' +
       '          </label>\n' +
       '        </div>\n' +
       '        <div class="el-wrap ew4 labeled-input input-dark to-right">\n' +
-      '          <label>Сумма</label>\n' +
+      '          <label>'+lang_sum+'</label>\n' +
       '          <div class="row-total"><span>0</span> ₴</div>\n' +
       '        </div>\n' +
       '      </div>');
@@ -862,7 +860,7 @@ $(document).ready(function () {
       let tempVal = $inputText.val()
       weight = tempVal.replace(/,/g, '.');
     } else {
-      notify("Не указано количество!", "error");
+      notify(lang_error4, "error");
       $inputText.addClass('input-error');
     }
     if (FixPrice > 0) {
@@ -886,13 +884,13 @@ $(document).ready(function () {
 
     if (($('.els-row-' + rowsCount).find(".el-name").attr("disabled")) || ($('.els-row-' + rowsCount).find(".el-name option:selected").attr('value').toString() == '9999')) {
       harddelete_notify();
-      notify("Заполните все поля!", "error");
+      notify(lang_error3, "error");
       $('.els-row-' + rowsCount).find(".el-name").addClass('input-error');
 
     } else {
       if (!($('.els-row-' + rowsCount).find('.inputCount').val())) {
         harddelete_notify();
-        notify("Заполните все поля!", "error");
+        notify(lang_error3, "error");
         $('.inputCount-' + rowsCount).find(".el-name").addClass('input-error');
       } else {
         let $errorInput = $('.els-row-' + rowsCount).find(".el-name");
@@ -901,21 +899,21 @@ $(document).ready(function () {
         $(".els-body").append('<div class="els-row els-row-' + rowsCount + ' collapsed" data-id="' + rowsCount + '">\n' +
           '        <div class="els-del">×</div><div class="el-wrap ew1">\n' +
           '          <select class="el-type" name="el-type" disabled>\n' +
-          '            <option disabled hidden selected value="">Выберите тип элемента</option>\n' +
+          '            <option disabled hidden selected value="">'+lang_select_type+'</option>\n' +
           '          </select>\n' +
           '        </div>\n' +
           '        <div class="el-wrap ew2">\n' +
           '          <select class="el-name" name="el-name" disabled>\n' +
-          '            <option disabled hidden selected value="">Наименование</option>\n' +
+          '            <option disabled hidden selected value="">'+lang_name+'</option>\n' +
           '          </select>\n' +
           '        </div>\n' +
           '        <div class="el-wrap ew3 labeled-input">\n' +
-          '          <label>Количество\n' +
-          '            <input  type="text" value="1" class="inputCount"/> <span class="typeOfCount">кг.</span>\n' +
+          '          <label>'+lang_count+'\n' +
+          '            <input  type="text" value="1" class="inputCount"/> <span class="typeOfCount">'+TYPES[0]+'</span>\n' +
           '          </label>\n' +
           '        </div>\n' +
           '        <div class="el-wrap ew4 labeled-input input-dark to-right">\n' +
-          '          <label>Сумма</label>\n' +
+          '          <label>'+lang_sum+'</label>\n' +
           '          <div class="row-total"><span>0</span> ₴</div>\n' +
           '        </div>\n' +
           '      </div>');
@@ -982,11 +980,11 @@ $(document).ready(function () {
         temp = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
         curSS.push(temp);
         sessionStorage.setItem('order', JSON.stringify(curSS));
-        $(".alertwindow").addClass("active").find(".textall").text("Всего деталей: " + curSS.length);
+        $(".alertwindow").addClass("active").find(".textall").text(lang_total_items+ ' ' + curSS.length);
       } else {
         temp[0] = [lsId, lsType, lsName, lsCount, lsTypeOf, lsRowSum];
         sessionStorage.setItem('order', JSON.stringify(temp));
-        $(".alertwindow").addClass("active").find(".textall").text("Всего деталей: 1");
+        $(".alertwindow").addClass("active").find(".textall").text(lang_total_items +" 1");
       }
 
       $(this).addClass("added").text("Добавлено!");
@@ -1015,9 +1013,9 @@ $(document).ready(function () {
               $("#z3").val($("#z3").val() + "_" + arr[3]);
               $("#z4").val($("#z4").val() + "_" + arr[4]);
               $("#z5").val($("#z5").val() + "_" + arr[5]);
-              $("#restable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>Сумма </span>" + arr[5] + " ₴</td></tr>");
+              $("#restable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>"+lang_sum+" </span>" + arr[5] + " ₴</td></tr>");
             }
-            $("#restable table").append("<tr><td colspan='4' class='totalsum'><div><span class='yellow-rounded'>Итого</span> " + $('#els-total-price-num span').text() + " ₴</div></td></tr>");
+            $("#restable table").append("<tr><td colspan='4' class='totalsum'><div><span class='yellow-rounded'>"+lang_total+"</span> " + $('#els-total-price-num span').text() + " ₴</div></td></tr>");
 
           }
         }
@@ -1044,14 +1042,14 @@ $(document).ready(function () {
     let lsArr = JSON.parse(sessionStorage.getItem('order'));
     if (lsArr) {
       for (const [i, arr] of lsArr.entries()) {
-        $("#printtable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>Сумма </span>" + arr[5] + " руб.</td></tr>");
+        $("#printtable table").append("<tr><td class='col1'>" + arr[1] + "</td><td class='col2'>" + arr[2] + "</td><td class='col3'>" + arr[3] + " <span class='izm'>" + arr[4] + "</span></td><td class='col4'><span class='sum'>"+lang_sum+" </span>" + arr[5] + " ₴</td></tr>");
       }
-      $("#printtable table").append("<tr><td colspan='4' class='totalsum'><span class='yellow-rounded'>Итого</span> " + $('#els-total-price-num span').text() + " руб.</td></tr>");
+      $("#printtable table").append("<tr><td colspan='4' class='totalsum'><span class='yellow-rounded'>"+lang_total+"</span> " + $('#els-total-price-num span').text() + " ₴</td></tr>");
       //https://printjs.crabbly.com/
       printJS({
         printable: 'printtable',
         type: 'html',
-        header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>Внимание! Цены действительны на: ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").html() + '<br/>' + $("#mainaddress .tel").text() + '<br/>' + $("#mainaddress .email").text() + '</div>',
+        header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>'+lang_attention_price + ' ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").html() + '<br/>' + $("#mainaddress .tel").text() + '<br/>' + $("#mainaddress .email").text() + '</div>',
         style: "#printtable{font-family:'Tahoma', sans-serif;} #printtable table{border-collapse:collapse;width:95%;min-width:95%;}#printtable td{border:1px solid #ccc;font-size:18px;padding:5px 10px}#printtable .col2{font-weight:bold;}#printtable .col3{white-space:nowrap}#printtable .col3 .izm{font-size:15px;color:#5d687a}#printtable .col4{white-space:nowrap; text-align:right;}#printtable .col4 .sum{display:inline-block;margin-right:10px;font-size:15px;color:#5d687a}#printtable .totalsum{border: none; font-size:30px !important;text-align:right;}#printtable .totalsum .yellow-rounded{margin-right:10px}"
       })
     } else {
@@ -1076,7 +1074,7 @@ $(document).ready(function () {
       },
       printable: 'tabletext',
       type: 'html',
-      header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>Внимание! Цены действительны на: ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").html() + '<br/>' + $("#mainaddress .tel").text() + '<br/>' + $("#mainaddress .email").text() + '</div>',
+      header: '<div style="text-align: left; margin-bottom: 20px; float:left;"><img style="margin-bottom: 15px;" src="/wp-content/themes/sxematika/assets/img/logo2-19.svg" /><br/>'+lang_attention_price+ ' ' + today + '</div><div style="float:right;text-align: right; margin-bottom: 20px;">' + $("#mainaddress .title").html() + '<br/>' + $("#mainaddress .tel").text() + '<br/>' + $("#mainaddress .email").text() + '</div>',
       style: 'table{border-collapse:collapse;font-family:"Tahoma", sans-serif;}table td{border:1px solid #ccc;padding:5px;}table tr{border:none;}'
     })
 
@@ -1094,7 +1092,7 @@ $(document).ready(function () {
   $("#btn-Convert-Html2Image").on('click', function () {
 
     $(this).prop('disabled', true);
-    $(".alert--wrapper").html("<div class='alert process'><span>Подготовка прайс листа...</span></div>")
+    $(".alert--wrapper").html("<div class='alert process'><span>'+lang_price_prep+'</span></div>")
     setTimeout(function () {
       let element = document.getElementById("tabletext").innerHTML;
       let today = new Date();
